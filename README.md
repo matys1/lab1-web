@@ -1,1 +1,1 @@
-# This repo will hold my HTML, CSS and JS exercies as I go through the book
+# This repo will hold my HTML, CSS and JS exercies as I go through the book.
