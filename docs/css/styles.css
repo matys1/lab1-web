@@ -20,9 +20,9 @@ h1 {
 	font-style: italic;
 }
 
-p.subheader {
+.subheader {
 	font-weight: bold;
-	color: #ff0000;
+	color: #5900ff;
 }
 
 img {
