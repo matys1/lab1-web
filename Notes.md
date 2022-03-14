@@ -1,7 +1,7 @@
 # HTML, CSS and JS Book notes
 
 *OVERALL PROGRESS CONTINUE WITH LESSON 4 (from the top)*  
-*NOTE PROGRESS CONTINUE WITH LESSON 2 from: "Using \<header> in Multiple Ways"*
+*NOTE PROGRESS CONTINUE WITH LESSON 3 (from the top) after finishing the TO DO*
 
 ## LESSON 1
 
@@ -66,7 +66,7 @@ Six tags every HTML page requires:
 - Basic strcuctural HTML tags:
 
 ```HTML
-<p></p> - paragraph (closing </p> tag is optional)
+<p></p> - paragraph (closing </p> tag is optional); skips a line between paragraphs
 <hr> - horizontal rule & line break
 <br> - line break
 <h1></h1> - heading 1 
@@ -79,14 +79,30 @@ Six tags every HTML page requires:
 - Basic semantic HTML tags:
 
 ```HTML
-<header></header> - introductory info, usually contains <h1/2/3> tags
-<footer></footer> - supplementary info
-<nav></nav> - for navigational elements
-<section></section> - thematically related info, higher level than <p>
-<article></article> - standalone body of work, higher level than <section>
-<aside></aside> - secondary info, definitions, quotes, note etc.
+<header></header> - introductory info, usually contains <h1/2/3> tags but not necessarily
+<footer></footer> - supplementary info, copy right, author of article etc.
+<nav></nav> - for navigational elements (primary & secondary, table of contents etc.)
+<section></section> - generic or thematically related info, higher level than <p>
+<article></article> - complete / standalone body of work, higher level than <section>
+<aside></aside> - helper text, definitions, quotes, note, additional explanation etc.
+<address></address> - address information, often contained within a <footer> element
 ```
 
 Tags can be nested within each other and repeated multiple times to convey structure and semanting meaning.
 
 > For example, you can have a \<body> tag containing a \<header>, \<nav> and \<article> tags. An \<article> tag containing \<header> and \<section> tags and a \<section> tag containing \<header> and \<p> tags.
+
+- Other HTML tags:
+
+```HTML
+<ul></ul> - 
+<li></li> - 
+<a></a> - 
+```
+
+TO DO:
+1. add definitions to above 3 tags
+2. add the diagram link to which tags should be used
+3. maybe add the html template here as well?
+
+Once you do the above 3 points CONTINUE WITH LESSON 3 (from top) see notes from lesson 3 in README.
