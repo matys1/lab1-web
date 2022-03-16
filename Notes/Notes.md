@@ -273,3 +273,5 @@ h1#serious {font-weight: 36pt; font-family: Arial;}
 
 ## LESSON 4
 
+notes: start from lesson 4 (from top)
+reading: start from lesson 5 (from top)
