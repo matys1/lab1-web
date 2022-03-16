@@ -5,7 +5,7 @@
 
 ## LESSON 1
 
-### Key Points:
+### Key Points
 
 - Hypertext Markup Language (HTML), Cascading Style Sheets (CSS) and JavaScript (JS).
 
@@ -19,7 +19,7 @@
 
 - File Transfer Protocol (FTP) Client to transfer web conetent to web server.
 
-### Document Root:
+### Document Root
 
 The document root of your web server is the directory that is designated as the top-level directory for your web content — the starting point of the directory structure (same way that Git has a document root). It's the trailing slash in the domain URL. 
 
@@ -44,7 +44,7 @@ Make sure the document root and all its sub-directories contain an index.html fi
 
 ## LESSON 2
 
-Six tags every HTML page requires: 
+### Six tags every HTML page requires
 
 ```HTML
 <!doctype html>
@@ -57,13 +57,13 @@ Six tags every HTML page requires:
 </html>
 ```
 
-- Some HTML tags have two parts. An opening tag and a closing tag. For example, \<body> Some Text \</body>.
+- Some HTML tags have two parts. An opening tag and a closing tag. For example, `<body>` Some Text `</body>`.
 
-- Some have only 1 part (also called an empty tag). Adding the / in the empty tags used to be a requirement but that's no longer the case in HTML5. \<meta> is an empty tag in the above example.
+- Some have only 1 part (also called an empty tag). Adding the / in the empty tags used to be a requirement but that's no longer the case in HTML5. `<meta>` is an empty tag in the above example.
 
-- You can specify additonal attributes in tags, for example charset in the \<meta> tag like \<meta charset="utf-8">.
+- You can specify additonal attributes in tags, for example charset in the `<meta>` tag like `<meta charset="utf-8">`.
 
-- Basic strcuctural HTML tags:
+### Basic strcuctural HTML tags
 
 ```HTML
 <p></p> - paragraph (closing </p> tag is optional); skips a line between paragraphs
@@ -74,12 +74,12 @@ Six tags every HTML page requires:
 <h3></h3> - heading 3
 ```
 
-- You should use the heading tags to keep tight control over content hierarchy; do not use headings as a way to achieve a particular look because that’s what CSS is for. HTML tags define what the content is rather than how it looks.
+- You should use the heading tags (`<h1>`, `<h2>`, `<h3>` etc.) to keep tight control over content hierarchy; do not use headings as a way to achieve a particular look because that’s what CSS is for. HTML tags define what the content is rather than how it looks.
 
-- Basic semantic HTML tags:
+### Basic semantic HTML tags
 
 ```HTML
-<header></header> - introductory info, usually contains <h1/2/3> tags but not necessarily
+<header></header> - introductory info, usually contains <h1>, <h2>, <h3> etc. tags but not necessarily
 <footer></footer> - supplementary info, copy right, author of article etc.
 <nav></nav> - for navigational elements (primary & secondary, table of contents etc.)
 <section></section> - generic or thematically related info, higher level than <p>
@@ -90,19 +90,43 @@ Six tags every HTML page requires:
 
 Tags can be nested within each other and repeated multiple times to convey structure and semanting meaning.
 
-> For example, you can have a \<body> tag containing a \<header>, \<nav> and \<article> tags. An \<article> tag containing \<header> and \<section> tags and a \<section> tag containing \<header> and \<p> tags.
+> For example, you can have a `<body>` tag containing a `<header>`, `<nav>` and `<article>` tags. An `<article>` tag containing `<header>` and `<section>` tags and a `<section>` tag containing `<header>` and `<p>` tags.
+
+### Flowchart for HTML5 sectioning
+
+![Tag_Flowchart](imgs\h5d-sectioning-flowchart.png)  
+*Source: http://html5doctor.com/downloads/h5d-sectioning-flowchart.png*
 
 - Other HTML tags:
 
 ```HTML
-<ul></ul> - 
-<li></li> - 
-<a></a> - 
+<ol></ol> - ordered list
+<ul></ul> - unordered list
+<li></li> - list item; used within <ol> or <ul> tags to list each item
+<a></a> - used to create a hyperlink to another page or a location within the same page
 ```
 
-TO DO:
-1. add definitions to above 3 tags
-2. add the diagram link to which tags should be used
-3. maybe add the html template here as well?
+### Basic HTML template
 
-Once you do the above 3 points CONTINUE WITH LESSON 3 (from top) see notes from lesson 3 in README.
+```HTML
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Your Title</title>
+	</head>
+	<body>
+		<header>
+			<h1>Your Header</h1>
+		</header>
+		<section>
+			<p>Your paragraph</p>
+		</section>
+	</body>
+</html>
+```
+
+*Find template file [here](template.html)*
+
+## LESSON 3
+
