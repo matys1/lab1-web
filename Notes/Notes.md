@@ -1,4 +1,4 @@
-reading & notes: start from lesson 5 (from top)
+reading & notes: start from lesson 6 (from top)
 
 # HTML, CSS and JS Book notes
 
@@ -320,4 +320,21 @@ document.getElementById("TimeVal").innerHTML = hours + ':' + mins + ':' + secs;
 ```
 
 ## LESSON 5
+
+- HTML validator: https://validator.w3.org/
+- CSS validator: https://jigsaw.w3.org/css-validator/
+
+> When you use a validator, it’s best to review the problems in the order in which they appear. Often, fixing one error will cause a lot of the following errors listed to disappear.
+
+- Use Developer Tools in the browser to inspect and debug code
+
+- The "Debugging JavaScript Using Developer Tools" section had an example of debugging JS using Breakpoints, Step Over, Step Into and Step Out which could be useful.
+
+- In JS use console logging to output specific strings at different points throughout your script. You can log to the Console by inserting code like the following in your JavaScript and then review these strings in the Console panel as the script executes:
+
+```JS
+console.log("Some string.");
+```
+
+## LESSON 6
 
