@@ -1,5 +1,3 @@
-reading & notes: start from lesson 6 (from top)
-
 # HTML, CSS and JS Book notes
 
 *OVERALL PROGRESS CONTINUE WITH LESSON 4 (from the top)*  
@@ -338,3 +336,13 @@ console.log("Some string.");
 
 ## LESSON 6
 
+- Working with special charcters reference: https://www.webstandards.org/learn/reference/charts/entities/namedentities/
+- Using `<b>` and `<i>` tags in HTML should be avoided, use CSS instead (inline or in external file) especially for underlined or strikethrough text
+
+```HTML
+<p style="font-weight:bold; font-style:italic;">This paragraph is bold and italic!</p>
+```
+
+- A few acceptable HTML tags for text formatting when you don't want to use CSS: `<sup>`, `<sub>`, `<em>`, `<strong>` and `<pre>`
+
+Continue reading & notes from "Tweaking the Font"
