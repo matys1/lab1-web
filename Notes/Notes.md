@@ -1,3 +1,5 @@
+reading & notes: start from lesson 5 (from top)
+
 # HTML, CSS and JS Book notes
 
 *OVERALL PROGRESS CONTINUE WITH LESSON 4 (from the top)*  
@@ -273,5 +275,49 @@ h1#serious {font-weight: 36pt; font-family: Arial;}
 
 ## LESSON 4
 
-notes: start from lesson 4 (from top)
-reading: start from lesson 5 (from top)
+- Four places where you can place JavaScript in HTML
+	- In the `<body>` of the page
+	- In the `<head>` of the page
+	- Within an HTML tag, also known as Event Handler
+	- An external JavaScipt file
+
+- Overall best pracrice is to have an external JS file and place a link to that file in the `<head>` of the page. This doesn't apply to Event Handlers though which you need to use within the HTML tags.
+
+```HTML
+	<head>
+		<meta charset="utf-8">
+		<title>Your Title</title>
+		<script src="js/scripts.js"></script>
+	</head>
+```
+
+> Note, because in this case you're linking to an exernal JS file, anything between the `<script>` and `</script>` tags is ignored and can be left blank. 
+
+- Below is an example of an Event Handler attached to a button elemnt:
+
+```HTML
+<button type="button"
+onclick="alert('You clicked the button.')">
+Click Me!</button>
+```
+
+- Below example creates a JS function that you can store in an external JS file that returns the local time in hours, minutes and secods.
+
+```JS
+window.onload = function() {
+	now = new Date();
+	hours = now.getHours();
+	mins = now.getMinutes();
+	secs = now.getSeconds();
+document.getElementById("TimeVal").innerHTML = hours + ':' + mins + ':' + secs;
+}
+```
+
+- You can then return the value in, for example, a paragraph with in the `<body>` of an HTML page: 
+
+```HTML
+<p>Your local time is: <span id="TimeVal"></span></p>
+```
+
+## LESSON 5
+
