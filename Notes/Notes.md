@@ -400,4 +400,12 @@ font-family: 'Open Sans', sans-serif;
 font-family: 'Open Sans', sans-serif;
 ```
 
-continue from "Aligning Text on a Page"
+- The style property to align text is `text-align:` with four possible values `left` (default), `right`, `center` and `justify`.
+
+- Ordered lists `<ol></ol>` and unordered lists `<ul></ul>` both contain `<li></li>` tags that enclose each list item.
+
+- Definition list (the third list type) `<dl></dl>` contain `<dt></dt>` tags that enclose each list definition term and `<dd></dd>` tags that enclose each list definition.
+
+- You can nest lists within lists (nest means placing a tag that appears entirely within another tag) to show a hierarchy of information. You can also achieve a visual appearance of indentation this way but you can also achieve indentation using CSS, so don't let it be the main reason you do it.
+
+reading and notes: continue from "Ordered and unordered lists can be nested inside one another"
