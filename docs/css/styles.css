@@ -1,5 +1,10 @@
+@font-face { /*Open Sans, latin*/
+	font-family: 'Open Sans';
+	src: url(https://fonts.gstatic.com/s/opensans/v28/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjZ0B4gaVI.woff2);
+}
+
 body {
-	font-family: Arial, Helvetica, sans-serif;
+	font-family: 'Open Sans', sans-serif;
 }
 
 footer {

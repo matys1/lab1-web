@@ -345,4 +345,59 @@ console.log("Some string.");
 
 - A few acceptable HTML tags for text formatting when you don't want to use CSS: `<sup>`, `<sub>`, `<em>`, `<strong>` and `<pre>`
 
-Continue reading & notes from "Tweaking the Font"
+- Every browser has a default serif font, sans-serif font, cursive font, monospace font, and fantasy font.
+
+- You can use margin-left propery to achieve identatin, for example, for subheadings. Below defines a class attribute for div tag.
+
+```css
+div.indented {
+	margin-left: 25px;
+}
+```
+
+- When setting a font type, you can link to a font file that will render your preffered font regardless if the user has that font installed on his local machine or not. This is also the best pactice.
+
+> Find fonts that are free to use: https://fonts.google.com/
+
+- In google fonts there are two options `<link>` or `@import`. Both have to be included in the `<head>` section of the page.
+
+- Under `<link>` section there might be multiple links but you only need to include the last one in the `<head>` setion.
+
+```HTML
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+```
+
+- Under `@imort` section there's only one link (the URL is the same under both sections) so you need to include that one in the `<head>` section.
+
+```HTML
+<style>@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');</style>
+```
+
+- Regardless of the method chosen you can just refer to the font name in your CSS code now:
+
+```css
+font-family: 'Open Sans', sans-serif;
+```
+
+- If you open the link used in both of the methods above you'll notice that it just contains CSS code that contains a URL to a font file (with extension .woff2). 
+
+- An alternative method is to not include anything in the `<head>` of the HTML page but to include the below definition in your CSS file that:
+	- Links to the .woff2 URL directly
+	- You download the .woff2 file and place it into your web directory and link to it that way
+
+- Either way the syntax is the same:
+
+```css
+@font-face {
+     font-family: 'Open Sans';
+     src: url('URL or Link to the file on server');
+}
+```
+
+- Then, just like before you can use the font:
+
+```css
+font-family: 'Open Sans', sans-serif;
+```
+
+continue from "Aligning Text on a Page"
