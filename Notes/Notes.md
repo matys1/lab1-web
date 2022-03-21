@@ -408,4 +408,4 @@ font-family: 'Open Sans', sans-serif;
 
 - You can nest lists within lists (nest means placing a tag that appears entirely within another tag) to show a hierarchy of information. You can also achieve a visual appearance of indentation this way but you can also achieve indentation using CSS, so don't let it be the main reason you do it.
 
-reading and notes: continue from "Ordered and unordered lists can be nested inside one another"
+reading and notes: continue from "Ordered and unordered lists can be nested inside one another".
