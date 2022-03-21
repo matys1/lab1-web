@@ -13,6 +13,32 @@ footer {
 }
 
 img {
-	height: 20px;
-	width: 20px;
+	height: 27px;
+	width: 27px;
+}
+
+table, tr, th, td {
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 4px;
+} 
+
+th.wide {
+	width: 200px;
+}
+
+th.narrow {
+	width: 35px;
+}
+
+h1 {
+	font-size: 28pt;
+}
+
+h2 {
+	font-size: 20pt;
+}
+
+h3 {
+	font-size: 16pt;
 }

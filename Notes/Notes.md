@@ -408,4 +408,32 @@ font-family: 'Open Sans', sans-serif;
 
 - You can nest lists within lists (nest means placing a tag that appears entirely within another tag) to show a hierarchy of information. You can also achieve a visual appearance of indentation this way but you can also achieve indentation using CSS, so don't let it be the main reason you do it.
 
-reading and notes: continue from "Ordered and unordered lists can be nested inside one another".
+- When you nest unordered lists browser will default on `disc` for level 1, `circle` for level 2 and `square` for level 3. However, you can be explicit and override `list-style-type:` using the `style` attribute in the list definition (in `<ul>` tag) or even for each individual list item (in `<li>` tag).
+
+- For ordered lists (in `<ol>` tag) these are the possible values for `list-style-type`: `upper-roman`, `lower-roman`, `upper-alpha`, `lower-alpha` or `decimal`.
+
+```HTML
+<ul style="list-style-type:circle;">
+  <li>extra</li>
+  <li>super</li>
+  <li style="list-style-type:square;">special</li>
+</ul>
+```
+
+- Creating a table
+	- Basic tags:
+		- Create a table definition using `<table></table>` tags.
+		- Create a table row using `<tr></tr>` tags.
+		- To create a column use `<td></td>` tags. Table information (text, images, other HTML tags) must be contained within these tags. Thus, each row must consist of at least 1 column. Each row in the table should have the same number of columns as the other rows.
+		- Create table headings using the `<th></th>` tags. Most browsers will render information within these bold and centered by default.
+	- Addition tags:
+		- `<thread></thread>` tags to wrap the header row.
+		- `<tfoot></tfoot>` tags to wrap the last row (for e.g. Totals).
+		- `<tbody></tbody>` tags to wrap everything other than header or footer rows. Alternative to styling individual `<td>` cells.
+
+- Defined table by default doesn't have any border styling applied. `border-collapse: collapse;` property (among others) is useful and makes all the borders of the `<table>`, `<tr>`, and `<th>` or `<td>` elements collapse into one shared border.
+
+- Use the `width` style property on `<th>` element to control the size of the table. You can use percentages to, for example, fill the screen no matter of the screen size. Or use a fixed width unit like pixels.
+
+Notes: starting from "Alignment and Spanning Within Tables"
+Reading: starting from "Page Layout with Tables"
