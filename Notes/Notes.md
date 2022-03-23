@@ -94,7 +94,7 @@ Tags can be nested within each other and repeated multiple times to convey struc
 
 ### Flowchart for HTML5 sectioning
 
-![Tag_Flowchart](imgs\h5d-sectioning-flowchart.png)  
+![Tag_Flowchart](imgs/h5d-sectioning-flowchart.png)  
 *Source: http://html5doctor.com/downloads/h5d-sectioning-flowchart.png*
 
 - Other HTML tags:
@@ -435,5 +435,50 @@ font-family: 'Open Sans', sans-serif;
 
 - Use the `width` style property on `<th>` element to control the size of the table. You can use percentages to, for example, fill the screen no matter of the screen size. Or use a fixed width unit like pixels.
 
-Notes: starting from "Alignment and Spanning Within Tables"
-Reading: starting from "Page Layout with Tables"
+- You can align the contents of table cells both horizontally and vertically with the `text-align` and `vertical-align` style properties to any `<tr>`, `<td>`, or `<th>` tag.
+	- The possible values for `vertical-align` property: `top`, `middle`, `bottom`, `text-top`, `text-bottom`, and `baseline`.
+	- The possible values for `text-align` property: `center`, `left`, or `right`.
+
+- Spanning is the same as merging cells in Excel forcing a cell to stretch across more than one row or column of a table.
+
+- The `colspan` attribute causes a cell to span multiple columns; `rowspan` has the same effect on rows.
+
+- You can give an entire table or each individual row or even each individual cell in a table its own background using `background-color` or `background-image`.
+> For example, `background-image:url(leaves.gif);`
+
+- to add some space between the borders of the cells themselves, you can use the `border-spacing` property.
+
+- Using tables for layouts is a bad practice. Use CSS instead.
+
+- Below is a good example of how to center and span the title of an article, break the paragraphs in the article into 3 columns separated by vertical lines, and span the footer. 
+
+```css
+article {
+	column-count: 3;
+	column-gap: 21px;
+	column-rule-width: 1px;
+	column-rule-style: solid;
+	column-rule-color: #000;
+}
+
+h1 {
+	text-align: center;
+	column-span: all;
+}
+
+p {
+	margin-top: 0px;
+	margin-bottom: 12px;
+}
+
+	footer {
+	column-span: all;
+}
+```
+
+![CSS-columns](imgs/css-columns-example.PNG)
+
+## LESSON 7
+
+Notes from LESSON 7  
+Reading from LESSON 8
