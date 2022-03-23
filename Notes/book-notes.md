@@ -482,6 +482,8 @@ p {
 
 - The forward slash `(/)` is always used to separate directories in HTML. Don’t use the backslash `(\)` which is normally used in the Windows operating system. However, command prompt will accept path if you use `(/)` instead of `(\)` as well.
 
+- All web filenames should be lowercase (Linux is case sensitive but Windows is not). And never use spaces, use underscore or dash instead.
+
 - Four types of addresses
 	- Relative-root addresses. Relative to the domain you're currently browsing and thus doesn't require protocol type or domain name. The root directory itself is represented by `(/)`.  
 	For example, `/docs/assets/utensils-solid.svg`
