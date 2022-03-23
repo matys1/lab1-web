@@ -480,5 +480,31 @@ p {
 
 ## LESSON 7
 
-Notes from LESSON 7  
-Reading from LESSON 8
+- The forward slash `(/)` is always used to separate directories in HTML. Don’t use the backslash `(\)` which is normally used in the Windows operating system. However, command prompt will accept path if you use `(/)` instead of `(\)` as well.
+
+- Four types of addresses
+	- Relative-root addresses. Relative to the domain you're currently browsing and thus doesn't require protocol type or domain name. The root directory itself is represented by `(/)`.  
+	For example, `/docs/assets/utensils-solid.svg`
+	- Relative addresses. Relative to whatever directory the file is in.  
+	For example, from the perspective of index.html file `css/styles.css`
+		- Use the double dot command `(..)` to go one step back in the path.   
+		For example, if you're in `C:\Users\matis` then `cd ../../Source/git-learning`
+	- Absolute address (or fully qualified domain name). Includes protocol and domain name.  
+	Example, http://www.yourdomain.com/index.html
+	- Local absolute address. Don't work and should never use.  
+	For example, `C:\Source\lab1-web\docs\assets\utensils-solid.svg`
+
+- `<a href="#idname"></a>` is an anchor element, used to create a hyperlink to another webpage or another location within the same webpage. The hyperlink created by an anchor element is applied to content nested between the opening and closing `<a>` tags.
+
+- Use the `id="idname"` attribute within any relevant tag present in HTML to create a target for the anchor element. This is where user will end up after clicking on the anchor link.
+
+- When you link to a file, like a word document or pdf the browser will either attempt to display it or it will prompt the user to download it. To force a download you can specify `download` attribute.  
+For example, `<a href="myPDFfile.pdf" download>my PDF file</a>`
+
+- From the four types of addresses above you can use the first two when linking from within the same domain. But when you want to create an external link, you have to use the absolute address.
+
+- However, you can still link to named anchors on external pages.  
+For example, `<a href="http://www.yourdomain.com/subdirectory/product.html#photos">`
+
+Continue notes from lession 7 "Linking to an Email Address"  
+Continue reading from lesson 8 from the top
