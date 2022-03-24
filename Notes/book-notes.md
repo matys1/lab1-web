@@ -487,26 +487,79 @@ p {
 - Four types of addresses
 	- Relative-root addresses. Relative to the domain you're currently browsing and thus doesn't require protocol type or domain name. The root directory itself is represented by `(/)`.  
 	For example, `/docs/assets/utensils-solid.svg`
-	- Relative addresses. Relative to whatever directory the file is in.  
-	For example, from the perspective of index.html file `css/styles.css`
+	- Relative addresses. Relative to whatever directory the file is in to link from one file to another.  
+	For example, from the perspective of index.html file a link to CSS syle sheet would look like `css/styles.css`
 		- Use the double dot command `(..)` to go one step back in the path.   
-		For example, if you're in `C:\Users\matis` then `cd ../../Source/git-learning`
+		For example, if you're in `C:\Users\matis` and want to get to git-learning directory then `cd ../../Source/git-learning`
 	- Absolute address (or fully qualified domain name). Includes protocol and domain name.  
 	Example, http://www.yourdomain.com/index.html
-	- Local absolute address. Don't work and should never use.  
+	- Local absolute address. Doesn't work and should never be used.  
 	For example, `C:\Source\lab1-web\docs\assets\utensils-solid.svg`
 
-- `<a href="#idname"></a>` is an anchor element, used to create a hyperlink to another webpage or another location within the same webpage. The hyperlink created by an anchor element is applied to content nested between the opening and closing `<a>` tags.
+- Use the `id="idname"` attribute within any HTML tag to turn it into an anchor. This is where the user will end up after clicking on the anchor link created by the `<a>` tag.
 
-- Use the `id="idname"` attribute within any relevant tag present in HTML to create a target for the anchor element. This is where user will end up after clicking on the anchor link.
+- Tag `<a></a>` is used to create a hyperlink to an external webpage, another page within the same domain or to a named anchor point. The hyperlink created by the tag is applied to content nested between the opening and closing `<a>` tags.
+	- Link to external webpage: `<a href="https://www.apple.com/">Apple Offical Website</a>`
+	- Link to internal page: `<a href="somedir/file.html">Learn More</a>`
+	- Link to an anchor wihtin same page (assuming a tag with attribute `id="creadits"` exists somewhere): `<a href="#credits">Credits</a>`
 
 - When you link to a file, like a word document or pdf the browser will either attempt to display it or it will prompt the user to download it. To force a download you can specify `download` attribute.  
 For example, `<a href="myPDFfile.pdf" download>my PDF file</a>`
 
 - From the four types of addresses above you can use the first two when linking from within the same domain. But when you want to create an external link, you have to use the absolute address.
 
-- However, you can still link to named anchors on external pages.  
+- However, you can still link to named anchors on external pages or other internal pages.  
 For example, `<a href="http://www.yourdomain.com/subdirectory/product.html#photos">`
 
-Continue notes from lession 7 "Linking to an Email Address"  
-Continue reading from lesson 8 from the top
+- You can also use the `<a>` tag to link to emails so when the user clicks on the link it will be opened in their default mail app with the "To:" field already populated.  
+For example, `<a href="mailto:you@yourdomain.com">you@yourdomain.com</a>`
+
+- You can even pre-populate other fields like subject, body, cc, bcc etc. Note the single question mark (?) between the email and the list of variables. Values assigned to variables using the (=) and the separation of variable and value pairs using the (&).  
+For example, `<a href="mailto:you@yourdomain.com?subject=email subject&body=email message&cc=someone@domain.com&bcc=someone_else@domain.com">you@yourdomain.com</a>`
+
+- You can force links to open in a new browser window by specifying a `target` attribute. You can pass two types of values to the target attribute:
+	- `"_blank"` which is special value that will open the link in a new windows without a name.
+	- `"any_name"` you can give the new window any name which the link will open in and you can re-use that name for subsquent links to open in the same window if you don't want each of them to open in a new, blank window of their own.  
+
+	For example, `<a href="/some/file.html" target="_blank">Open a Window!</a>`
+
+- You can also give links a title that will appear in a tooltip when user hovers the link uing the `title` attribute. You can also use the title attribute as a CSS style hook to reference all links with title attribute.  
+For example, `<a href="https://apple.com/iphone" title="go to official apple website">Check out the new iPhone!</a>`.  
+And to reference in CSS, `a[title] { /* put styles here */ }`.
+
+- The default color and decoration for links on web is blue and purple with an underline. Using CSS seudo-class (a class that describes styles for elements that apply only in certain circumstances) you can style links however you want.
+
+- There are 5 CSS link seudo-classes:
+	- `a:link` has not been visited
+	- `a:visited` has been visited
+	- `a:hover` when hovered over
+	- `a:focus` when in focus (e.g. when using tab on keyboard)
+	- `a:active` when is being clicked and not released yet
+
+```css
+a {
+   font-weight: bold;
+   text-decoration: none;
+}
+a:link {
+   color: #6479A0;
+}
+a:visited {
+   color: #cccccc;
+}
+a:hover, a:focus, a:active {
+   color: #e03a3e;
+}
+```
+
+- You're not limited to changing only the above styles, you can change anything, for example, font-family, font-size etc.
+
+- You can also create style classes following the convention `selector.class:pseudo-class`.  
+For example, a class just for footer links would be `a.footerlink` and `a.footerlink:hover` etc.
+
+- You can use graphics as links (instead of using text as links) by putting an `<img>` tag between the opening `<a>` and closing `</a>` tags.
+
+- Clarification: `<a>` tag links to anchors using anchor name with `(#)` sign in front of it. You define an anchor using the `id` attribute. And even though you can put the `id` attribute in the `<a>` tag itself as well, it's generally not something one would do and it would be confusing. So it's best to include the `id` attribute in any other tag (making it the anchor) so the `<a>` tag can create a link to it (aka. an anchor link).  
+For example, `<anytag id="credits">` and then `<a href="#credits">About the Authors</a>`.
+
+Notes & Reading From Lesson 8 from top!
