@@ -562,4 +562,26 @@ For example, a class just for footer links would be `a.footerlink` and `a.footer
 - Clarification: `<a>` tag links to anchors using anchor name with `(#)` sign in front of it. You define an anchor using the `id` attribute. And even though you can put the `id` attribute in the `<a>` tag itself as well, it's generally not something one would do and it would be confusing. So it's best to include the `id` attribute in any other tag (making it the anchor) so the `<a>` tag can create a link to it (aka. an anchor link).  
 For example, `<anytag id="credits">` and then `<a href="#credits">About the Authors</a>`.
 
-Notes & Reading From Lesson 8 from top!
+## LESSON 8
+
+http://www.toptal.com/designers/colorfilter - color blindness checker  
+https://webaim.org/resources/contrastchecker/ - color contrast checker  
+http://paletton.com/ - for picking color schemes  
+http://www.w3.org/TR/SVG/types.html#ColorKeywords - 140 desccriptive color names (16 approved by w3c)  
+http://www.adobe.com/  
+http://www.gimp.org/ - free graphics program  
+http://guides.lib.utexas.edu/copyright - copyright crash course  
+https://pixabay.com/ - copyright-free photos (Creative Commons)  
+below two are alternatives to GIMP:  
+http://www.coreldraw.com/  
+https://pixlr.com/  
+http://www.toptal.com/designers/subtlepatterns/ - free examples of background imagines (not heavily patterned)  
+for creating image maps:  
+https://boutell.com/mapedit/  
+http://www.image-maps.com/  
+http://www.w3.org/TR/media-source/ - live streaming, splicing, and video editing right from the web page  
+
+From "Placing Images on a Web Page" is when more code starts
+
+Continue reading from: "Quiz" in Lesson 8.  
+Notes from: top of Lesson 8.
