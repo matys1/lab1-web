@@ -614,7 +614,38 @@ For example, `<img src="/images/myimage.jpeg" alt="My Image">`
 
  - Unless you're using a dedicated image hosting provider specifically for this purpose, always save images and other assets on your own webserver and use local file reference paths like in the example above instead of linking to someone elses server like `<img src="http://www.otherserver.com/theirimage.jpg" alt="Their Image">`.
 
-cont. from "Describing Images with Text".
+
+- To improve load times, you can specify the exact image size in CSS or through the style property. The size speified doesn't have to match the actual size, the browser will stretch/reduce the image accordingly.  
+For example, `<img src="myimage.gif" alt="Fancy Pic" style="width:200px;height:100px;">` 
+
+- The best way to adjust the dimensions of your images is to set `width` to a percentage of the container and `height` to auto to ensure that the image will fit in the design width and the aspect ratio will remain the same as the original size.  
+For example, `style="width:100%; height:auto;"`.
+
+- The new `<picture>` tag might be a better alternative for responsive web design discussed in Lesson 17.
+
+- Just like with text, the `text-align` property also works with images. The posible values are `left`, `right` and `center`. You can also wrap text around an image from the left or right side using `float` property with possible `left` and `right` values respectively. 
+
+- To control how the text and images line up vertically use the `vertical-align` property.
+	- To line up the top of an image with the top of the text on the same line use `text-top` value.
+	- To line up the bottom of an image with the bottom of the text on the same line use `text-bottom` value.
+	- To line up the bottom of an image with the baseline of the text use `baseline` value (this is the default assumed value).
+	- To line up the top or bottom of an image with the overall top or bottom of a line of elements regardless of text use `top` and `bottom` values respectively.
+	- To line up the middle of an image with the overall vertical center of everything on the line use `middle` value.
+
+- You can create image thumbnails where upon clicking on the thumbnail it re-directs to the full sized image. You can achieve this by turning images into links (linked images) by nesting the `<img>` tag inside the opening and closing link tag `<a>`.  
+Note, the must be a way to do this so it doesn't re-direct to a different page and just pops open in larger size without leaving the page.
+
+```html
+<div class="imageleft">
+	<a href="http://www.flickr.com/photos/nofancyname/614253439/">
+		<img src ="elcap_sm.jpg" alt="El Capitan" style="width:100px; height:75px;">
+	</a><br>click image to enlarge
+</div>
+```
+
+- Linked images will have a blue/purple border around by default. You might want to include `style="border:none;"` in any `<img>` tag within a link.
+
+cont. from "Using Background Images".
 
 ---  
 
@@ -638,7 +669,4 @@ cont. from "Describing Images with Text".
 - http://www.image-maps.com/ - image maps
 - http://www.w3.org/TR/media-source/ - video editing from the web
 
-FYI from "Placing Images on a Web Page" is when more code starts in this lesson. 
-
 Continue reading from Lesson 9.  
-Notes from: "Choosing Graphics Software".
