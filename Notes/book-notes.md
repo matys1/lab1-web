@@ -673,13 +673,8 @@ li {
 }
 ```
 
-continue from "Creating the HTML for an Image Map"  
-from the image-maps.com:  
-width: 399, height: 299  
-orange: "47,114,142,202"  
-cherry: "151,114,246,202"  
-apple: "259,113,354,201"  
-saved the fruit_map.jpg that will serve as the image map in assets.
+Notes: continue from "Creating the HTML for an Image Map". Did an example in the index.html fie and works well from that section, just need to add notes now and continue down.
+
 ---  
 
 ### Links:
