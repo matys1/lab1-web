@@ -645,8 +645,41 @@ Note, the must be a way to do this so it doesn't re-direct to a different page a
 
 - Linked images will have a blue/purple border around by default. You might want to include `style="border:none;"` in any `<img>` tag within a link.
 
-cont. from "Using Background Images".
+- You can use background images to act as a wallpaper in a container element so the content appears on top of this underlying design. The basic CSS properties that work together to create this are:
+	- `background-color` - Hexa or RGB value. If image is transparent or doesn't load, user will see this color instead.
+	- `background-image` - The actual image. Value `url('imagename.png')`.
+	- `background-repeat` - Repeat image. Values `repeat` (default; x and y), `repeat-x`, `repeat-y` and `no-repeat`.
+	- `background-position` - initial placement of image, relative to its container. `top-left/center/right`, `center-left/center/right`, `bottom-left/center/right` and specifix pixel and percentage placements.
 
+- You can combine all four of the above attributes into one, for example:
+
+```css
+body {
+   background: #ffffff url('imagename.gif') no-repeat top right;
+}
+```
+
+- To customize the appearance of bullet-point lists and display an image instead of the standard filled-disc bullet have the following CSS definition:
+
+```css
+ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+
+li {
+  background: url(mybullet.gif) left center no-repeat
+}
+```
+
+continue from "Creating the HTML for an Image Map"  
+from the image-maps.com:  
+width: 399, height: 299  
+orange: "47,114,142,202"  
+cherry: "151,114,246,202"  
+apple: "259,113,354,201"  
+saved the fruit_map.jpg that will serve as the image map in assets.
 ---  
 
 ### Links:
