@@ -564,24 +564,81 @@ For example, `<anytag id="credits">` and then `<a href="#credits">About the Auth
 
 ## LESSON 8
 
-http://www.toptal.com/designers/colorfilter - color blindness checker  
-https://webaim.org/resources/contrastchecker/ - color contrast checker  
-http://paletton.com/ - for picking color schemes  
-http://www.w3.org/TR/SVG/types.html#ColorKeywords - 140 desccriptive color names (16 approved by w3c)  
-http://www.adobe.com/  
-http://www.gimp.org/ - free graphics program  
-http://guides.lib.utexas.edu/copyright - copyright crash course  
-https://pixabay.com/ - copyright-free photos (Creative Commons)  
-below two are alternatives to GIMP:  
-http://www.coreldraw.com/  
-https://pixlr.com/  
-http://www.toptal.com/designers/subtlepatterns/ - free examples of background imagines (not heavily patterned)  
-for creating image maps:  
-https://boutell.com/mapedit/  
-http://www.image-maps.com/  
-http://www.w3.org/TR/media-source/ - live streaming, splicing, and video editing right from the web page  
+- Use a small color palette; Focus on 3 or 4 main colors, with 1 or 2 complementary colors at most.
 
-From "Placing Images on a Web Page" is when more code starts
+- To chage the background of a webpage put `style="background-color:blue;"` inside the `<body>` tag or in the style sheet rule for the body element.
 
-Continue reading from: "Quiz" in Lesson 8.  
-Notes from: top of Lesson 8.
+- The hexadecimal color format is `#rrggbb`, in which `rr`, `gg`, and `bb` are two-digit hexadecimal values for the red (`rr`), green (`gg`), and blue (`bb`) components of the color.
+
+- There are 256 combinations of two-digit hexadecimal values: 0–9 and a–f, paired up. Each two-digit component has a decimal value ranging from 0 (no color) to 255 (full color). `ff` is the maximum and `00` is the minimum for each component.
+	- `#ffffff` - white
+	- `#000000` - black
+	- `#ff0000` - true red
+	- `#00ff00` - true green
+	- `#0000ff` - true blue
+
+- The RGB color format is `rgb(red,green,blue)` and similar to hexadecimal just written in base-10 numbers (decimal) rather than base-16 (hexadecimal). 
+
+- Just like with hexadecimals, each RGB component has a decimal value ranging from 0 (no color) to 255 (full color). Therefore 255 is the maximum and 0 is the minimum for each component.
+	- `rgb(255,255,255)` - white
+	- `rgb(0,0,0)` - black
+	- `rgb(255,0,0)` - true red
+	- `rgb(0,255,0)` - true green
+	- `rgb(0,0,255)` - true blue
+
+- All hexadecimal values have an RGB equvalent. So whatver color you can express with hexadecimals, you can translate into RGB.
+
+- RGBa is RGB with alpha transparency which allows you to set the opaqueness or transparency of a color. RGBa format is `rgba(red,green,blue,transparency)` where the `transparency` value is a decimal between 0 and 1 (0 being fully transparent and 1 being fully opaque).
+
+- Three most common applications of color in CSS: background color, text color and border color:
+	- `background-color: #ffffff;`
+	- `color: #000000;`
+	- `border-color: #ff0000`
+
+> In CSS you can’t designate a border as a color without also having a width and type.
+
+- Image compression basic idea is that repeating patterns or large areas of the same color can be squeezed when the image is stored on a disk. This makes the image file much smaller and allows it to be transferred faster over the Internet. The web browser then restores the original appearance of the image when the image is displayed.
+
+- 85% quality and 15% compression is a good rule of thumb.
+
+- When you resize (scale) an image, you want the aspect ratio to be preserved to prevent it from squishing out of shape. You should never resize an image to be larger than what you started with. 
+
+- Use the same image at several sizes for responsive web design.
+
+- Use JPEG for web (or PNG if you need transparent background). PNG is superior to GIF.
+
+- To embed an image on the website use the `<img>` tag (`<img>` is an empty tag, meaning it doesn't have a closing tag).  
+For example, `<img src="/images/myimage.jpeg" alt="My Image">`
+	- Both `src` and `alt` are mandatory attributes.
+	- The `alt` attribute is intended to serve as an alternative to the image if a user is unable to view the image either because it is unavailable or because the user is using a text-only browser or screen reader
+
+ - Unless you're using a dedicated image hosting provider specifically for this purpose, always save images and other assets on your own webserver and use local file reference paths like in the example above instead of linking to someone elses server like `<img src="http://www.otherserver.com/theirimage.jpg" alt="Their Image">`.
+
+cont. from "Describing Images with Text".
+
+---  
+
+### Links:
+
+- http://www.toptal.com/designers/colorfilter - color blindness checker
+- https://webaim.org/resources/contrastchecker/ - color contrast checker
+- http://paletton.com/ - for picking color schemes
+- http://www.w3.org/TR/SVG/types.html#ColorKeywords - standard color names
+- http://www.angelfire.com/super/badwebs/main.htm - poor website example
+- http://www.adobe.com/ - creative tools
+- http://www.gimp.org/ - free graphics program
+- http://guides.lib.utexas.edu/copyright - copyright crash course
+- https://pixabay.com/ - copyright-free photos (creative commons)
+- http://clipart.com/ - stock images for small fee
+- http://www.coreldraw.com/ - alternative to GIMP
+- https://pixlr.com/ - alternative to GIMP
+- https://flyingmeat.com/acorn/ - mac-only alternative to GIMP
+- http://www.toptal.com/designers/subtlepatterns/ - free background images
+- https://boutell.com/mapedit/ - image maps
+- http://www.image-maps.com/ - image maps
+- http://www.w3.org/TR/media-source/ - video editing from the web
+
+FYI from "Placing Images on a Web Page" is when more code starts in this lesson. 
+
+Continue reading from Lesson 9.  
+Notes from: "Choosing Graphics Software".
