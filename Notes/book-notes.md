@@ -673,7 +673,21 @@ li {
 }
 ```
 
-Notes: continue from "Creating the HTML for an Image Map". Did an example in the index.html fie and works well from that section, just need to add notes now and continue down.
+- To create an image map you need to use `<map></map>` tags and nest an `<area>` tag for each region of the image inside it. You then need to link to the actual image in the `<img>` tag that contains a `usemap` attribute.
+	- In the `<map>` tag you need to specify the `name` attribute which will also be referenced in the `usemap` attribute (prefixed with `#`) in `<img>` tag.
+	- Each `<area>` tag must contain `shape` and `coords` attributes. Three possible `shape` values are `rect`, `circle` and `poly`. Attribute `coords` required x,y coordinates of the upper-left corner followed by the x,y coordinates of the lower-right corner for `rect`.  For `circle` x,y center point followed by the radius in pixels. For `poly` list the x,y coordinates of all the corners in a connect-the-dots order. In the `<area>` tag also specify an `href` attribute for location to which the region links, as well as additional `alt` and `title` attributes.
+
+Compete code:
+```html
+<img src="assets/fruit_map.jpg" usemap="#fruit-map" style="width:399px; height:299px" alt="fruit img map">
+<map name="fruit-map">
+	<area shape="rect" coords="47,114,142,202" href="https://en.wikipedia.org/wiki/Orange_(fruit)" alt="orage" title="link to orange wiki">
+	<area shape="rect" coords="151,114,246,202" href="https://en.wikipedia.org/wiki/Cherry" alt="cherry" title="link to cherry wiki">
+	<area shape="rect" coords="259,113,354,201" href="https://en.wikipedia.org/wiki/Apple" alt="apple" title="link to apple wiki">
+</map>
+```
+
+Notes: continue from "Linking to Multimedia Files".
 
 ---  
 
