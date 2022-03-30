@@ -673,9 +673,9 @@ li {
 }
 ```
 
-- To create an image map you need to use `<map></map>` tags and nest an `<area>` tag for each region of the image inside it. You then need to link to the actual image in the `<img>` tag that contains a `usemap` attribute.
+- To create an image map you need to use `<map></map>` tags and nest an `<area>` tag for each region of the image inside it. You then need to link to the actual image using `<img>` tag that contains a `usemap` attribute.
 	- In the `<map>` tag you need to specify the `name` attribute which will also be referenced in the `usemap` attribute (prefixed with `#`) in `<img>` tag.
-	- Each `<area>` tag must contain `shape` and `coords` attributes. Three possible `shape` values are `rect`, `circle` and `poly`. Attribute `coords` required x,y coordinates of the upper-left corner followed by the x,y coordinates of the lower-right corner for `rect`.  For `circle` x,y center point followed by the radius in pixels. For `poly` list the x,y coordinates of all the corners in a connect-the-dots order. In the `<area>` tag also specify an `href` attribute for location to which the region links, as well as additional `alt` and `title` attributes.
+	- Each `<area>` tag must contain `shape` and `coords` attributes. Three possible `shape` values are `rect`, `circle` and `poly`. Attribute `coords` require x,y coordinates of the upper-left corner followed by the x,y coordinates of the lower-right corner for `rect`.  For `circle` x,y center point followed by the radius in pixels. For `poly` list the x,y coordinates of all the corners in a connect-the-dots order. In the `<area>` tag also specify an `href` attribute for location to which the region links, as well as additional `alt` and `title` attributes.
 
 Compete code:
 ```html
@@ -687,11 +687,38 @@ Compete code:
 </map>
 ```
 
-Notes: continue from "Linking to Multimedia Files".
+- The simplest but definitely not the best way to link to a multimedia file (like a video) is to simply use the `<a>` tag the same way you would link to anything else.  
+For example, `<a href="videos/chickadee.mov">View a cute chickadee!</a>`
+
+- The downside to this is that you don’t have much control over how a clip is played, and the clip won’t play directly in the context of a page and will direct to secondary page, if it will play at all. Otherwise the browser will prompt you to download the file locally.
+
+- The best way is to embed multimedia files using the standard `<video></video>` and `<audio></audio>` tags. You can nest one or multiple `<source>` tags with `src` and `type` attributes. The reason for specifying multiple `<source>` tags is to specify multiple multimedia file formats in case the browser cannot play the first one. Alternatively, if you plan to use only one file format you can skip the `<source>` tag and just use the `src` attribute within the tag itself.
+
+- The `<video>` and `<audio>` tag has the following optional attributes:
+	- `controls` shows play/pause controls.
+	- `preload` with possible values `none`, `auto` and `metadata`.
+	- `loop` loops the file from start when it reaches end.
+	- `poster` (video only) points to an image file when video isn't available or is downloading.
+	- `autoplay` causes the file to start playing as soon as it is ready.  
+
+- The text between `<p></p>` tags is displayed only when the video is not able to play.
+
+```html
+<video controls>
+	<source src="assets/sample-mp4-file.mp4" type="video/mp4">
+	<p>Your browser does not support HTML5 video.</p>
+</video>
+```
+
+```html
+<audio src="assets/file_example_MP3_700KB.mp3" controls>
+	<p>Your browser does not support the audio element.</p>
+</audio>
+```
 
 ---  
 
-### Links:
+### Links in this lesson:
 
 - http://www.toptal.com/designers/colorfilter - color blindness checker
 - https://webaim.org/resources/contrastchecker/ - color contrast checker

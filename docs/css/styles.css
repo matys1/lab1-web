@@ -56,3 +56,7 @@ a {
  a:hover, a:focus, a:active {
 	color: #e03a3e;
  }
+
+ video {
+	width: 50%; height: auto;
+  }
