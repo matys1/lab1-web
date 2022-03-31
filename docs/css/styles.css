@@ -1,62 +1,65 @@
 @font-face { /*Open Sans, latin*/
-	font-family: 'Open Sans';
-	src: url(https://fonts.gstatic.com/s/opensans/v28/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjZ0B4gaVI.woff2);
+  font-family: 'Open Sans';
+  src: url(https://fonts.gstatic.com/s/opensans/v28/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsjZ0B4gaVI.woff2);
 }
 
 body {
-	font-family: 'Open Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 footer {
-	color: #aaaaaa;
-	text-align: left;
+  color: #aaaaaa;
+  text-align: left;
 }
 
 img {
-	height: 27px;
-	width: 27px;
+  height: 27px;
+  width: 27px;
 }
 
 table, tr, th, td {
-	border: 1px solid black;
-	border-collapse: collapse;
-	padding: 4px;
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 4px;
 } 
 
 th.wide {
-	width: 200px;
+  width: 200px;
 }
 
 th.narrow {
-	width: 35px;
+  width: 35px;
 }
 
 h1 {
-	font-size: 28pt;
+  font-size: 28pt;
 }
 
 h2 {
-	font-size: 20pt;
+  font-size: 20pt;
 }
 
 h3 {
-	font-size: 16pt;
+  font-size: 16pt;
 }
 
 a {
-	font-weight: bold;		
-	text-decoration: none;
- }
- a:link {
-	color: #6479A0;
- }
- a:visited {
-	color: #949494;
- }
- a:hover, a:focus, a:active {
-	color: #e03a3e;
- }
+  font-weight: bold;		
+  text-decoration: none;
+}
 
- video {
-	width: 50%; height: auto;
-  }
+a:link {
+  color: #6479A0;
+}
+
+a:visited {
+  color: #949494;
+}
+
+a:hover, a:focus, a:active {
+  color: #e03a3e;
+}
+
+video {
+  width: 50%; height: auto;
+}

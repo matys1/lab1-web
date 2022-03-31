@@ -34,9 +34,17 @@ body {
 
 ### Padding
 
-- `padding` adds space inside the element. Because the padding of an element appears within the element’s content area, it assumes the same style as the content of the element, including the background color.
+- `padding` adds space inside the element. Just like with `margin`, you can specify padding for each side individually using `padding-top/right/bottom/left` properties or by using the `padding` shorthand property.
 
-- If you have an element with a width of 50px and height of 30px and you set `padding` all around it 5px then the content area will remain 50px wide and 30px high but the entire element will now take up 60px in width and 40px in height. If there are any borders defined, they will add to the total rendered width and height as well. In essence, `padding` stretches out the footprint of the element leaving the content area intact.
+- And just like with `margin`, if you use the shorthand `padding` property, you can list the size for each padding like this `padding: 15px 15px 15px 15px;` (where the order of evaluation is clockwise: top, right, bottom, left).
+  - If you specify just one value, for example `padding: 15px`, it applies the size to all four sides.
+  - If you specify two values, the first value is for top and bottom and the second is for left and right sides.
+  - If you specify three values, the first is for top, the second is for left and right and the third is for bottom side.
 
-Notes: continue from "You specify the padding of a style rule by using one of the padding properties".  
-Reading: continue from LESSON 10.
+- Because the padding of an element appears within the element’s content area, it assumes the same style as the content of the element, including the background color.
+
+- If you have an element with a width of 50px and height of 30px and you set a 5px `padding` all around it then the content area will remain 50px wide and 30px high but the entire element will now take up 60px in width and 40px in height. If there are any borders defined, they will add to the total rendered width and height as well. In essence, `padding` stretches the footprint of the element outwards leaving the content area intact.
+
+- If you look at the examples from [Margin](#margin) section you'll notice there's always a little bit of space between, for example, DIV #1 text and the top border. That space is not padding, because if you highlight the text you'll see that the area of the highlight is flush with the top border of the element. This shows that there is 0 padding defined from the top and that little bit of space is around the text itself.
+
+Continue notes from: "If you place the text in a `<p>` element and give that element a white background". should actually do the expriment with `<p>` and white background.
