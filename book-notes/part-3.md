@@ -47,4 +47,4 @@ body {
 
 - If you look at the examples from [Margin](#margin) section you'll notice there's always a little bit of space between, for example, DIV #1 text and the top border. That space is not padding, because if you highlight the text you'll see that the area of the highlight is flush with the top border of the element. This shows that there is 0 padding defined from the top and that little bit of space is around the text itself.
 
-Continue notes from: "If you place the text in a `<p>` element and give that element a white background". should actually do the expriment with `<p>` and white background.
+Continue notes from: "Keeping Everything Aligned". Everything from above lessons completed and examples make sense (margins.html and padding.html).
