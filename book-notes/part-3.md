@@ -68,3 +68,7 @@ body {
 The above explains why you see different white background area size in padding.html between using `<span>` and `<p>` and also why there's extra space at the top not defined by padding when using `<p>`.
 
 Link: https://developer.mozilla.org/en-US/docs/Web/HTML/Block-level_elements
+
+## LESSON 10
+
+Continue with notes and reading!
