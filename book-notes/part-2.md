@@ -101,7 +101,7 @@ font-family: 'Open Sans', sans-serif;
 
 - You can align the contents of table cells both horizontally and vertically with the `text-align` and `vertical-align` style properties to any `<tr>`, `<td>`, or `<th>` tag.
 	- The possible values for `vertical-align` property: `top`, `middle`, `bottom`, `text-top`, `text-bottom`, and `baseline`.
-	- The possible values for `text-align` property: `center`, `left`, or `right`.
+	- The possible values for `text-align` property: `center`, `left`, `right` or `justify` (for text).
 
 - Spanning is the same as merging cells in Excel forcing a cell to stretch across more than one row or column of a table.
 
