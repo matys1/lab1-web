@@ -71,4 +71,16 @@ Link: https://developer.mozilla.org/en-US/docs/Web/HTML/Block-level_elements
 
 ## LESSON 10
 
-Continue with notes and reading!
+- Every element in HTML is considered a “box,” whether it is a paragraph, a `<div>`, an image, or something else. The box model describes the way in which every HTML block-level element has the potential for a border, padding, and margin and, specifically, how the border, padding, and margin are applied.
+
+![box-model](imgs/box-model.jpg)
+
+- In the box model, to know the true or rendered height and width of an element, you have to take into account all the elements of the box model.
+  - The total width the element takes up on the page is calculated:  
+  width + padding-left + padding-right + border-left + border-right + margin-left + margin-right
+  - The total height the element takes up on the page is calculated:  
+  height + padding-top + padding-bottom + border-top + border-bottom + margin-top + margin-bottom
+
+- This means, for example, if you only have 250px horizontal space you cannot assign all 250px to the element itself, you have to balance and adjust the width based on how much `border`, `padding` and `margin` you want.
+
+- There's a related property which does not affect the box model called `outline`. Continue...
