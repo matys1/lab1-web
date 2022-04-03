@@ -83,4 +83,48 @@ Link: https://developer.mozilla.org/en-US/docs/Web/HTML/Block-level_elements
 
 - This means, for example, if you only have 250px horizontal space you cannot assign all 250px to the element itself, you have to balance and adjust the width based on how much `border`, `padding` and `margin` you want.
 
-- There's a related property which does not affect the box model called `outline`. Continue...
+- There's a related family of properties which is not part of the box model called `outline` (as well as `outline-width`, `outline-style`, `outline-color`, `outline-offset`). An outline is a line drawn outside the element's border. Outline may overlap other content and is NOT a part of the element's dimensions; the element's total width and height is not affected by the width of the outline. It's usually used to make an element stand out.
+
+- The box model can easily stretch out well beyond the given amount of space (especially when using relative units like percentages, rems or ems). For example, if you place two `<div>` elements with the below styles on a page, they won't fit next to each other and the second element will float to the next line. Only at 49% width they can fit on the same line.
+
+```css
+div {
+   width: 50%;
+   height: 300px;
+   float: left;
+   padding: 0.25rem;
+   border: solid 1px aqua;
+}
+```
+
+- This is because, like mentioned before, the space the elements take up includes the padding, border, and margin.
+
+- To manage this, there is a `box-sizing` property with two possible values:
+  - `content-box` - The `width` and `height` values are assigned to the content box only, and padding and border are added afterward. This is the default.
+  - `border-box` - Any defined `padding` and `border` are included inside the assigned `width` and `height` values.
+
+- Thus, if you add `box-sizing: border-box;` to the above CSS example, both `<div>` elements will fit on the same line at 50%.
+
+- All elements have a default `display` property (which in some cases can be changed). There are three possible values for the `display` property: `block`, `inline` and `inline-block`. 
+  - Elements whose default property is `block` are, for example, `<p>` and `<div>`. They are automatically placed on a new row, and `width` and `height` can be explicitly defined.
+  - Elements whose default property is `inline` are, for example, `<span>` and `<code>`. They are placed on the same row, and `width` and `height` cannot be explicitly defined (is defined automatically by the amount of content they contain).
+  - Elements whose default property is `inline-block` are, for example, `<img>`. Like inline elements they are placed on the same row but you can also explicitly define the `width` and `height`.
+
+- To position elements on the page use `position` property with possible values:
+  - `relative` - The element is positioned relative to its normal position in the document flow. 
+  - `absolute` - The element is positioned relative to its parent element. Absolute positioned elements are removed from the normal flow, and can overlap elements. Allows you to be pixel-exact.
+  - `fixed` - The element is positioned relative to the browser window instead of any containing elements, which means it always stays in the same place even if the page is scrolled.
+  - `static` - Default. Just like `relative` the element is positioned relative to its normal position in the document flow, however, unline `relative` it's not affected by the `top`, `right`, `bottom` and `left` rules.
+  - `sticky` - (use `-webkit-sticky` for support in Safari). A sticky element toggles between `relative` and `fixed`, depending on the scroll position. It is positioned relative until a given offset position is met in the browser window - then it "sticks" in place (like `position: fixed`).
+
+- There are four properties that create an offset based on the value of `position` property (all except `static`).
+  - `left` - The left position offset.
+  - `right` - The right position offset.
+  - `top` - The top position offset.
+  - `bottom` - The bottom position offset.  
+
+For example, `left: 25px;`
+
+> Note, you cannot set both horizontal or both vertical position properties on the same element. If you set both the `left` and the `right` positions (or both `top` and `bottom`) on an element, the `left` and `top` properties will take precedence in left-to-right documents. So at most you can only specify `top` and `left`.
+
+Continue notes from "Controlling the Way Things Stack Up".
