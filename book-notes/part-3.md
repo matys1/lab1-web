@@ -127,4 +127,9 @@ For example, `left: 25px;`
 
 > Note, you cannot set both horizontal or both vertical position properties on the same element. If you set both the `left` and the `right` positions (or both `top` and `bottom`) on an element, the `left` and `top` properties will take precedence in left-to-right documents. So at most you can only specify `top` and `left`.
 
-Continue notes from "Controlling the Way Things Stack Up".
+- The `z-index` style property enables you to set the order of elements with respect to how they stack on top of each other. Default value is 0. The assigned value can be both positive and negative integers. The element with higher index value appears on top of the element with a lower index value.
+
+- Regardless of the `z-index` value you set for a style rule, an element displayed with the rule will always appear on top of its parent.
+
+Continue notes from "Managing the Flow of Text".  
+Continue reading from LESSON 11.
