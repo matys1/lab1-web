@@ -141,3 +141,5 @@ For example, `left: 25px;`
 
 ## LESSON 11
 
+Continue notes from Lesson 11.  
+Continue reading from Lesson 12.
