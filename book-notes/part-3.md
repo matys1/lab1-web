@@ -141,5 +141,22 @@ For example, `left: 25px;`
 
 ## LESSON 11
 
-Continue notes from Lesson 11.  
+- Specific list-related styles include:
+  - `list-style-image` - for placement of an image as a list-item marker
+  - `list-style-position` - possible values `inside` or `outside` (default) indicating the place of the list-item marker
+  - `list-style-type` - the type of list-item marker itself
+
+- You can also use `margin`, `padding`, `color` and `background-color` on your lists to achieve s different look. You can use these properties on the parent list element type (`<ul>` or `<ol>`) and the individual list items `<li>` themselves.
+
+- The `<ul>` or `<ol>` creates a box in which the individual list items `<li>` are placed. Browsers by default always add 40px `padding` to the left side of `<ul>` or `<ol>`.
+
+- Changing the `list-style-position` to `inside` will display the bullet inside the list item box indenting the text even more and any text that cannot fit on the same line will go to the next line and "wrap" around the bullet.
+
+- Notice in the lists.html example, that the width assigned to the `<ul>` element is 100px. Any additional text contained within the list items `<li>` will stretch the entire list box defined by `<ul>` down vertically but will never stretch it horizontally past the 100px.
+
+- In fact, any `padding` or `margin` applied to list items `<li>` will reduce the size of the content box as needed so that the `margin` + `border` + `padding` never exceeds 100px width. 
+
+- Notice, how adding `margin` to second list item makes the background color of the list `<ul>` appear (as expected) and how `padding` was used in the third list item to make sure the bullet aligns with the second list item.
+
+Continue notes from "Creating Image Maps with List Items and CSS".  
 Continue reading from Lesson 12.
