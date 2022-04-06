@@ -158,5 +158,19 @@ For example, `left: 25px;`
 
 - Notice, how adding `margin` to second list item makes the background color of the list `<ul>` appear (as expected) and how `padding` was used in the third list item to make sure the bullet aligns with the second list item.
 
-Continue notes from "Creating Image Maps with List Items and CSS".  
-Continue reading from Lesson 12.
+- See css-image-map.html on how to create an alternative Image Map using CSS. Using CSS is arguably a better practice and provides more flexibility than using the HTML `<map>` element. 
+  - Note, the picture is the background of the list element itself.
+
+- It's considered good practice to use list elements to create navigation bars for websites. See horizontal-nav.html, vertical-nav.html and vertical-nav-sub.html. The exmaples included techniques learned in previous lessons to style lists to look like navigation bars.
+
+- The biggest difference in styling vertical vs. horizontal bars is the use of `display: block;` property for vertical navigation and `display: inline;` for horizontal navigation (note typo in the book).
+
+---
+
+### Appendix:
+
+Useful resource for CSS-based list navigation: https://www.w3schools.com/css/css_navbar.asp
+
+## LESSON 12
+
+Continue with reading & notes from top of lesson 12.

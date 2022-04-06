@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>CSS Image Map Example</title>
+    <style>
+    #theImg {
+       width: 399px;
+       height: 299px;
+       background: url(assets/fruit_map.jpg) no-repeat;
+       position: relative;
+       border: 1px solid #000000;
+       margin: 0 auto; /*`auto` centers the div by adding equal margin on both sides*/
+    }
+    #theImg ul {
+       margin: 0px;
+       padding: 0px;
+       list-style: none;
+    }
+    #theImg a {
+       position: absolute;
+       /*text-indent: -1000em;
+       if you don't include text between <a> tags
+       in HTML you don't need to use the above
+       */
+    }
+    #theImg a:hover {
+       border: 4px dashed #3700ff;
+    }
+    #or a {
+       top: 114px;
+       left: 50px;
+       width: 80px;
+       height: 80px;
+    }
+    #ch a {
+       top: 114px;
+       left: 156px;
+       width: 80px;
+       height: 80px;
+    }
+    #ap a {
+       top: 114px;
+       left: 262px;
+       width: 80px;
+       height: 80px;
+    }
+    </style>
+  </head>
+  <body>
+     <div id="theImg">
+       <ul>
+         <li id="or"><a href="" title="Orange"></a></li>
+         <li id="ch"><a href="" title="Cherry"></a></li>
+         <li id="ap"><a href="" title="Apple"></a></li>
+       </ul>
+     </div>
+     <section>
+        <a href="index.html">Go back to home page.</a>
+      </section>
+  </body>
+</html>

@@ -1,8 +1,5 @@
 # HTML, CSS and JS Book notes
 
-*OVERALL PROGRESS CONTINUE WITH LESSON 4 (from the top)*  
-*NOTE PROGRESS CONTINUE WITH LESSON 3 (from the top) after finishing the TO DO*
-
 ## LESSON 1
 
 ### Key Points
