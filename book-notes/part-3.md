@@ -173,4 +173,12 @@ Useful resource for CSS-based list navigation: https://www.w3schools.com/css/css
 
 ## LESSON 12
 
-Continue with reading & notes from top of lesson 12.
+Notes from lesson 12.  
+Reading from marked on iPad.
+
+---
+### Appendix:
+
+https://wordpress.org/themes/ - examples of liquid layouts  
+http://www.csszengarden.com/ - same as above  
+http://gs.statcounter.com/screen-resolution-stats/ - to find popular resolutions  
