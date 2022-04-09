@@ -173,8 +173,8 @@ Useful resource for CSS-based list navigation: https://www.w3schools.com/css/css
 
 ## LESSON 12
 
-Notes from lesson 12.  
-Reading from marked on iPad.
+Notes from Lesson 12.  
+Reading from Lesson 13.  
 
 ---
 ### Appendix:
@@ -182,3 +182,18 @@ Reading from marked on iPad.
 https://wordpress.org/themes/ - examples of liquid layouts  
 http://www.csszengarden.com/ - same as above  
 http://gs.statcounter.com/screen-resolution-stats/ - to find popular resolutions  
+https://flexboxzombies.com/ - a game for learning CSS fexible boxes  
+https://gridbyexample.com/examples/ - for learning CSS grid layout
+
+**Relevant sections in W3Schools:**  
+Under CSS:  
+- CSS Website Layout
+- CSS Flexbox
+- CSS Responsive (and all submodules)
+- CSS Grid  
+
+Under HTML:  
+- HTML Layout
+- HTML Responsive
+
+Comment: In the book they referred to fixed, liquid and hybrid layouts. I think the liquid/hybrid section in this book is simply the "CSS float property" technique under HTML Layout section in W3Schools.
