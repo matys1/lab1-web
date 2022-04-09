@@ -171,10 +171,7 @@ For example, `left: 25px;`
 
 Useful resource for CSS-based list navigation: https://www.w3schools.com/css/css_navbar.asp
 
-## LESSON 12
-
-Notes from Lesson 12.  
-Reading from Lesson 13.  
+## LESSON 12 
 
 ### Fixed layout
 
@@ -193,9 +190,12 @@ Reading from Lesson 13.
 
 - Fully liquid layouts can be hard to achieve, and in some cases perhaps undesirable. A good compromise is a hybrid layout which contains elements of both types of layouts. For example, you could have a fluid layout that includes fixed-width content areas either within the body area or as anchor elements (such as a left-side column or as a top navigation strip).
 
-### Liquid layout with two fixed-width columns
+### Liquid layout with three fixed-width columns
 
-Continue from "In this example, you’ll learn to create a template that is liquid but"
+- HTML is only for the structure and the content. All the actual styling that makes a layout fixed, liquid, or hybrid happens in the style sheet. Even the IDs of the elements should not imply any design (position of format), only semantic information like "secondary_content" etc.
+
+Continue notes from "Starting with a Basic Layout Structure".  
+Reading from Lesson 13. 
 
 ---
 ### Appendix:
