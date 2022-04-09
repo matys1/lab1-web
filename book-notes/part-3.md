@@ -176,6 +176,27 @@ Useful resource for CSS-based list navigation: https://www.w3schools.com/css/css
 Notes from Lesson 12.  
 Reading from Lesson 13.  
 
+### Fixed layout
+
+- Fixed layout (or fixed-width layout) is a layout in which the page is set to a specific width. This is typically controlled using a master wrapper element (like `<div>`) that contains all the other elements and their content.
+
+- Give semantic IDs to your wrapper element and other elements, like "main" that imply structure and not design. 
+
+- With a fixed width layout if the resolution is smaller than the allowed width you will encounter scrollbars, if the resolution is greater then you will encounter empty spaces.
+  - Centering vs. aligning content. If you center and the resolution is too small, both sides will be cut off. If you align it to the left then only right side will be cut off.
+
+### Liquid layout
+
+- Liquid layout (a.k.a. fluid layout) is a layout that doesn't use a specified width in pixels. It might be encloused in a master wrapper element that uses a percentage width. The idea behind a liquid layout is that it can be perfectly usable and still retain the overall design aesthetic, even if the user has a very small or very wide screen.
+
+### Fixed/liquid hybrid layout
+
+- Fully liquid layouts can be hard to achieve, and in some cases perhaps undesirable. A good compromise is a hybrid layout which contains elements of both types of layouts. For example, you could have a fluid layout that includes fixed-width content areas either within the body area or as anchor elements (such as a left-side column or as a top navigation strip).
+
+### Liquid layout with two fixed-width columns
+
+Continue from "In this example, you’ll learn to create a template that is liquid but"
+
 ---
 ### Appendix:
 
