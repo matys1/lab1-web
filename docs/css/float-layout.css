@@ -1,0 +1,30 @@
+/*similar version of the below I posed on reddit and stackoverflow*/
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+.wrapper { /*parent element, inherits the entire width of <body>*/
+  padding-left: 200px;
+  padding-right: 125px;
+  overflow: hidden; /*prevents the wrapper element from collapsing due to containing floats*/
+}
+
+.col-main {
+  float: left;
+  width: 100%; /*represents the entire width of parent wrapper element*/
+}
+
+.col-left {
+  position: relative; /*note `relative`, this affects how `right` is applied below*/
+  float: left;
+  width: 200px;
+  margin-left: -100%; /*represents the entire width of wrapper*/
+  right: 200px; /*positions the right edge 200px to the left of normal position*/
+}
+
+.col-right {
+  float: left;
+  width: 125px;
+  margin-right: -125px; /*this ensure that the entire width of the element (width + padding + border + margin) = 0px*/
+}                       /*thus the element is place on the same line and sticks out to the right of parent wrapper element*/

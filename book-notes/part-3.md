@@ -194,8 +194,19 @@ Useful resource for CSS-based list navigation: https://www.w3schools.com/css/css
 
 - HTML is only for the structure and the content. All the actual styling that makes a layout fixed, liquid, or hybrid happens in the style sheet. Even the IDs of the elements should not imply any design (position of format), only semantic information like "secondary_content" etc.
 
-Continue notes from "Starting with a Basic Layout Structure".  
+- The `min-width` property sets a threshold below which it will stop shrinking the page and will introduce a horizontal scroll bar. This prevents the page from getting to the point of "breaking" where content is no longer ligible and elements start to overlap in unpredictable ways.
+
+- The `max-width` property on the other hand lets the element expand up to a point and then stop.
+
+- Note that creating fixed/liquid/hybrid layouts using floats and negative margins like it was described in this section is highly discouraged, not a good practice and a remnant of the past.
+
+- To see hybrid float layout with negative margins see the hybrid-layout.html and float-layout.html pages. The former is the actual exercise from the book.
+
+Continue notes from "Using Modern CSS Layout Techniques".  
 Reading from Lesson 13. 
+
+below discussion mentions why using `display: table` for layouts is not good.   
+- https://stackoverflow.com/questions/29229523/how-and-why-to-use-display-table-cell-css
 
 ---
 ### Appendix:

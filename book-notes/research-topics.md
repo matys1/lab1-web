@@ -7,3 +7,5 @@
 - [ ] JS frameworks and their purpose (e.g. Angular, React, Vue)
 - [ ] How these frameworks relate to each other and can they be used together and is there any overlap?
 - [ ] Ideas for a website project
+- [ ] web screen readers and screen reader technology
+- [ ] why sometimes when I rename a file it doesn't show as renamed  in git but as deleted/new file instead?

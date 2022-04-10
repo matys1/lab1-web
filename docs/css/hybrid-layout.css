@@ -1,0 +1,77 @@
+body {
+  margin:0;
+  padding:0;
+  min-width: 525px; /*browsers below 525px in width will see a horizontal scroll bar*/
+}
+header {
+  float: left;
+  width: 100%; /*take the entire width of parent element (which is <body>)*/
+}
+footer {
+  position:relative;
+  float: left;
+  width: 100%; /*take the entire width of parent element (which is <body>)*/
+  background-color: #cccccc;
+  text-align:center;
+  font-style: italic;
+}
+#main { /*wrapper element; inherits the entire width of <body>*/
+  float: left;
+  padding-left: 200px;
+  padding-right: 125px;
+  overflow: hidden;
+}
+#secondary_content {
+  position: relative; /*note `relative`, this affects how `right` is applied below*/
+  float: left;
+  width: 200px;
+  background-color: #52f471;
+  right: 200px; /*positions the right edge 200px to the left of normal position*/
+  margin-left: -100%; /*represents entire width of parent element <section id="#main">*/
+  margin-bottom: -2000px;
+  padding-bottom: 2000px;
+
+}
+/*because the below element represents 0px width its place on the same line and sticks out to the right of parent element*/
+#tertiary_content {
+  position: relative;
+  float: left;
+  width: 125px;
+  background-color: #f452d5;
+  margin-right: -125px; /*this ensure that the entire width of the element (width + padding + border + margin) = 0px*/
+  margin-bottom: -2000px;
+  padding-bottom: 2000px;
+}
+#main_content {
+  position: relative;
+  float: left;
+  background-color: #ffffff;
+  width: 100%;
+  margin-bottom: -2000px;
+  padding-bottom: 2000px;
+}
+h1 {
+  margin: 0;
+}
+/*below just styles the list elements to create a nav bar like in previous lessons*/
+#secondary_content ul {
+  list-style: none;
+  margin: 12px 0px 0px 12px;
+  padding: 0px;
+}
+#secondary_content li a:link, #secondary_content li a:visited {
+  font-size: 12pt;
+  font-weight: bold;
+  padding: 3px 0px 3px 3px;
+  color: #000000;
+  text-decoration: none;
+  display: block;
+}
+#secondary_content li a:hover, #secondary_content li a:active {
+  font-size: 12pt;
+  font-weight: bold;
+  padding: 3px 0px 3px 3px;
+  color: #ffffff;
+  text-decoration: none;
+  display: block;
+}
