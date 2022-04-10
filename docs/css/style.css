@@ -4,8 +4,10 @@ body {
 }
 
 .wrapper {
+  width: 600px;
   padding-left: 200px;
-  padding-right: 125px;
+  padding-right: 200px;
+  overflow: hidden;
 }
 
 .col-main {
@@ -18,7 +20,7 @@ body {
   float: left;
   width: 200px;
   margin-left: -100%;
-  right: 200px
+  right: 200px;
 }
 
 .col-right {

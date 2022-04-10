@@ -200,6 +200,8 @@ Reading from Lesson 13.
 ---
 ### Appendix:
 
+**Links in the book:**
+
 https://wordpress.org/themes/ - examples of liquid layouts  
 http://www.csszengarden.com/ - same as above  
 http://gs.statcounter.com/screen-resolution-stats/ - to find popular resolutions  
@@ -218,3 +220,17 @@ Under HTML:
 - HTML Responsive
 
 Comment: In the book they referred to fixed, liquid and hybrid layouts. I think the liquid/hybrid section in this book is simply the "CSS float property" technique under HTML Layout section in W3Schools.
+
+**Other relevant links:**
+- https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance#inherited_properties
+- https://cssgridgarden.com/
+
+**Other explanations:**
+- The use of `overflow: hidden;` to prevent the wrapper element from collapsing if it contains only floats.  
+A floating element doesn't contribute to the height of its wrapper element, because when you use `float` you remove the element from the normal flow of the page. By default, elements will be layed out in the "normal flow", meaning they will be positioned inside their wrapper element and take up space accordingly. Floating elements, because they are removed from the "normal flow" have their own special layout rules.
+- There was a reddit thread that explained the above. This is also a useful link to understand the problem (though the solutions there are outdated): http://complexspiral.com/publications/containing-floats/
+
+Useful explanations to the margin-right negative value phenomenon I've found so far:  
+https://stackoverflow.com/questions/53184230/why-float-element-works-weird-with-negative-margin  
+https://stackoverflow.com/questions/24651678/css-3-column-float-and-negative-margin-liquid-layout  
+https://www.w3.org/TR/CSS22/visuren.html#float-rules (specifically rule 7) - it seems like it's not possible for the right edge to go more left than the actual width of the container thus even -infite would be the same as result.
