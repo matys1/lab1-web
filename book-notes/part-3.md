@@ -202,11 +202,26 @@ Useful resource for CSS-based list navigation: https://www.w3schools.com/css/css
 
 - To see hybrid float layout with negative margins see the hybrid-layout.html and float-layout.html pages. The former is the actual exercise from the book.
 
-Continue notes from "Using Modern CSS Layout Techniques".  
-Reading from Lesson 13. 
+### CSS table layout technique
 
-below discussion mentions why using `display: table` for layouts is not good.   
-- https://stackoverflow.com/questions/29229523/how-and-why-to-use-display-table-cell-css
+- By using CSS tables, you can create layouts similar to how web designers might have created them using actual tables two decades ago. However, the CSS `display: table;` property is not the same as a semantic HTML `<table>` tag. This means you can convert any element, like `<div>`, into a table to build your layout.
+
+- The value `table` is just one value of 10 table-related possible values.
+
+- Since the CSS `display: table;` doesn't get rendered into an actual structural HTML table (which might otherwise cause issues with screen readers), it's safe to use for design purposes without breaking the best practices of HTML and CSS. 
+
+- However, overall this technique is not widely used and is not considered standard or best practice like CSS Flexbox or CSS Grid. One big drawback is that to re-order columns, you need to structurally change your HTML. The order of columns ideally is something that CSS would take care of.
+
+- Thus this method is for very niche purposes where you might want a table-like container but where the data is not actually tabular and serves as more of a design aesthetic. But again, you could probably use CSS Grid or Flexbox instead.
+
+- One thing that the `display: table;` family of properties do that can be useful is allow you to center content vertically in the space. To do so simply add the `display: table-cell;` property to an element with an explicit height and then set `vertical-align` to `middle`.
+
+!!! Do the CSS table example from this section and then proceed with the next section below. Notes from this section are completed though.
+
+### CSS flexible box layout technique
+
+Start notes from here ("Understanding the CSS Flexible Box Layout Module") but do the example from previous section.  
+Reading from Lesson 13.  
 
 ---
 ### Appendix:
@@ -236,7 +251,7 @@ Comment: In the book they referred to fixed, liquid and hybrid layouts. I think 
 - https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance#inherited_properties
 - https://cssgridgarden.com/
 
-**Other explanations:**
+**Overflow and collapsing wrapper explanation:**
 - The use of `overflow: hidden;` to prevent the wrapper element from collapsing if it contains only floats.  
 A floating element doesn't contribute to the height of its wrapper element, because when you use `float` you remove the element from the normal flow of the page. By default, elements will be layed out in the "normal flow", meaning they will be positioned inside their wrapper element and take up space accordingly. Floating elements, because they are removed from the "normal flow" have their own special layout rules.
 - There was a reddit thread that explained the above. This is also a useful link to understand the problem (though the solutions there are outdated): http://complexspiral.com/publications/containing-floats/
@@ -245,3 +260,5 @@ Useful explanations to the margin-right negative value phenomenon I've found so 
 https://stackoverflow.com/questions/53184230/why-float-element-works-weird-with-negative-margin  
 https://stackoverflow.com/questions/24651678/css-3-column-float-and-negative-margin-liquid-layout  
 https://www.w3.org/TR/CSS22/visuren.html#float-rules (specifically rule 7) - it seems like it's not possible for the right edge to go more left than the actual width of the container thus even -infite would be the same as result.
+
+CSS Table discussion: https://stackoverflow.com/questions/29229523/how-and-why-to-use-display-table-cell-css
