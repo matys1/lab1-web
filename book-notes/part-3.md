@@ -216,12 +216,57 @@ Useful resource for CSS-based list navigation: https://www.w3schools.com/css/css
 
 - One thing that the `display: table;` family of properties do that can be useful is allow you to center content vertically in the space. To do so simply add the `display: table-cell;` property to an element with an explicit height and then set `vertical-align` to `middle`.
 
-!!! Do the CSS table example from this section and then proceed with the next section below. Notes from this section are completed though.
+- See the table-layout.html to see the example from the book. The HTML is the same as in hybrid-layout.html, just the CSS is different.
 
 ### CSS flexible box layout technique
 
-Start notes from here ("Understanding the CSS Flexible Box Layout Module") but do the example from previous section.  
-Reading from Lesson 13.  
+- The CSS Flexible Box module gives you a way to position elements that display on a line in a container. The container can alter the dimensions of the elements inside it (shrinking or expanding them) to best fit the available free space.
+
+- The CSS Flexbox is not intended to be used for a full page layout, but rather for smaller page components and small-scale layouts. If you want a full page layout use CSS Grid instead.
+
+- The CSS Flexbox allows you to place the items in a more flexible fashing, not strictly adhering the to normal flow of the page.
+
+- Use the `display: flex;` property on a wrapper element that will hold all the items in the layout. This enables the flex context for all the elements contained in the wrapper.
+
+- To control in what direction the elements in the wrapper container will flow use the `flex-direction` property with values:
+  - `row` - Default. Flow left to right in ltr layouts and right to left in rtl layouts.
+  - `row-reverse` - The items flow right to left in ltr layouts and left to right in rtl layouts.
+  - `column` - Items flow from top to bottom in a column.
+  - `column-reverse` - Items flow from bottom to top in a column.
+
+- To control how the items will wrap use the `flex-wrap` property with values:
+  - `nowrap` - All flex items are on one line (horizontal or vertical).
+  - `wrap` - Flex items wrap to multiple lines from top to bottom.
+  - `wrap-reverse` - Flex items wrap to multiple lines from bottom to top.
+
+> You can define both the flex direction and wrap with the `flex-flow` shorthand property: `flex-flow: flex-direction || flex-wrap;`.
+
+- To control how the items will be spaced in the container use the `justify-content` property with the values:
+  - `flex-start` - Default. The items are placed at the start of the container, and any extra space is placed after all the items.
+  - `flex-end` - The items are placed at the end of the container, and any extra space is placed before all the items.
+  - `center` - The items are placed in the center of the container, and extra free space is placed evenly at the start and end.
+  - `space-between` - The items are evenly distributed in the line, with the first item right at the start and the last placed right at the end.
+  - `spac-around` - The items are placed evenly on the line, with equal space all around them.
+
+- To control how the browser distributes space between and around content items along the main-axis of a flex container use the `justify-content` property. See possible values in "mnd web docs".
+
+- To control how the browser distributes space between and around content items perpendicular to the main-axis of a flex container use the `justify-content` property with values:
+  - `stretch` - Default. The items should stretch to fill the whole container while respecting min-width and max-width rules.
+  - `center` - Items are centered along the cross axis.
+  - `baseline` - Items are aligned so that their baselines align.
+  - `flex-start` - The items are positioned at the start of the element (the top for horizontal and the left for vertical ltr layouts).
+  - `flex-end` - The items are positioned at the end of the element (the bottom for horizontal and the right for vertical ltr layouts).
+
+- If the items in the container are distributed across multiple lines, to control how any extra space between the lines will be distributed use the `align-content` property.
+  - `stretch` - Default. Lines stretch to take up the remaining space.
+  - `center` - Lines are packed in the center of the container, with extra space placed evenly before and after.
+  - `space-between` - The first line is placed at the start of the container, and the last line is at the end, and remaining lines are evenly distributed between them.
+  - `space-around` - The lines are evenly distributed, with extra space placed before and after each line.
+  - `flex-start` - Lines are pushed to the start of the container, with extra space placed after.
+  - `flex-end` - Lines are pushed to the end of the container, with extra space placed first.
+
+Continue notes from "Modifying Flex Items".  
+Continue reading from Lesson 13.  
 
 ---
 ### Appendix:
