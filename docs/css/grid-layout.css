@@ -1,23 +1,25 @@
 #main {
-  width: 100%;
-  display: flex;
+  display: grid;
+  grid-template-columns: 200px auto 125px;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "secondary_content main_content tertiary_content";
 }
-#secondary_content {
-  order: -1;
+#main_content {
+  grid-area: main_content;
 }
 footer {
-  width: 100%;
   background-color: #cccccc;
   text-align:center;
   font-style: italic;
 }
-#secondary_content { 
-  min-width: 200px; /*if you use `width` here like in the book it's far too narrow*/ 
-  background-color: #52f471; 
+#secondary_content {
+  grid-area: secondary_content;
+  background-color: #52f471;
 }
-#tertiary_content { 
-  min-width: 125px; /*if you use `width` here like in the book it's far too narrow*/
-  background-color: #f452d5; 
+#tertiary_content {
+  grid-area: tertiary_content;
+  background-color: #f452d5;
 }
 #secondary_content ul {
   list-style: none;

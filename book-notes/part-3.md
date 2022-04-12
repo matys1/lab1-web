@@ -265,8 +265,47 @@ Useful resource for CSS-based list navigation: https://www.w3schools.com/css/css
   - `flex-start` - Lines are pushed to the start of the container, with extra space placed after.
   - `flex-end` - Lines are pushed to the end of the container, with extra space placed first.
 
-Continue notes from "Modifying Flex Items".  
-Continue reading from Lesson 13.  
+- Once you have a flex container, any element placed inside it is a flexbox item. Flexbox items appear on the page in the same order in which they appear in the HTML, but with the `order` property, you can change that. 
+
+- Using positive or negative integers, you change the order. The lower the number, the closer to the start the item will appear. Items with the same value will be displayed in the order in which they appear in HTML.
+
+- You can use the `order` property in creative ways to, for example, rank and disaply the best selling products at the top of the webpage based on database entries.
+
+- For the example from the book see the flexbox-layout.html.
+
+### CSS Grid layout technique
+
+- Use the `display` property to define the container element using 3 possible values:
+  - `grid` - block-level grid.
+  - `inline-grid` - inline grid.
+  - `subgrid` - with nested grids, indicates that the nested grid should take the sizes of its rows and columns from the parent grid rather than requiring the designer to specify new ones.
+
+- Then define the grid columns and rows with the `grid-template-columns` and `grid-template-rows` properties, both of which use space-separated lists of values.
+
+- CSS Grid adds a new unit of measure `fr` which refers to the free speca in the container. The browser first removes any space taken by non-flexible items and then divides up the remaining space among the elements with `fr` units. For example, you might have a three-column layout with a 15% left column and the remaining columns taking up three-quarters and one-quarter of the remaining available space.
+  - For example, `grid-template-columns: 15% 3fr 1fr;`.
+
+- To make it easier, you can name different items using the `grid-area` property. For example, you might name your layout elements like:
+
+```css
+header { grid-area: header; }
+footer { grid-area: footer; }
+section { grid-area: main; }
+aside { grid-area: sidebar; }
+nav { grid-area: navigation; }
+```
+
+- Then you define your layout grid with the `grid-template-areas` property. You reference the names of a grid area in the cell in which you want them to display. If you repeat it, the content will span those columns or rows. And a period is an empty cell in the layout.
+
+- Note, When you turn a container element into a grid container, the grid elements are only the immediate children of that container.
+
+- For the example from the book see the grid-layout.html.
+
+- In summary, do not do layouts using the fixed, liquid or hybdrid layouts using the floats and negative margins. Also do not use the CSS Table unless it's absolutely needed. Use CSS Grid for full page layouts. User CSS Flexbox for components and smaller-scale layouts. In general, it seems like nowadays web development is centered around Responsive Web Design (RWD) and mobile-first (which includes CSS Grid and Flexbox among other things).
+
+## LESSON 13
+
+Continue reading & notes from Lesson 13.
 
 ---
 ### Appendix:
