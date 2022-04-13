@@ -303,11 +303,8 @@ nav { grid-area: navigation; }
 
 - In summary, do not do layouts using the fixed, liquid or hybdrid layouts using the floats and negative margins. Also do not use the CSS Table unless it's absolutely needed. Use CSS Grid for full page layouts. User CSS Flexbox for components and smaller-scale layouts. In general, it seems like nowadays web development is centered around Responsive Web Design (RWD) and mobile-first (which includes CSS Grid and Flexbox among other things).
 
-## LESSON 13
-
-Continue reading & notes from Lesson 13.
-
 ---
+
 ### Appendix:
 
 **Links in the book:**
@@ -346,3 +343,14 @@ https://stackoverflow.com/questions/24651678/css-3-column-float-and-negative-mar
 https://www.w3.org/TR/CSS22/visuren.html#float-rules (specifically rule 7) - it seems like it's not possible for the right edge to go more left than the actual width of the container thus even -infite would be the same as result.
 
 CSS Table discussion: https://stackoverflow.com/questions/29229523/how-and-why-to-use-display-table-cell-css
+
+## LESSON 13
+
+Continue reading from Lesson 14.  
+Continue notes from Lesson 13.  
+
+---
+
+**Links in the book:**  
+
+Reagrding "Alternating Background Colors" - http://lea.verou.me/demos/nth.html  
