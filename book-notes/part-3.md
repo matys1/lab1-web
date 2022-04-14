@@ -346,8 +346,29 @@ CSS Table discussion: https://stackoverflow.com/questions/29229523/how-and-why-t
 
 ## LESSON 13
 
-Continue reading from Lesson 14.  
-Continue notes from Lesson 13.  
+This lesson focuses on more advanced techniques of controlling borders and backgrounds.
+
+- The `background` shorthand CSS property sets all background style properties at once, such as color, image, origin and size, or repeat method.
+  - Link: https://developer.mozilla.org/en-US/docs/Web/CSS/background
+
+- The `border` shorthand CSS property sets an element's border. It sets the values of `border-width`, `border-style`, and `border-color`.
+  - Link: https://developer.mozilla.org/en-US/docs/Web/CSS/border
+
+> Note, you don’t need to specify the properties in a specific order when using the shorthard properties (with the exception below). You also don't need to include all properties, you can leave out the ones that are not relevant.  
+
+- Notice the forward slash (/) in the book example when using the `background` shorthand property. The forward slash is required syntax for separating `background-position` and `background-size` values. This is to eliminate misinterpretation of the values specified. If you're going to specify both, then `background-position` has to come first, then the forward slash, then the `background-size`.
+
+- Remember the CSS is all about cascading. To Define 3 borders the same and 1 different, you can do it like in the example below. Remember that in CSS more-specific styles trump more general ones the same way how styles applied locally trump styles applied in external style sheet.
+
+```css
+border: 2px solid aqua;
+border-bottom: 5px dashed red;
+```
+
+- The `background` property is specified as one or more background layers, separated by commas. The order of the items correlates with the order of the layers: The first item is the top layer and on down through the backgrounds.
+
+DO: Review the background-layers.html and and if I didn't miss anything from "Both of these images have transparent" and then move on starting from "Using Forgotten Background Properties".  
+DO: Reading from Lesson 14
 
 ---
 
