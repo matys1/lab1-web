@@ -367,8 +367,23 @@ border-bottom: 5px dashed red;
 
 - The `background` property is specified as one or more background layers, separated by commas. The order of the items correlates with the order of the layers: The first item is the top layer and on down through the backgrounds.
 
-DO: Review the background-layers.html and and if I didn't miss anything from "Both of these images have transparent" and then move on starting from "Using Forgotten Background Properties".  
-DO: Reading from Lesson 14
+- The background property can be placed on any block-level HTML element, so we can add a `<div>` with the class box to the HTML
+  - For example, `<div class="box"></div>`.
+
+- The `background-origin` and `background-clip` properties lets you change what parts of the box the background covers. 
+  - The `background-origin` property lets you change from which part of the box the background coverage starts. 
+  - The `background-clip` property specifies whether the background will stop at content box or extend under the border or padding of the element. 
+  - Use the following values with both origin and clip: `border-box`, `padding-box` and `content-box`.
+
+- There a multiple different ways you can change the background sizes. You can use keywords or values (one or multiple). If you have multiple backgrounds, you can set their sizes by separating the values with commas:
+  - Fox example, `background-size: 400px 400px, cover;`. The first background width and height are 400px and the second background is set to cover the entire container (might be stretched or cropped).
+
+- Like with background, there are multiple different ways you can change the background positioning. The `background-position` property lets you define where the background will be drawn relative to the upper-left corner of the element. You can use the keywords `top`, `bottom`, `right`, `left`, and `center`. Or you can use two percentage or length values. One value moves the background right, and two values move it to the right and down. You can also offset from `top`, `bottom`, `right` and `left` followed by a unit.
+  - For example, `background-position: top 2rem right 1rem;`.
+  - Look into what is and how to use `calc()`.
+
+Notes: continue form "Changing the Scrolling of Backgrounds".  
+Reading: continue from LESSON 14.  
 
 ---
 
