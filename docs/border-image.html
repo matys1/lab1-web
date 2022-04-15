@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>border image</title>
+    <style>
+      #border {
+      width: 200px;
+      background-color: #ffa;
+      border: 30px solid;
+      margin: 25px auto;
+      padding: 20px;
+      text-align: center;
+      border-image:
+        /*remember: The slice, width and outset accept from one to four values. One value, as always, is a shorthand for applying the same value on all four sides.*/
+        url("assets/border-fill.png") /*source; 90 x 90 pixel picture with 3x3 diamond grid*/
+        30 / /*slice; unitless. measures in px for png and jpeg and coordinates for SVG. size of 1 diamond 90/3=30; include optional `fill` value*/
+        30px / /*width of diamonds; 30 should make it pixel perfect but not guaranteed unless you use space*/
+        15px /*outset; half of width will place the center right on the edge of border*/
+        round; /*repeat; space is also a good option that would guarantee diamonds being pixel perfect unlike now where they are stretched to achieve proper fit*/
+        /*you can do tricks by specifying 0 for one or more slices or widths, mentioned in book*/
+      }
+    </style>
+  </head>
+  <body>
+    <div id="border">This element is surrounded by a border image!</div>
+  </body>
+</html>

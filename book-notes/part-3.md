@@ -403,10 +403,43 @@ border-bottom: 5px dashed red;
 - To create zebra-stripe tables, you can just use the even or odd keywords. See index.html for an example.
   - CSS used: `tbody tr:nth-child(even) { background-color: #dfdfdf; }`
 
-- There are two types of gradients: linear and radial. 
+- There are two types of gradients: linear and radial. Gradients are created using the `background-image` property or the `background` shorthand. 
+  - Linear gradients fade from one color to the next in a single direction. Create a linear gradient using the `linear-gradient()` expression.
+    - List any number of colors comma separated
+    - Add color stops
+    - Indicate direction
+  - Radial gradients start at a single point and emanate outward. Create a radial gradient using the `radial-gradient()` expression.
+    - Specify shape (`circle` or `ellipse` - default).
+    - Specify size (`closest-side`, `closest-corner`, `farthest-side` or `farthest-corner`).
+    - Specify starting position using `at` followed by positiong keywords (`left`, `center`, `right`, `top` or `bottom`) or exact position in lengths or percentages. 
+    - List any number of colors comma separated.
+    - Add color stops.
+
+- Use `border-radius` property to round the corners of elements. The property accepts one to four values. One value rounds all four courners the same radius and four values rounds each corner separately. See specification for more detail.
+
+- See gradients.html for examples of gradients and rounded corners.
+
+- You can create image borders, where the boarder is not just one solid color but a picture. You can define any picture as a border using the `border-image` shorthand property. The `border-image` combines 5 properties that define source, slice, width, outset and repeat.
+
+- In order to create a repeating image, you need to create a 9 × 9 grid of the image (you can leave out the central image you you're not planning to use the `fill` value) and then slice the image with the slice property.
+
+- See border-image.html for a very good example and the Mozilla documentation is excellent. It's where I found the example that I modified and used in the HTML.
+
+- An `outline` is a line around visible objects on the web page that is designed to make the object stand out. Outline is different from `border` in three ways:
+  - Outlines do not take up space (not part of the box model)
+  - Outlines may be non-rectangular (especially if applied to inline elements; might display the contours of letters)
+  - Browsers and other user agents often render outlines on elements when they are in the `:focus` state
+
+- For accessibility reasons never use `outline: none;` or `outline: 0;`. 
+
+- `outline` shorthand includes style, color and width properties. There's also a separate `outline-offset` propery that specifies how far from the edge of the border you want to draw the outline, default is 0 (can also be negative). See an example of outlines in gradients.html.
 
 ---
 
 **Links in the book:**  
 
 Reagrding "Alternating Background Colors", CSS3 structural pseudo-class selector tester: http://lea.verou.me/demos/nth.html  
+
+## LESSON 14
+
+Reading & Notes from Lesson 14.

@@ -13,24 +13,30 @@
             height: 800px;
         }
         .divs {
-            box-sizing: border-box;
-            width: 40%;
-            height: 100%;
-            border: 1px solid black;
-            float: left;
-            margin: 10px;
+          box-sizing: border-box;
+          width: 90%;
+          height: 45%;
+          border: 1px solid black;
+          padding: 10px;
+          margin: 40px auto;
+          border-radius: 1rem;
         }
-        /*#linear {
-            background-image: linear-gradient(red, green, blue);
-        }*/
-
-        /*size so that 100% would include the margin of 10px and would't push it ouside*/
+        .linear {
+          background-image: linear-gradient(to right, red, orange, green); /*indicate direction; specify any number of colors; add color stop of e.g. `orange 35%` wanted*/
+          outline: green solid 3px;
+          outline-offset: 6px;
+        }
+        .radial {
+          background-image: radial-gradient(circle closest-corner at 30% 50%, orange, aqua, white); /*shape; size; starting position*/
+          outline: black dashed 2px;
+          outline-offset: -12px;
+        }
     </style>
   </head>
   <body>
     <div class="container">
-    <div class="divs"></div>
-    <div class="divs"></div>
+    <div class="divs linear"></div>
+    <div class="divs radial"></div>
     </div>
   </body>
 </html>
