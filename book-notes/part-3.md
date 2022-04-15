@@ -382,11 +382,31 @@ border-bottom: 5px dashed red;
   - For example, `background-position: top 2rem right 1rem;`.
   - Look into what is and how to use `calc()`.
 
-Notes: continue form "Changing the Scrolling of Backgrounds".  
-Reading: continue from LESSON 14.  
+- Use the `background-attachment` property to control the scrolling of the background using values:
+  - `scroll` - will scroll with viewport but will remain fixed inside the container element.
+  - `fixed` - will remain fixed in both. 
+  - `local` - will scroll with both viewport and inside the container element.
+  - See the background-scroll.html for an example from the book.
+
+- You can use pseudo-class selectors to create alternating rows in the table. The best thing is that they are dynamic so you don't need to assign a different background manually for each row. It also means that if you add more rows to the table tomorrow, the rules will apply to the extra rows automatically without needing to modify anything.
+
+- There are four pseudo-classes `:nth-child()`, `:nth-last-child()`, `:nth-of-type()` and `:nth-last-of-type()`. The first two select based on all child elements, the last two select based on element type (such as `<p>`, `<li>`, `<tr>` etc.).
+
+- All four accept four types of values:
+  - An integer value
+  - `even` for even-numbered elements
+  - `odd` for odd-numbered elements
+  - A formula: `an+-b` where `a` is an ingeter value, `n` is a literal letter n, `+-` is an operator so either `+` or `-` and `b` is another integer value.
+    - For example: Every other element, starting with the fifth one `:nth-child(2n+5)`
+    - Or: Every sixth element, starting with the second one `:nth-child(6n+2)`
+
+- To create zebra-stripe tables, you can just use the even or odd keywords. See index.html for an example.
+  - CSS used: `tbody tr:nth-child(even) { background-color: #dfdfdf; }`
+
+- There are two types of gradients: linear and radial. 
 
 ---
 
 **Links in the book:**  
 
-Reagrding "Alternating Background Colors" - http://lea.verou.me/demos/nth.html  
+Reagrding "Alternating Background Colors", CSS3 structural pseudo-class selector tester: http://lea.verou.me/demos/nth.html  

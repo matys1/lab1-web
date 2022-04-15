@@ -63,3 +63,5 @@ a:hover, a:focus, a:active {
 video {
   width: 50%; height: auto;
 }
+
+tbody tr:nth-child(even) { background-color: #dfdfdf; }
