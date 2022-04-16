@@ -442,4 +442,14 @@ Reagrding "Alternating Background Colors", CSS3 structural pseudo-class selector
 
 ## LESSON 14
 
-Reading & Notes from Lesson 14.
+Reading from Lesson 15.  
+Notes from Lesson 14.  
+
+---
+
+**Links in the book:**  
+
+- Regarding `transform: matrix();` - http://angrytools.com/css-generator/transform/
+- List of properties that can be transitioned - http://oli.jp/2010/css-animatable-properties/
+- Interesting examples - http://leaverou.github.io/animatable/
+- Reagarding `cubic-bezier()`; a tool to help build timing functions - https://matthewlein.com/tools/ceaser
