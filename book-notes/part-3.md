@@ -471,9 +471,58 @@ Reagrding "Alternating Background Colors", CSS3 structural pseudo-class selector
   - Use the `perspective` property in the parent element to define the perspective from which the third dimension is viewed. This determines the intensity if the transformation (further away is less intense than up close). For example, `perspective: 40cm;`.
   - Elements that are transformed in 3D space will look no different than elements that have been transformed on a 2D plane unless you give them a frame of reference. Book used a blank container element with a border around each transformed element (Figure 14.5).
 
+- The transform properties apply only to block-level elements and a few table elements. If you need to transform an inline element such as a `<code>` block, you should first add the `display: block;` or `display: inline-block;` style to it.
+
 ### Using Transition property
 
-- Create animations using the `transition` property.
+- Create animations using the `transition` shorthand property. It includes:
+  - `transition-property` - specifies which CSS properties should transition
+  - `transition-duration` - amount of time the transition will take
+  - `transition-timing-function` - specifies the function used to determine how intermediate values in the animation are computed
+    - Accepted values are `ease` (default), `ease-in`, `ease-out`, `ease-in-out` and `linear`. Define a custom timing function using the `cubic-brezier()` function.
+  - `transition-delay` - defines when the transition will start
+
+- The notation: `transition: property duration timing-function delay;`
+
+- You can specify multiple properties in the same `transition` property separated by comma. For example, `transition: width 4s, height 2s;`
+
+- In the transforms.html we were assigning transforms directly to elements and they were redered already transformed. If you want to create an animation where the object will be rendered with the originally defined values and then transition into a different state then you need to define a trigger, like a `:hover` state.
+
+- Using this method you assign the `transition` directly to the element but place the `transform` (it doesn't have to be a `transform`, you can use any property like `width: 20px`) in the `:hover` state. The key is that whatever property you put in the trigger (e.g. `:hover` state) has to be referenced by thr `transition` property assigned to the element.
+
+- In the `transition` property you can also use the keyword `all` that works as a shorthand to apply the transition to all properties that are meant to transition. This saves you time. In the example below, using `all` to avoid listing `transform` and `background-color` separately.
+
+```css
+#rotated {
+  transition: all 1s ease;
+}
+#rotated:hover {
+  transform: rotate(45deg);
+  background-color: red;
+}
+```
+
+- A full list of properties that can be transitioned or animated: https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties. Also, you should avoid transitioning to and from `auto`.
+
+- In situations where you want to create a `transition` but there isn't an appropriate CSS selector you need to use JavaScript. For example, CSS has a `:hover` class but doesn't have a `:click` pseudo-class. 
+
+- One way to do this is to define classes that you can assign when an element is clicked. You would have a class for the element itself and a class for when it’s clicked:
+
+```css
+div {
+  width: 10rem;
+  height: 10rem;
+  background: #ff0000;
+  transition: transform 3s linear;
+}
+div.clicked {
+  transform: rotate(230deg);
+}
+```
+
+- And then you use JavaScript to add and remove the `clicked` class. In the book they used jQuery so I will not even try it as I want to focus on vanilla JS.
+
+- To see an animated version of the transformations in the transforms.html see the transitions.html (just removed the buttons). 
 
 ---
 
@@ -483,3 +532,7 @@ Reagrding "Alternating Background Colors", CSS3 structural pseudo-class selector
 - List of properties that can be transitioned - http://oli.jp/2010/css-animatable-properties/
 - Interesting examples - http://leaverou.github.io/animatable/
 - Reagarding `cubic-bezier()`; a tool to help build timing functions - https://matthewlein.com/tools/ceaser
+
+## LESSON 15
+
+Continue reading and notes from Lesson 15.
