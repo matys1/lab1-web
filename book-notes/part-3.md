@@ -442,8 +442,38 @@ Reagrding "Alternating Background Colors", CSS3 structural pseudo-class selector
 
 ## LESSON 14
 
-Reading from Lesson 15.  
-Notes from Lesson 14.  
+### Using Transform property
+
+- The CSS `transform:` property lets you transform an element by accepting the below transform functions:
+  - `rotate()` - spins the element by angle (in degrees)
+    - Specify units in `deg` (degrees). 
+    - Accepts both positive and negative numbers.
+  - `scale()` - resizes elements (smaller or bigger)
+    - No unit. `0.5` represents half the current, `2` represents two times as large.
+    - Specifying a single number will resize it both horizontally and vertically.
+    - Accepts both positive and negative numbers. Negative values cause an element to scale in a mirror image way. For example, `transform: scalex(−1);` would display it in a morror way and `transform: scaley(−1);` would display it upside down.
+  - `translate()` - moves the element in x, y direction to a new position
+    - Specifying a single number will move it only horizontally. Specify a second number separated by comma will also move it vertically.
+  - `skew()` - distorts along the x or y axis
+    - Specifying a single number will skew it only horizontally. Specify a second number separated by comma will also skew it vertically.
+    - Specify units in `deg` (degrees).
+  - `matrix()` - combines all 4 above transform functions and gives you pixel-perfect control over how your elements are transformed. In other words, you can do with the `matrix()` function everything you can do with the above 4 functions separately.
+
+> Note, most of the above functions have related 3D functions as well as x-axis, y-axis and z-axis functions.
+
+- When you transform an element, the browser won’t change or move the surrounding elements. A transformed element can overlap and even hide other elements on the page.
+
+- When you transform an element, it affects everything in that element. If you double the size of a 200 × 200 box with 15px padding with, for example, `transform: scale(2);`, it will display as 400 × 400 with 30px padding. The transformation applies to other styles on the element as well, such as font size, margins, borders, and outlines.
+
+- See transforms.html to see an example of all 4 transform functions. Note that you can also combine multiple transform functions (separated by space) in the same `transform:` property. The order in which you place the functions in your CSS is the order in which they are applied. Changing the order could change how an element looks on the page.
+
+- When you use the 3D functions remember two things:
+  - Use the `perspective` property in the parent element to define the perspective from which the third dimension is viewed. This determines the intensity if the transformation (further away is less intense than up close). For example, `perspective: 40cm;`.
+  - Elements that are transformed in 3D space will look no different than elements that have been transformed on a 2D plane unless you give them a frame of reference. Book used a blank container element with a border around each transformed element (Figure 14.5).
+
+### Using Transition property
+
+- Create animations using the `transition` property.
 
 ---
 
