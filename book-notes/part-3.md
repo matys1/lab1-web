@@ -535,4 +535,21 @@ div.clicked {
 
 ## LESSON 15
 
-Continue reading and notes from Lesson 15.
+- What was covered so far in Lessons 14 & 15:
+  - CSS Transitions - start of CSS animation, very limited in scope
+  - CSS Animations - goes beyond the two-frame state of transitions by adding keyframes and other features
+  - JS Animations on HTML `<canvas>` - more powerful (though harder to learn) than CSS Animations
+  - SVG Animations - was only briefly mentioned, no idea where it stacks on the list
+
+> Note, that while JS on `<canvas>` is a lot more powerful than anything CSS-based, it's believed that CSS animations are faster than JS. So for some small interactions, transitions and animations CSS might be worth considering from the optimization point of view.
+
+Continue reading from Lesson 16.  
+Continue notes from Lesson 15.  
+
+---
+
+**Links in the book:**  
+
+A tool that helps you build curves: http://cubic-bezier.com/  
+The example of animated dog: https://htmljenn.com/mckinley-talking.html  
+A tool to build SVG graphics and animate them: https://inkscape.org/en/  
