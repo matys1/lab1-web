@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>A Canvas with Shapes</title>
+    <style>
+      canvas { border: solid thin black; }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="350" height="450"></canvas>
+    <script>
+      /*notice how syles must always be ABOVE the drawing methods, otherwise the drawings will use the default colors*/
+      var canvas = document.getElementById('myCanvas'); /*reference canvas by id*/
+      var context = canvas.getContext('2d'); /*set context*/
+      
+      /*drawing a filled rectangle and a rectangle outline*/
+      context.fillStyle = "rgb(13, 118, 208)"; /*defines color of the fill*/
+      context.fillRect(30, 30, 150, 150); /*create a filled rectangle*/
+      context.strokeStyle = 'blue'; /*defines color of the stroke*/
+      context.strokeRect(35, 35, 150, 150); /*draws an outline of the recangle, 5px down and to the right of fill*/
+     
+      /*drawing a filled circle and a circle outline*/
+      var startPoint = (Math.PI/180)*0; /*calculates and stores the starting angle in radians*/
+      var endPoint = (Math.PI/180)*360; /*calculates and stores the ending angle in radians*/
+      context.beginPath(); /*circle is drawn as a path, use beginPath() to start the path*/
+      context.arc(200,200,100,startPoint,endPoint,true); /*then define the path as a circle using the arc() method*/
+        /*at this point there's still nothing visible on the canvas, until you fill or stroke the path*/
+      context.fillStyle = "rgba(155, 0, 0, 0.5)"; /*defines color of the fill*/
+      context.fill(); /*fills the path*/
+      context.strokeStyle = "rgb(255, 0, 0)"; /*defines color of the stroke*/
+      context.stroke(); /*strokes the path*/
+
+      /*drawing a line*/
+      context.beginPath(); /*start the path*/
+      context.moveTo(0,0); /*move the pointer to the starting position*/
+      context.lineTo(60,60); /*the lineTo method takes the x and y coordinates for the next point on the line*/
+      context.strokeStyle = "black"; /*set stroke color*/
+      context.lineWidth = 15; /*set line width (default is 1px)*/
+      context.stroke(); /*stroke the line path to make it appear on canvas*/
+     
+      /*drawing a triangle*/
+      context.beginPath(); /*start the path*/
+      context.moveTo(20,30); /*move the pointer to the starting position*/
+      context.lineTo(350,100); /*draw a line to the first point on the triangle*/
+      context.lineTo(250,400); /*draw a line to the second point on the triangle*/
+      context.fillStyle = "rgba(0, 0, 155, 0.5)"; /*set fill color*/
+      context.fill(); /*fill() method will fill the path and close it drawing a straight line along to the origin*/
+    </script>
+  </body>
+</html>

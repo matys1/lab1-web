@@ -576,11 +576,13 @@ div.clicked {
 
 - The real power of `animation` comes with the ability to define more than two keyframes which you can optionally include describing intermediate steps between the start and end of the animation.
 
-### The animation sub-properties
+### The 8 animation sub-properties
 
-- The `animation-timing-function` is equivalent to the `transition-timing-function` and accepts the same exact values, including the `cubic-bezier()` function that defines the Bézier curve (FYI Chrome developer tools has a build-in cubic-bezier editor). Each of the standard functions has an equivalent `cubic-bezier()` function. You can use the function to create your own timing curves. See animation3.html for an example.
+- The `animation-duration` function is exactly the same as the `transition-duration` function and sets the amount of time the animation will take.
 
-- In the above example you'll notice the use of the `calc()` function. If you position the element 100% left it's placed mostly offscreen. If you want it to be placed up against the left border, without going over, you need to use the CSS `calc()` function.
+- The `animation-timing-function` is equivalent to the `transition-timing-function` and accepts the same exact values, including the `cubic-bezier()` function that defines the Bézier curve (FYI Chrome developer tools has a build-in cubic-bezier editor). Each of the standard functions has an equivalent `cubic-bezier()` function. You can use the function to create your own timing curves.
+
+> In the animation3.html example you'll notice the use of the `calc()` function. If you position the element 100% left it's placed mostly offscreen. If you want it to be placed up against the left border, without going over, you need to use the CSS `calc()` function.
 
 - The `animation-delay` property is the same as the `transition-delay` property. 
 
@@ -610,10 +612,46 @@ div.clicked {
 
 ### Using Canvas
 
-Reading from Lesson 16.  
-Notes from "Using the CSS Canvas".  
-Check if the previous section covers all 8 sub-classes and just read over it to make sure it makes sense.  
+- The HTML `<canvas>` element creates a rectangular region on a web page where you can draw anything you’d like by using JavaScript.
 
+- When you use the `<canvas>` element you want to specify the `width` and `height` of the canvas area and give it an `id` so you can reference it in JS.
+  - For example, `<canvas id="myCanvas" width="350" height="450"></canvas>`
+
+> You can assign `width` and `height` in CSS (as you typically should) but due to how the image is scaled during rendering it might end up being distorted. It is better to specify your canvas dimensions by setting the `width` and `height` attributes directly on the `<canvas>` elements, either directly in the HTML or by using JavaScript.
+
+- In order to draw on a `<canvas>` element, you must pass the string `2d` to the `getContext()` method. Otherwise, your `<canvas>` element will not display anything.
+
+```js
+<script>
+  var canvas = document.getElementById('myCanvas');
+  var context = canvas.getContext('2d');
+</script>
+```
+
+> See canvas.html as an example on how to draw basic shapes like rectangles.
+
+- To draw a circle you use the `arc()` method:  
+  - `arc(x, y, radius, startAngle, endAngle, clockwise);`
+
+- Arcs in the `<canvas>` element are measured in radians, not degrees. In JavaScript, you can convert degrees to radians with the following expression:
+  - `var radians = (Math.PI/180)*degrees;`
+
+- Like circles, lines and polygons are drawn using paths. There are five methods to draw and use paths:
+  - `beginPath()` - creates a path on a canvas.
+  - `closePath()` - draws a straight line from the current point to the start. It doesn’t do anything when a path is already closed or on a path with only one point.
+  - `stroke()` - draws an outline of a path.
+  - `fill()` - fills in the shape of a path.
+  - `moveTo()` - draws nothing but moves the drawing position to a new location on the canvas.
+
+> When drawing a path you should always specify the starting position of the path with the `moveTo()` command. The `<canvas>` element will treat your first construction that way, regardless of what the method actually is, and this will prevent you from getting surprising results.
+
+> If you don’t close the path and choose to fill the shape using the `fill()` method, the shape will close automatically, with a straight line from the last point on the path to the first point. You do not need to close the path with the `closePath()` method.
+
+- Notice in the canvas.html how when drawing the triangle you don't draw the third line from the second point back to origin and you don't close the path, because the `fill()` method fills along a straight line to the origin and closes the path automatically. If I would use `stroke()` method instead, however, I would need to draw the third line back and close the path using the `closePath()` method.
+
+Continue notes from "Adding Images to the Canvas".  
+Continue reading from LESSON 16.  
+  
 ---
 
 **Links in the book:**  
