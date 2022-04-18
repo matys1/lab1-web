@@ -543,8 +543,76 @@ div.clicked {
 
 > Note, that while JS on `<canvas>` is a lot more powerful than anything CSS-based, it's believed that CSS animations are faster than JS. So for some small interactions, transitions and animations CSS might be worth considering from the optimization point of view.
 
-Continue reading from Lesson 16.  
-Continue notes from Lesson 15.  
+- The `<canvas>` HTML element can be used with the Canvas API or the WebGL API. WebGL is used for interactive 3D graphics, similar to what you would see in a video game. It has an interactive 3D plane and a camera perspective. WebGL is not for creating statistical charts or data visualisations. Or at least it would be an overkill to use it for such purpose. Canvas API provides the means for drawing 2D graphics via JavaScript. D3 uses Canvas API.
+
+### Using CSS Animation
+
+- CSS `animation` property lets you animate transformations in a standalone fashion. It doesn't require a trigger event to start the animation like `transition`. CSS `animation` consists of two things:
+  - the styles that are animated
+  - the keyframes that indicate the beginning and end states for each animation style.
+  
+- The `animation` shorthard property includes 8 sub-properties (the order doesn't matter). All have a `animation-` prefix: `delay`, `direction`, `duration`, `iteration-count`, `name`, `play-state`, `timing-function` and `fill-mode`.
+
+- In order to use any of the properties above you first need to set up a `@keyframes` rule by establishing two or more keyframes in your CSS. With a keyframe, you define the state changes for an animation. For example:
+
+```css
+@keyframes myAnimation {
+  from {
+    transform: scale(0.5);
+    background: red;
+  }
+  to {
+    transform: scale(1);
+    background: blue;
+  }
+}
+```
+
+- The above animation performs the same changes as the `transition` property. It contains two keyframes (the start and end keyframe) just like a `transition` property would, but it applies to the element automatically without needing a trigger.
+
+- Keyframes use percentages to indicate the time during the animation sequence at which they take place. `0%` indicates the start of the animation sequence, while `100%` indicates the end state of the animation. The two states have special aliases: `from` and `to`. Both are optional. If `from`/`0%` or `to`/`100%` is not specified, the browser starts or finishes the animation using the computed values of all attributes.
+
+- To understand this better, see animation2.html that translates the headline off the screen 100 pixels at the beginning (0%). The browser then animates the element to its final position automatically.
+
+- The real power of `animation` comes with the ability to define more than two keyframes which you can optionally include describing intermediate steps between the start and end of the animation.
+
+### The animation sub-properties
+
+- The `animation-timing-function` is equivalent to the `transition-timing-function` and accepts the same exact values, including the `cubic-bezier()` function that defines the Bézier curve (FYI Chrome developer tools has a build-in cubic-bezier editor). Each of the standard functions has an equivalent `cubic-bezier()` function. You can use the function to create your own timing curves. See animation3.html for an example.
+
+- In the above example you'll notice the use of the `calc()` function. If you position the element 100% left it's placed mostly offscreen. If you want it to be placed up against the left border, without going over, you need to use the CSS `calc()` function.
+
+- The `animation-delay` property is the same as the `transition-delay` property. 
+
+- When you set a delay on your animations, you may notice that the animated elements do not behave as expected. This is because animations do not affect the element before the first keyframe is played or after the last one is played. You can change this behavior with the `animation-fill-mode` property using values:
+  - `none` - The animation does not affect the styles of the element either before or after running.
+  - `forwards` - The animated element keeps the styles set by the last keyframe.
+  - `backwards` - The element gets the styles set by the first keyframe, including during the `animation-delay`.
+  - `both` - Both the forwards and backwards values are applied.
+
+- Use `animation-iteration-count` to change how many times the animation repeats. The values can be numeric or a keyword `infinite`. 
+
+- Use `animation-direction` to change the way the animation is played and repeated. There are four possible values:
+  - `normal` - Default. Plays the animation from start to finish.
+  - `reverse` - Plays the animation backward, from finish to start.
+  - `alternate` - Plays the animation first from start to finish and then in reverse and so on until the iteration count is reached.
+  - `alternate-reverse` - Plays the animation first from finish to start and then in reverse and so on until the iteration count is reached.
+
+- Use `animation-play-state` property to play or stop an animation using values `paused` or `running`. One way to let a user stop an animation is by adding it to a pseudo-class such as `:hover` like:
+
+```css
+.ball:hover {
+  animation-play-state: paused;
+}
+```
+
+- Use `animation-name` property to define the `@keyframe` rule to use for the animation. This name is a custom identifier for each animation. You can also use the keyword `none` to turn off the animation.
+
+### Using Canvas
+
+Reading from Lesson 16.  
+Notes from "Using the CSS Canvas".  
+Check if the previous section covers all 8 sub-classes and just read over it to make sure it makes sense.  
 
 ---
 
