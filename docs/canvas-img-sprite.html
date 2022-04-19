@@ -3,45 +3,31 @@
   <head>
     <meta charset="utf-8">
     <title>McKinley Has a Lot to Say</title>
-    <style>
-      canvas {
-        transform: scale(0.5) translateY(−600px);
-      }
-    </style>
   </head>
   <body>
-    <canvas id="myCanvas" width="1262" height="1209"></canvas>
+    <canvas id="myCanvas" width="128" height="128"></canvas>
     <script>
-      var canvas = document.getElementById("myCanvas");
-      var context = canvas.getContext('2d');
+      var canvas = document.getElementById("myCanvas"); /*reference canvas by id*/
+      var context = canvas.getContext('2d'); /*set context*/
       var mckinleyImage = new Image(); /*adds new image to the DOM*/
-      mckinleyImage.src = "images/mckinley-talking-sprite.jpg"; /*populates the image with the source file*/
+      mckinleyImage.src = "assets/loading-sprite.png"; /*populates the image with the source file*/
+      var width = 128; /*store in variable width; same for all frames*/
+      var height = 128; /*store in variable height; same for all frames*/
+      var frames = 11; /*number of frames in total, JS starts counting from 0 so we have 12 frames*/
+      var currentFrame = 0; /*specify current frame, starts with the first one frame 0*/
    
-      var width = 1262; /*set in variables same width and height for both images*/
-      var height = 1209;
-     
-      var frames = 1; /*number of frames in total, JS starts counting from 0 so we have 2 frames*/
-      var currentFrame = 0; /*current frame*/
-   
-      var draw = function() {
-        context.clearRect(0, 0, width, height);
-        context.drawImage(
-          mckinleyImage,
-          width * currentFrame,
-          0,
-          width,height,
-          0,0,
-          width,height
-        );
-       
-        if (currentFrame == frames) {
-          currentFrame = 0;
+      var draw = function() { /*define a function named draw*/
+        context.clearRect(0, 0, width, height); /*clears the entire 128 x 128 canvas between frames to make it ready for new a drawing. Each frame width is the same as canvas width.*/
+        context.drawImage(mckinleyImage, width * currentFrame, 0, width, height, 0, 0, width, height); /*each time the function runs current frame gets incremented thus changing the point on x-axis from which the crop starts*/
+
+        if (currentFrame == frames) { /*if current frame = total frame count*/
+          currentFrame = 0; /*reset the current frame to 0*/
         } else {
-          currentFrame++;
+          currentFrame++; /*else increment current frame by 1*/
         }
       };
    
-      setInterval(draw, 200);
+      setInterval(draw, 100); /*execute the draw function every 100 milliseconds*/
     </script>
   </body>
 </html>

@@ -658,7 +658,9 @@ div.clicked {
 - The `drawImage()` method contains the following parameters:
   - `context.drawImage(clipx, clipy, clipwidth, clipheight, gox, goy, gowidth, goheight);`
 
-Continue from "Then you build the image in the `<canvas>` element."
+- In a sprite image, you create one large coposite image consisting of multiple smaller images stiched together side by side. You then use the `drawImage()` method to crop and display only the relevant part for each frame.
+
+Continue from "Choosing Between CSS Animation and Canvas Animation", but need to just go back to this commit and properly go over the notes in this section to make sure all is ok but all 3 canvas html examples are 100% working and understood now.
 
 ---
 

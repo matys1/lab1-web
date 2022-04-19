@@ -16,8 +16,8 @@
     <script>
       /*the goal of this exercise is to take any large resolution image (e.g. 2000px x 2000px) and display it scaled down to 780 x 680 and cropped 200 x 200*/
       /*i don't have the mckinley image used in the exercise but you can use any other image*/
-      var canvas = document.getElementById('myCanvas');
-      var context = canvas.getContext('2d');
+      var canvas = document.getElementById('myCanvas'); /*reference canvas by id*/
+      var context = canvas.getContext('2d'); /*set context*/
       var img = new Image(); /*adds new image to the DOM*/
       img.src = "images/mckinley.jpg"; /*populates the image with the source file*/
       img.onload = function() { /*load the image*/
