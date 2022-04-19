@@ -582,7 +582,7 @@ div.clicked {
 
 - The `animation-timing-function` is equivalent to the `transition-timing-function` and accepts the same exact values, including the `cubic-bezier()` function that defines the Bézier curve (FYI Chrome developer tools has a build-in cubic-bezier editor). Each of the standard functions has an equivalent `cubic-bezier()` function. You can use the function to create your own timing curves.
 
-> In the animation3.html example you'll notice the use of the `calc()` function. If you position the element 100% left it's placed mostly offscreen. If you want it to be placed up against the left border, without going over, you need to use the CSS `calc()` function.
+> In the animation3.html example you'll notice the use of the `calc()` function. If you position the element 100% left it's placed mostly offscreen. If you want it to be placed up against the left border, without going over, you need to use the CSS `calc()` function. You can use the `calc()` function to calculate the exact values from percentages in CSS.
 
 - The `animation-delay` property is the same as the `transition-delay` property. 
 
@@ -647,20 +647,37 @@ div.clicked {
 
 > If you don’t close the path and choose to fill the shape using the `fill()` method, the shape will close automatically, with a straight line from the last point on the path to the first point. You do not need to close the path with the `closePath()` method.
 
-- Notice in the canvas.html how when drawing the triangle you don't draw the third line from the second point back to origin and you don't close the path, because the `fill()` method fills along a straight line to the origin and closes the path automatically. If I would use `stroke()` method instead, however, I would need to draw the third line back and close the path using the `closePath()` method.
+- Notice in the canvas.html how when you draw a triangle using the `fill()` method you don't need to draw the third line from the second point back to origin and you don't need to close the path, because the `fill()` method does both of those things automatically. If I would use `stroke()` method instead, however, I would need to use the `closePath()` method which would then draw a line back to the origin and close the path.
 
 ### Using Canvas for drawing images
 
-- In order to display an image inside a `<canvas>` element, you need to reference an image object as a source file and then draw the image onto the canvas with the `drawImage()` method. You can use two methods:
+- In order to display an image inside a `<canvas>` element, you need to reference an image object as a source file and then draw the image onto the canvas with the `drawImage()` method. To reference an image you have two choices:
   - Access an existing image on the page (in an `<img>` element)
   - Create a new image with JavaScript
+
+- The examples in canvas-imgs.html and canvas-img-sprite.html use the latter option:
+
+```js
+var loadimg = new Image();
+loadimg.src = "assets/loading-sprite.png";
+```
 
 - The `drawImage()` method contains the following parameters:
   - `context.drawImage(clipx, clipy, clipwidth, clipheight, gox, goy, gowidth, goheight);`
 
-- In a sprite image, you create one large coposite image consisting of multiple smaller images stiched together side by side. You then use the `drawImage()` method to crop and display only the relevant part for each frame.
+- `clipx` and `clipy` indicate the x,y coordinates where the clipping is to start from. `clipwidth` and `clipheight` indicate the area of the clipping. `gox` and `goy` indicate the x,y coordinates where the clipped image is to be placed. `gowidth` and `goheight` indicate the size of the clipped image (remember, shrinking down might be ok but you shouldn't stretch the image beyond it's original size).
 
-Continue from "Choosing Between CSS Animation and Canvas Animation", but need to just go back to this commit and properly go over the notes in this section to make sure all is ok but all 3 canvas html examples are 100% working and understood now.
+### Creating a CSS sprite animation
+
+- To create a sprite animation, you first create one large image composited of multiple smaller images (of same size) that are stiched together side by side. The idea is that each smaller image is going to serve as an individual frame in the animation. 
+
+- You then write a loop function that contains the `drawImage()` method that crops and displays the relevant frame. Each time the function iterates it increments the current frame pushing forward the starting point of the next crop. 
+
+- Check the canvas-img-sprite.html, it's thoroughly commented.
+
+- Overall JavaScript-based animation using `<canvas>` is far more superior to CSS Animation in terms of possibilities. CSS Animation is good for basic transition and it might be more performant than JS (though the performance advantage CSS has I think is probably negligeable if there's an advantage at all). 
+
+- Remember, CSS Transitions are CSS Animations, just more limited in scope and that they can do. Use CSS Animation if you need more granular control over the animation keyframes and if you need the animation to have more than just a start and end state.
 
 ---
 
@@ -669,3 +686,7 @@ Continue from "Choosing Between CSS Animation and Canvas Animation", but need to
 A tool that helps you build curves: http://cubic-bezier.com/  
 The example of animated dog: https://htmljenn.com/mckinley-talking.html  
 A tool to build SVG graphics and animate them: https://inkscape.org/en/  
+
+## LESSON 16
+
+Continue with reading & notes.

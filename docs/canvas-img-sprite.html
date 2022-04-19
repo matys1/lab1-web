@@ -9,8 +9,8 @@
     <script>
       var canvas = document.getElementById("myCanvas"); /*reference canvas by id*/
       var context = canvas.getContext('2d'); /*set context*/
-      var mckinleyImage = new Image(); /*adds new image to the DOM*/
-      mckinleyImage.src = "assets/loading-sprite.png"; /*populates the image with the source file*/
+      var LoadingImg = new Image(); /*adds new image to the DOM*/
+      LoadingImg.src = "assets/loading-sprite.png"; /*populates the image with the source file*/
       var width = 128; /*store in variable width; same for all frames*/
       var height = 128; /*store in variable height; same for all frames*/
       var frames = 11; /*number of frames in total, JS starts counting from 0 so we have 12 frames*/
@@ -18,7 +18,7 @@
    
       var draw = function() { /*define a function named draw*/
         context.clearRect(0, 0, width, height); /*clears the entire 128 x 128 canvas between frames to make it ready for new a drawing. Each frame width is the same as canvas width.*/
-        context.drawImage(mckinleyImage, width * currentFrame, 0, width, height, 0, 0, width, height); /*each time the function runs current frame gets incremented thus changing the point on x-axis from which the crop starts*/
+        context.drawImage(LoadingImg, width * currentFrame, 0, width, height, 0, 0, width, height); /*each time the function runs current frame gets incremented thus changing the point on x-axis from which the crop starts*/
 
         if (currentFrame == frames) { /*if current frame = total frame count*/
           currentFrame = 0; /*reset the current frame to 0*/
