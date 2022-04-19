@@ -610,7 +610,7 @@ div.clicked {
 
 - Use `animation-name` property to define the `@keyframe` rule to use for the animation. This name is a custom identifier for each animation. You can also use the keyword `none` to turn off the animation.
 
-### Using Canvas
+### Using Canvas for drawing shapes
 
 - The HTML `<canvas>` element creates a rectangular region on a web page where you can draw anything you’d like by using JavaScript.
 
@@ -649,9 +649,17 @@ div.clicked {
 
 - Notice in the canvas.html how when drawing the triangle you don't draw the third line from the second point back to origin and you don't close the path, because the `fill()` method fills along a straight line to the origin and closes the path automatically. If I would use `stroke()` method instead, however, I would need to draw the third line back and close the path using the `closePath()` method.
 
-Continue notes from "Adding Images to the Canvas".  
-Continue reading from LESSON 16.  
-  
+### Using Canvas for drawing images
+
+- In order to display an image inside a `<canvas>` element, you need to reference an image object as a source file and then draw the image onto the canvas with the `drawImage()` method. You can use two methods:
+  - Access an existing image on the page (in an `<img>` element)
+  - Create a new image with JavaScript
+
+- The `drawImage()` method contains the following parameters:
+  - `context.drawImage(clipx, clipy, clipwidth, clipheight, gox, goy, gowidth, goheight);`
+
+Continue from "Then you build the image in the `<canvas>` element."
+
 ---
 
 **Links in the book:**  

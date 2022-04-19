@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>McKinley on Canvas</title>
+    <style>
+      #myCanvas {
+        width: 800px;
+        height: 600px;
+        margin: 0 auto;
+        display: block;
+      }
+    </style>
+  <body>
+    <canvas width="800" height="600" id="myCanvas"></canvas>
+    <script>
+      /*the goal of this exercise is to take any large resolution image (e.g. 2000px x 2000px) and display it scaled down to 780 x 680 and cropped 200 x 200*/
+      /*i don't have the mckinley image used in the exercise but you can use any other image*/
+      var canvas = document.getElementById('myCanvas');
+      var context = canvas.getContext('2d');
+      var img = new Image(); /*adds new image to the DOM*/
+      img.src = "images/mckinley.jpg"; /*populates the image with the source file*/
+      img.onload = function() { /*load the image*/
+        context.drawImage(img, 10,10, 780, 680); /*Draw the full sized image on canvas at the x-10 and y-10 coordinates and at 780 x 680 resolution*/
+        context.drawImage(img, 842,344,532,594, 0,300,200,200); /*Crop the image starting from x-842, y-344 with width-532 and height-594. Draw the cropped image on x-0, y-300 with resoltion of 200 x 200*/
+    }
+    </script>
+  </body>
+</html>
