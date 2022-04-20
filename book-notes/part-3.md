@@ -689,4 +689,39 @@ A tool to build SVG graphics and animate them: https://inkscape.org/en/
 
 ## LESSON 16
 
-Continue with reading & notes.
+This lesson focused a lot on the theory of Responsive Web Design (RWD). It also recapped some of the points from previous lessons. Regardless, the key takeaways are listed below.
+
+- In the first half of 2010's before the widespread adoption of CSS3 most web sites had separate (but kind of linked) desktop and mobile site. Remember, when you would visit a site from your phone there would be an option "request a desktop site" and it would open a desktop site that you would then have to zoom in to fully see etc. That has changed with RWD where a single site is built and maintained but dynamically adapts based on the size of the screens it's viewed and different characteristics.
+
+> RWD doesn’t look at the device but rather looks at the features. For instance, an RWD site that checks for Retina display doesn’t care if the device is an Apple iPhone 4S or a Samsung Galaxy S9. It just notices that the screen can handle high-resolution Retina images and displays them.
+
+- Think about the BBC website. When you hold your iPad vertically, the view is very similar to what you would see on your mobile (perhaps with just a bit more room for navigation items), but when you turn it horizntally, it looks the same as on a desktop PC with side bars appearing etc. The site just dynamically adapts, expands and shrinks, depending on the resolution of the screen at any given moment. It uses CSS media queries to define fluid grids, variable font sizes, and flexible images.
+
+> As Sir Tim Berners-Lee said in the July 1996 Technology Review: “Anyone who slaps a ‘this page is best viewed with Browser X’ label on a Web page appears to be yearning for the bad old days, before the Web, when you had very little chance of reading a document written on another computer, another word processor, or another network.”
+
+- Remember about the separation of content from design and function and how HTML, CSS and JS play their very distinct and separate roles in this.
+
+- Remember the common HTML sectioning elements like `<article>`, `<aside>`, `<section>`, `<nav>`, `<header>` and `<footer>`.
+
+- Remember to use semantic HTML elements that are not sectioning elements like `<address>`, `<time>`, `<code>`, `<blockquote>`, `<cite>`, `<q>`, `<abbr>` etc.
+
+- Remember the basic attributes `id` and `class`. The `id` gives a unique (per page) name to an element that can be referenced in CSS using the pound sign (`#`). This means that the styles you assign to that `id` will apply only to that one element on the page. You can also link to an `id`, for example, `<article id="main">` and then `<a href="#main">`. You can also use it as a hook for scripts using `getElementById()`. You can assign multiple to an element classes separated by space in the `class` attribute.
+
+---
+
+**Links in the book:**  
+
+HTML validator: https://validator.w3.org/  
+CSS validator: https://jigsaw.w3.org/css-validator/  
+You can search for JS validators online (though validating JS is more difficult)  
+
+## LESSON 17
+
+Continue reading from "Changing Images by Using the `<picture>` Element".  
+Continue notes from Lesson 17.  
+
+---
+
+**Links in the book:**  
+
+Validate if your site is mobile friendly: https://search.google.com/test/mobile-friendly  
