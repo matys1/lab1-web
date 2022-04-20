@@ -717,11 +717,58 @@ You can search for JS validators online (though validating JS is more difficult)
 
 ## LESSON 17
 
-Continue reading from "Changing Images by Using the `<picture>` Element".  
-Continue notes from Lesson 17.  
+- Search engines penalize sites that are not mobile friendly. There are certain things you need to get right when desigining a site so it is mobile friendly:
+  - Do not use Flash
+  - Configure viewport
+  - Avoid fixed-width designs
+  - Media queries for serving images
+  - Relative unit sizes
+  - Relative font sizes (relative to the base font)
+  - Tappable links and elements
+  - Simplify layout and navigation
+  - Minimize download times
+  - Test on real devices
+
+- The viewport is the window (of a browser) in which the web pages are viewed. This window does not include things like scrollbars and menus etc. Below line is the best practice when it comes to configuring the viewport.
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1">
+```
+
+- A very important thing to understand is that there can be a big difference between a device resolution and a viewport size. Consider iPhone 12 Pro with a screen resolution of 1170 x 2532 pixels at 460.3 PPI.
+
+- Mobile browsers render pages in a virtual viewport, generally at 980px wide. And though 980px is slightly less than the 1170px device width it's still a lot for a 2.82-inch screen, which is the type of pixel width you would typically see on a much bigger screen. Individual pixels at this high of a density are very hard to see or distinguish at a normal viewing distance. iPhone 12 Pro has a 1170px width so that rendered virtual viewport is then scaled up slightly to fill the enire screen area. On phones where the device width is less than 980px it shrinks the rendered result down so it can all be seen at once. Regardless, the end result is a webpage that is illegible for many if not everyone because the text and the elements appear tiny on such a small, high DPI screen and bottons and links are near impossible to tap with any precision.
+
+> Another point to consider is that if the virtual viewport is always rendered at 980px width, then pages that use media queries that kick in at 640px or 480px or less would never be used.
+
+- Thus, a conecpt of a "CSS Pixel" emerges. A CSS Pixel is a ratio between the device hardware resolution and the viewport size (both measured in pixels). The concept started to emerge when Apple released iPhone 4 with Retina display that doubled the number of DPI you would find in a normal display up until then. The ratio depends on the display density. The higher the DPI, the higher the ratio between the device advertised resolution and the CSS reference pixel. 
+
+- When you use the `width=device-width` you tell the browser that instead of rendering the page in the default 980px wide virtual viewport you instead take the actual width of the device display (1170 x 2532 at 460.3 PPI) and caclulate the CSS Pixel ratio. When you apply the calculation the size of 'CSS Pixel'-adjusted iPhone 12 Pro viewport becomes 390 x 844 pixels. That's a ratio of 3:1 between the device hardware pixels and the 'CSS Pixel'-adjusted viewport. 
+
+COMMENTS:  
+Mention the experiment you did yourself using the hybrid-layout.html. With the above meta tag (and getting rid of the hardcoded fixed widths) the page and all its elements displayed beautifully at 390 x 844 pixels. Without the meta tag the text was near impossible to see, it looked terrible overall. Below as my notes I copied in:
+
+"iPhone 12 Pro Case Study:
+Actual iPhone 12 Pro resolution: 2532×1170 px
+Without the `<meta>` tag it will display a webpage at 980 px width max; text and all the elements are tiny and not legible. Looks ugly.
+  and min-width:525px on page body will have no effect in a 3-col layout where 1col = 200px, 2col = 125px and 3col = 100% width since 525 + 200 + 125 = 850 which is less than 980 (called it, as expected)
+With the meta tag, assumining you have a fully responsive design with no fixed widths it will actually display the page (and the container elements like body) in 390px width."
+
+- The `initial-scale=1` .... I was in the middle of "How to Configure the Viewport" section so continue the notes from this section. continue reading from Lesson 18.
 
 ---
 
 **Links in the book:**  
 
 Validate if your site is mobile friendly: https://search.google.com/test/mobile-friendly  
+Transforming a table for mobile devices: https://css-tricks.com/responsive-data-tables/  
+Services for dynamic serving of sites:  https://deviceatlas.com/ and http://wurfl.sourceforge.net/  
+
+**Additional Links:**
+
+Regarding the Viewport, meta tag and CSS Pixel:  
+https://developer.mozilla.org/en-US/docs/Glossary/Viewport  
+https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag  
+https://developer.mozilla.org/en-US/docs/Web/CSS/Viewport_concepts  
+https://experienceleague.adobe.com/docs/target/using/experiences/vec/mobile-viewports.html?lang=en  
+https://www.quirksmode.org/blog/archives/2010/04/a_pixel_is_not.html  
