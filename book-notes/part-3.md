@@ -735,18 +735,20 @@ You can search for JS validators online (though validating JS is more difficult)
 <meta name="viewport" content="width=device-width, initial-scale=1">
 ```
 
-- A very important thing to understand is that there can be a big difference between a device resolution and a viewport size. Consider iPhone 12 Pro with a screen resolution of 1170 x 2532 pixels at 460.3 PPI.
+- A very important thing to understand is that there can be a big difference between a device resolution and rendered viewport size. Consider iPhone 12 Pro with a screen resolution of 1170 x 2532 pixels at 460.3 PPI.
 
-- Mobile browsers render pages in a virtual viewport, generally at 980px wide. And though 980px is slightly less than the 1170px device width it's still a lot for a 2.82-inch screen, which is the type of pixel width you would typically see on a much bigger screen. Individual pixels at this high of a density are very hard to see or distinguish at a normal viewing distance. iPhone 12 Pro has a 1170px width so that rendered virtual viewport is then scaled up slightly to fill the enire screen area. On phones where the device width is less than 980px it shrinks the rendered result down so it can all be seen at once. Regardless, the end result is a webpage that is illegible for many if not everyone because the text and the elements appear tiny on such a small, high DPI screen and bottons and links are near impossible to tap with any precision.
+- Mobile browsers render pages in a virtual viewport, generally at 980px wide. And though 980px is slightly less than the 1170px device width it's still a lot densely packed pixels in a 2.82-inch screen, which is the type of pixel realestate you would typically see on a much bigger screen. Individual pixels at this high of a density are very hard to see or distinguish at a normal viewing distance. In iPhone 12 Pro the rendered virtual viewport (at 980px) is then scaled up slightly to fill the enire screen area (1170px). On phones where the device width is less than 980px it shrinks the rendered result down so it can all be seen at once. Regardless, the end result is a webpage that is illegible for many if not everyone because the text and the elements appear tiny on such a small, high DPI screen and bottons and links are near impossible to tap with any precision.
 
 > Another point to consider is that if the virtual viewport is always rendered at 980px width, then pages that use media queries that kick in at 640px or 480px or less would never be used.
 
-- Thus, a conecpt of a "CSS Pixel" emerges. A CSS Pixel is a ratio between the device hardware resolution and the viewport size (both measured in pixels). The concept started to emerge when Apple released iPhone 4 with Retina display that doubled the number of DPI you would find in a normal display up until then. The ratio depends on the display density. The higher the DPI, the higher the ratio between the device advertised resolution and the CSS reference pixel. 
+- Thus, a conecpt of a "CSS Pixel" emerges. A CSS Pixel is a ratio between the device hardware resolution and the device-adjusted viewport size (both measured in pixels). The concept started to emerge when Apple released iPhone 4 with Retina display that doubled the number of DPI you would find in a normal display up until then. The ratio depends on the display density. The higher the DPI, the higher the ratio between the device advertised resolution and the CSS reference pixel. 
 
-- When you use the `width=device-width` you tell the browser that instead of rendering the page in the default 980px wide virtual viewport you instead take the actual width of the device display (1170 x 2532 at 460.3 PPI) and caclulate the CSS Pixel ratio. When you apply the calculation the size of 'CSS Pixel'-adjusted iPhone 12 Pro viewport becomes 390 x 844 pixels. That's a ratio of 3:1 between the device hardware pixels and the 'CSS Pixel'-adjusted viewport. 
+- When you use the `width=device-width` you tell the browser that instead of rendering the page in the default 980px wide virtual viewport you instead take the actual width of the device display (1170 x 2532 at 460.3 PPI) and caclulate the CSS Pixel ratio. When you apply the CSS Pixel calculation the size of device-adjusted iPhone 12 Pro viewport gets rendered at 390 x 844 pixels. That's a ratio of 3:1 between the device hardware pixels and the CSS Pixel device-adjusted viewport. 
+
+> Note, the default CSS Pixel ratio depends on the display density. On a display with density less than 200dpi, the ratio is 1.0. On displays with density between 200 and 300dpi, the ratio is 1.5. For displays with density over 300dpi, the ratio is the integer floor(density/150dpi). Note that the default ratio is true only when the `initial-scale` equals `1`. Otherwise, the relationship between CSS pixels and device pixels depends on the current zoom level.
 
 COMMENTS:  
-Mention the experiment you did yourself using the hybrid-layout.html. With the above meta tag (and getting rid of the hardcoded fixed widths) the page and all its elements displayed beautifully at 390 x 844 pixels. Without the meta tag the text was near impossible to see, it looked terrible overall. Below as my notes I copied in:
+Mention the experiment you did yourself using the hybrid-layout.html. With the above meta tag (and getting rid of the hardcoded fixed widths) the page and all its elements displayed beautifully at 390 x 844 pixels. Without the meta tag the text was near impossible to see, it looked terrible overall. Below are my notes I copied in:
 
 "iPhone 12 Pro Case Study:
 Actual iPhone 12 Pro resolution: 2532×1170 px
@@ -754,7 +756,7 @@ Without the `<meta>` tag it will display a webpage at 980 px width max; text and
   and min-width:525px on page body will have no effect in a 3-col layout where 1col = 200px, 2col = 125px and 3col = 100% width since 525 + 200 + 125 = 850 which is less than 980 (called it, as expected)
 With the meta tag, assumining you have a fully responsive design with no fixed widths it will actually display the page (and the container elements like body) in 390px width."
 
-- The `initial-scale=1` .... I was in the middle of "How to Configure the Viewport" section so continue the notes from this section. continue reading from Lesson 18.
+- The `initial-scale=1` .... I was in the middle of "How to Configure the Viewport" section so continue the notes from this section. continue reading from Lesson 18. 
 
 ---
 
