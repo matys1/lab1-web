@@ -729,7 +729,7 @@ You can search for JS validators online (though validating JS is more difficult)
   - Minimize download times
   - Test on real devices
 
-- The viewport is the window (of a browser) in which the web pages are viewed. This window does not include things like scrollbars and menus etc. Below line is the best practice when it comes to configuring the viewport.
+- Viewport is the window of a browser in which the web pages are viewed. Viewport does not include things like scrollbars, menus etc. In other words, the viewport is the part of the webpage that the user can currently see. The scrollbars move the viewport to show other parts of the page. Below viewport configuration is considered the best practice.
 
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -737,7 +737,7 @@ You can search for JS validators online (though validating JS is more difficult)
 
 - A very important thing to understand is that there can be a big difference between a device resolution and rendered viewport size. Consider iPhone 12 Pro with a screen resolution of 1170 x 2532 pixels at 460.3 PPI.
 
-- Mobile browsers render pages in a virtual viewport, generally at 980px wide. And though 980px is slightly less than the 1170px device width it's still a lot densely packed pixels in a 2.82-inch screen, which is the type of pixel realestate you would typically see on a much bigger screen. Individual pixels at this high of a density are very hard to see or distinguish at a normal viewing distance. In iPhone 12 Pro the rendered virtual viewport (at 980px) is then scaled up slightly to fill the enire screen area (1170px). On phones where the device width is less than 980px it shrinks the rendered result down so it can all be seen at once. Regardless, the end result is a webpage that is illegible for many if not everyone because the text and the elements appear tiny on such a small, high DPI screen and bottons and links are near impossible to tap with any precision.
+- Mobile browsers render pages in a virtual viewport, generally at 980px wide. And though 980px is slightly less than the 1170px device width it's still a lot of densely packed pixels in a 2.82-inch screen, which is the type of pixel realestate you would typically see on a much bigger screen. Individual pixels at this high of a density are very hard to see or distinguish at a normal viewing distance. In iPhone 12 Pro the rendered virtual viewport (at 980px) is then scaled up slightly to fill the enire screen area (1170px). On phones where the device width is less than 980px it shrinks the rendered result down so it can all be seen at once. Regardless, the end result is a webpage that is illegible for many if not everyone because the text and the elements appear tiny on such a small, high DPI screen and bottons and links are near impossible to tap with any precision.
 
 > Another point to consider is that if the virtual viewport is always rendered at 980px width, then pages that use media queries that kick in at 640px or 480px or less would never be used.
 
@@ -745,18 +745,25 @@ You can search for JS validators online (though validating JS is more difficult)
 
 - When you use the `width=device-width` you tell the browser that instead of rendering the page in the default 980px wide virtual viewport you instead take the actual width of the device display (1170 x 2532 at 460.3 PPI) and caclulate the CSS Pixel ratio. When you apply the CSS Pixel calculation the size of device-adjusted iPhone 12 Pro viewport gets rendered at 390 x 844 pixels. That's a ratio of 3:1 between the device hardware pixels and the CSS Pixel device-adjusted viewport. 
 
+![viewport](imgs/viewport_config.jpg)
+
+- In addition, you should also specify the initial zoom factor for the viewing area. It's best practice to use `initial-scale=1`. This means that no zooming is applied to the rendered output and the page is displayed naturally. If you want have it zoom in by default by a factor of 2, for example, you can use `initial-scale=2` but keep in mind that you will only see about a half the width of the page, you'll have a horizontal scrollbar and you'll have to pan to the side to see the other half of the page. Setting `initial-scale=1` also resolves other unwanted effects like automatic zooming when switching from portrait to hotizontal viewing. 
+
 > Note, the default CSS Pixel ratio depends on the display density. On a display with density less than 200dpi, the ratio is 1.0. On displays with density between 200 and 300dpi, the ratio is 1.5. For displays with density over 300dpi, the ratio is the integer floor(density/150dpi). Note that the default ratio is true only when the `initial-scale` equals `1`. Otherwise, the relationship between CSS pixels and device pixels depends on the current zoom level.
 
-COMMENTS:  
-Mention the experiment you did yourself using the hybrid-layout.html. With the above meta tag (and getting rid of the hardcoded fixed widths) the page and all its elements displayed beautifully at 390 x 844 pixels. Without the meta tag the text was near impossible to see, it looked terrible overall. Below are my notes I copied in:
+- You should avoid setting the viewport to a specific width as it would defeat the purpose of RWD. Other viewport properties include `maximum-scale`, `minimum-scale`, and `user-scalable`. You should never set `user-scalable=no` as it not good for accessibility. And you shouldn't set the minimum or the maximum for allowed zoom unless there's a very specific and justified reason for it.
 
-"iPhone 12 Pro Case Study:
-Actual iPhone 12 Pro resolution: 2532×1170 px
-Without the `<meta>` tag it will display a webpage at 980 px width max; text and all the elements are tiny and not legible. Looks ugly.
-  and min-width:525px on page body will have no effect in a 3-col layout where 1col = 200px, 2col = 125px and 3col = 100% width since 525 + 200 + 125 = 850 which is less than 980 (called it, as expected)
-With the meta tag, assumining you have a fully responsive design with no fixed widths it will actually display the page (and the container elements like body) in 390px width."
+- Make sure that you use relative widths and positioning values, such as percentages or rems for elements like pictures. Otherwise, a picture with a fixed width that's too large for a mobile screen will run off the side.
 
-- The `initial-scale=1` .... I was in the middle of "How to Configure the Viewport" section so continue the notes from this section. continue reading from Lesson 18. 
+- To make text legible:
+  - Start with a base font size (around 16px is a good target). Define this with either the * selector to select all elements or the body tag selector to select just the body tag, or define it as both, like `*, body {font-size: 16px;}`
+  - Define the sizes of various elements relative to the base font size. For example, `h1{font-size: 250%;}` or `h2 {font-size: 2rem;}`. 
+  - Adjust the line height to keep the text vertically legible. Make sure to use a unitless values to ensure that when zoomed, the line height will scale proportionately. Using a value of `1.2` is standard. But you can decrease it for headings and titles and increase it to `1.5` for main paragraph content. For exaple, `p{line-height: 1.1;}`.
+  - Adjust the line length to stay between 8 and 10 words per line. There's no explicit property to achieve this, so adjust the column width or add a breakpoint.
+  - Limit the number of font sizes and typefaces you use. A good rule of thumb is to not use more than five different font sizes.
+
+Continue notes from: "Making Links Tappable".  
+Continue reading from Lesson 18.  
 
 ---
 
@@ -774,3 +781,5 @@ https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag
 https://developer.mozilla.org/en-US/docs/Web/CSS/Viewport_concepts  
 https://experienceleague.adobe.com/docs/target/using/experiences/vec/mobile-viewports.html?lang=en  
 https://www.quirksmode.org/blog/archives/2010/04/a_pixel_is_not.html  
+
+Video explaining viewports: https://vimeo.com/100523275
