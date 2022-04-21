@@ -782,4 +782,7 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/Viewport_concepts
 https://experienceleague.adobe.com/docs/target/using/experiences/vec/mobile-viewports.html?lang=en  
 https://www.quirksmode.org/blog/archives/2010/04/a_pixel_is_not.html  
 
-Video explaining viewports: https://vimeo.com/100523275
+Video explaining viewports: https://vimeo.com/100523275  
+About initial-scale=1: https://css-tricks.com/probably-use-initial-scale1/  
+W3Schools Viewport: https://www.w3schools.com/css/css_rwd_viewport.asp  
+How Initial-scale works: https://dev.opera.com/articles/an-introduction-to-meta-viewport-and-viewport/#initial-scale  
