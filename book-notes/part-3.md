@@ -762,8 +762,10 @@ You can search for JS validators online (though validating JS is more difficult)
   - Adjust the line length to stay between 8 and 10 words per line. There's no explicit property to achieve this, so adjust the column width or add a breakpoint.
   - Limit the number of font sizes and typefaces you use. A good rule of thumb is to not use more than five different font sizes.
 
-Continue notes from: "Making Links Tappable".  
-Continue reading from Lesson 18.  
+- For buttons or links to be tappable they need to be at least 48 x 48 pixels. Things like navigation bar items should be tappable across the entire block, not just the text. To do so make sure they are displayed as a block `nav a {display: block;}`. 
+
+Continue notes from "How to Make Tables Responsive".  
+Continue reading Lesson 18.  
 
 ---
 
