@@ -763,9 +763,34 @@ You can search for JS validators online (though validating JS is more difficult)
   - Limit the number of font sizes and typefaces you use. A good rule of thumb is to not use more than five different font sizes.
 
 - For buttons or links to be tappable they need to be at least 48 x 48 pixels. Things like navigation bar items should be tappable across the entire block, not just the text. To do so make sure they are displayed as a block `nav a {display: block;}`. 
+ 
+- The book has a few sections discussing how to display data tables on mobile screens and how to make them responsive (in line with RWD). There were 3 approaches discussed:
+  - Resizing Cells in a Data Table. This section suggested including `width="100%"` in the opening `<table>` tag. See, table.html and table-width100.html. The only difference is that the latter will fill the entire width on even the widest screens, and the former will only take up as much space as needed, not more. However when the screen becomes narrow, both behave the same amd will scale down in size to a point where it's no longer legible until the horizontal scroll bars finally appear around 160px width. 
+  - Rearranging Table Rows and Columns. This is a more sophisticated approach that was lifted from CSS-Tricks website. I think the example on the website is better explained and easier to follow. Essentially it relies on media queries and pivoting the table to display 2 columns: one containing column headers and other containing values. For example, if you have a table with 10 rows and 9 columns, then after the CSS transformation you'll end up with 2 columns and 90 rows. Every 9 rows would represent a new record. The end result is that on a full-sized desktop computer you would see a regular looking table, but on a mobile screen you would see a pivoted table. See, table-rearranged.html.
+  - Hiding Table Content. This approach relies on wrapping the table in a `<div>` tag and adding a horizontal scroll bar. The end result is that it causes the table to take up as much room as it needs in order to be legible, which means that the horizontal scroll bar appears already around 650px instead of shrinking past the point of being legible and appearing only at 160px. Any overflow on the `<div>` hidden by the scrollbar. See table-scrollbars.html.
 
-Continue notes from "How to Make Tables Responsive".  
-Continue reading Lesson 18.  
+- There are three ways you can deal with images in a responsive web design:
+  - Using Flexible-Width Images. This approach is quite straight forward and sets the width, maximum width and height like so: `img {width: 100%; max-width: 100%; height: auto;}`. Setting `height` to `auto` tells the browser to use a height that has the same ratio as the original image. Set the img rule in your global style sheet before any media queries, so that it applies to all devices.
+  - Changing the Images Displayed with `srcset` and `sizes` attributes in the `<img>` element. The `srcset` attribute is added to the `<img>` element to define a list of images to use on devices with different pixel densities. `src` is set as fallback. For example:  
+    ```html
+    <img srcset=" images/myImage.jpg 1x,
+                  images/myImage-2x.jpg 2x,
+                  images/myImage-3x.jpg 3x"
+        src="images/myImage.jpg" 
+        alt="My Image">
+    ```
+    You can also define images based on the device width using the `w` descriptor. This described the width of the image being referenced. For example:
+    ```html
+    <img srcset="images/myImage.jpg 100w,
+            images/myImage-2x.jpg 200w,
+            images/myImage-3x.jpg 400w"
+         src="images/myImage.jpg" 
+         alt="My Image">
+    ```
+    You can also use the `sizes` attribute if you want to change the space an image takes up. For example `sizes="(max-width: 40em) 100vw, 50vw"`. This means if the maximum width of a device is 40em or less, then the image should be 100% of the viewport, otherwise it should be 50% of the viewport. Both `srcset` and `sizes` are important for RWD and suggest reading the two MDN links below in appendix.
+
+Continue notes from "Changing Images by Using the".  
+Continue reading from Lesson 18.  
 
 ---
 
@@ -788,3 +813,5 @@ Video explaining viewports: https://vimeo.com/100523275
 About initial-scale=1: https://css-tricks.com/probably-use-initial-scale1/  
 W3Schools Viewport: https://www.w3schools.com/css/css_rwd_viewport.asp  
 How Initial-scale works: https://dev.opera.com/articles/an-introduction-to-meta-viewport-and-viewport/#initial-scale  
+About the `srcset` `<img>` attribute: https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset  
+MDN responsive images: https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images  
