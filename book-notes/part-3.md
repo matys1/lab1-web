@@ -779,7 +779,7 @@ You can search for JS validators online (though validating JS is more difficult)
         src="images/myImage.jpg" 
         alt="My Image">
     ```
-    You can also define images based on the device width using the `w` descriptor. This described the width of the image being referenced. For example:
+    You can also define images based on the device width using the `w` descriptor. This describes the width of the image being referenced. For example:
     ```html
     <img srcset="images/myImage.jpg 100w,
             images/myImage-2x.jpg 200w,
@@ -788,9 +788,24 @@ You can search for JS validators online (though validating JS is more difficult)
          alt="My Image">
     ```
     You can also use the `sizes` attribute if you want to change the space an image takes up. For example `sizes="(max-width: 40em) 100vw, 50vw"`. This means if the maximum width of a device is 40em or less, then the image should be 100% of the viewport, otherwise it should be 50% of the viewport. Both `srcset` and `sizes` are important for RWD and suggest reading the two MDN links below in appendix.
+  - Changing Images by Using the `<picture>` Element. The above approach displays the same image at different pixel densities or widths. If you want to display different images on different devices use the `<picture>` element with nested `<source>` element(s). Each `<source>` element also has a media query built into it in the `media` attribute that decides whether that source is to be used or not. In addition, each `<source>` uses a `srcset` attribure (and `sizes` if you want) to define images based on pixel densities. The `<img>` with the `src` attribure are used as a fallback.
+    ```html
+    <picture>
+    <source srcset="images/myImage.jpg 1x,
+                    images/myImage-2x.jpg 2x,
+                    images/myImage-3x.jpg hd"
+            media="(max-width: 30rem)">
+    <source srcset="images/myImage.jpg 1x,
+                    images/myImage-2x.jpg 2x,
+                    images/myImage-3x.jpg hd"
+            media="(max-width: 50rem)">
+    <img src="images/myImage.jpg" alt="My Image">
+    </picture>
+    ```
 
-Continue notes from "Changing Images by Using the".  
-Continue reading from Lesson 18.  
+- An alternative to using media queries is to use `columns` property that declares both the columns width and columns count. This way the layout will adjust depending upon the width of the browser. See example of this in responsive-columns.html.
+
+- Mentioned some alternatives to RWD like adaptive design and dynamic serving as well as using separate (mobile) URLs or domains. However, I think the best practice is to do RWD.
 
 ---
 
@@ -815,3 +830,17 @@ W3Schools Viewport: https://www.w3schools.com/css/css_rwd_viewport.asp
 How Initial-scale works: https://dev.opera.com/articles/an-introduction-to-meta-viewport-and-viewport/#initial-scale  
 About the `srcset` `<img>` attribute: https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset  
 MDN responsive images: https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images  
+
+## LESSON 18
+
+Reading from Lesson 19.  
+Notes from Lesson 18.  
+
+---
+
+**Links in the book:**  
+
+None.
+
+**Additional Links:**
+
