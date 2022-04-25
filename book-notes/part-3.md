@@ -833,8 +833,71 @@ MDN responsive images: https://developer.mozilla.org/en-US/docs/Learn/HTML/Multi
 
 ## LESSON 18
 
-Reading from Lesson 19.  
-Notes from Lesson 18.  
+- Using media queries is the most common way of doing RWD. You define a media query using the `@media` rule. A media query is a “logical expression that is either true or false". Use media queries to define if/then statements based on the characteristics of the device viewing the page. Breakpoints are defined within the media query that represnt the point at which media query will adjust the design. Therefore, breakpoints are represeted by media-type and media-feature-rules. Below is the basic madia query syntax:
+  ```css
+  @media media-type and (media-feature-rule) {
+    /* CSS rules go here */
+  }
+  ```
+
+- Using **media-type**. There are three possible values: `all`, `print` and `screen`. Note that in the book and in the older CSS specification there were many more types, but hey have been depriciated since. The type `print` is how the page should be formatted when it's printed out on a paper. Sites might want to specify a separate style for print to remove ads, place underline under links etc. Specifying media-type is optional and if omitted will default to `all`.
+
+- The best practice is to define styles for different media-types all in the same style sheet document, using the `@media` rule. Alternatives are requesting multiple CSS documents with the `<link>` element or `@import` rule, but they will slow down your website and should be avoided.
+
+- Using **media-feature-rule**. Media features let you look at the specific features the media-type might have and style your pages accordingly. The two most popular media features to test against are `width` (including prefixes `min-` and `max-`) and `orientation`. You should always use the `min-` and `max-` prefixed when testing for `width`. Below example shows a media query targeting smaller screens and all device types (by default):
+
+  ```css
+  @media (max-width: 680px) { ... }
+  ```
+
+- Constructing more complex media queries using **logical operators**. 
+  - Use `and` operator to combine media type with one or multiple media features into a single media query. For example:
+    ```css
+    @media (min-width: 760px) and (orientation: landscape) { ... }
+    ```
+  - Use comma (`,`) as an 'or' operator that also separates individual media queries into a comma-separated list of media queries. For example, the below rule will apply its styles if the user's device has either a minimum height of 680px or is a screen device in portrait mode:
+    ```css
+    @media (min-height: 680px), screen and (orientation: portrait) { ... }
+    ```
+  - Use `not` to invert the meaning of a media query. It will only negate the specific media query it is applied to, thus it will not apply to every media query in a comma-separated list of media queries. The `not` keyword can't be used to negate an individual media-feature, only an entire individual media query. For example, the below rule will apply its styles if the user's device width is less than 760px and is in portair mode:
+    ```css
+    @media not (min-width: 760px) and (orientation: landscape) { ... }
+    ```
+    Another example, the below rule will apply its styles if the user's device is neither screen nor color or is both print and color:  
+    ```css
+    @media not screen and (color), print and (color) { ... }
+    ```
+
+> Note that Level 4 specification has added some syntax improvements and full boolean algebra with `and`, `not`, and `or` that is different from the above. See the below MDN link for more information.
+
+- For a basic example of how to use a media queries to change text color see the media-query.html example.
+
+- When you include media queries in your designs, note that for each breakpoint in your design, you add one more version of the page (or section of the page) to style. Thus, you should use media queries conservatively and with caution.
+
+### Structuring the style document
+
+- When you’re writing a style sheet for a responsive website, the first styles you want to define are the ones that are device independant and are the same no matter what device views them. You do this by specifying those style rules at the top of the style document without any `@media` declarations. For example, device independant styles could include things like colors and font families.
+
+- In the example in the book they mentioned to include mobile-specific styles right under the standard device-independant styles and NOT to place either in a media query. This in essence means that the device-independant and mobile-specific styles are the default styles (mobile first philosophy) and only design styles for larger screens are placed in a media query in the bottom of the document that will override the mobile-specific styles when needed.
+
+```css
+device-independant-styles /*styles that apply to all 3: small, medium and large*/
+mobile-specific-styles /*small*/
+@media (min-width: 421px) and (max-width: 900px) { ... } /*medium, overrides mobile*/
+@media (min-width: 901px) { ... } /*large, overrides mobile*/
+```
+
+> Remember in CSS documents, because of the cascade, whatever styles come last will take precedence over styles that came before. 
+>
+> Also, `min-width` and `max-width` are inclusive. For example, `min-width: 421px` means a device that's 421px wide or larger and `max-width: 900px` means a device that's 900px wide or smaller. This means that when you create multiple media query buckets based on size, you have to keep them 1px apart. That's why the `min-width` for large screens is defined as 901px.
+
+- When you create breakpoints, the best practice is to not create them based on widths of specific devices. It's best to create the breakpoints based on the design itself and place the breakpoints where the design starts to distort and break. Responsive Design mode in the browsers Developer Tools is excellent for this.
+
+- Consider using `orientation` in additon to using the `width` for breakpoints in media queries for more optimal user experience.
+
+- An alternative (though likely not best practice) to the image `srcset` and `sizes` attribures is `resolution` media feature that also returns the pixel density of the device. 
+
+- The MDN links below have excellent examples of a modern website that's fully responsive depending on device width.
 
 ---
 
@@ -844,3 +907,11 @@ None.
 
 **Additional Links:**
 
+A list of all possible media-feature-rules: https://developer.mozilla.org/en-US/docs/Web/CSS/@media#media_features  
+Media query syntax improvements in Level 4: https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#syntax_improvements_in_level_4  
+Media queries beginners quide (includes excellent examples): https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Media_queries  
+Using media queries: https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries
+
+## LESSON 19:
+
+Continue with notes and reading.
