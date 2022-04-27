@@ -218,28 +218,41 @@ Useful resource for CSS-based list navigation: https://www.w3schools.com/css/css
 
 - See the table-layout.html to see the example from the book. The HTML is the same as in hybrid-layout.html, just the CSS is different.
 
-### CSS flexible box layout technique
+### CSS flexbox layout technique
 
-- The CSS Flexible Box module gives you a way to position elements that display on a line in a container. The container can alter the dimensions of the elements inside it (shrinking or expanding them) to best fit the available free space.
+- CSS Flexbox is a layout method for arranging items in rows or columns. Elements inside it flex - expand to fill additional space or shrink to fit into smaller spaces.
 
 - The CSS Flexbox is not intended to be used for a full page layout, but rather for smaller page components and small-scale layouts. If you want a full page layout use CSS Grid instead.
 
-- The CSS Flexbox allows you to place the items in a more flexible fashing, not strictly adhering the to normal flow of the page.
+- The method allows you to place the items in a more flexible fashion, not strictly adhering the to normal flow of the page. Use the `display: flex;` property on a parent element (flex container) that will hold all the child elements (flex items) in the layout. 
 
-- Use the `display: flex;` property on a wrapper element that will hold all the items in the layout. This enables the flex context for all the elements contained in the wrapper.
+- The flex container is acting like a block-level element in terms of how it interacts with the rest of the page, but its children are laid out as flex items. 
+  > Note: use `display: inline-flex;` to have the flex container act like an inline element instead of a block-level element. The children will be laid out as flex items the same way regardless.
 
-- To control in what direction the elements in the wrapper container will flow use the `flex-direction` property with values:
-  - `row` - Default. Flow left to right in ltr layouts and right to left in rtl layouts.
-  - `row-reverse` - The items flow right to left in ltr layouts and left to right in rtl layouts.
-  - `column` - Items flow from top to bottom in a column.
-  - `column-reverse` - Items flow from bottom to top in a column.
+- To control in what direction the flex items are laid out in use the `flex-direction` property with values:
+  - `row` - Default. Flex items get laid out in a row in the direction your browser's default language works in (left to right, in the case of an English browser).
+  - `column` - Flex items flow from top to bottom in a column.
+  > Note: there are also `row-reverse` and `column-reverse` values.
 
-- To control how the items will wrap use the `flex-wrap` property with values:
-  - `nowrap` - All flex items are on one line (horizontal or vertical).
-  - `wrap` - Flex items wrap to multiple lines from top to bottom.
-  - `wrap-reverse` - Flex items wrap to multiple lines from bottom to top.
+See an example file illustrate points above flexbox0-mdn.html
 
-> You can define both the flex direction and wrap with the `flex-flow` shorthand property: `flex-flow: flex-direction || flex-wrap;`.
+- To control how flex items will wrap use the `flex-wrap` property with values:
+  - `nowrap` - All flex items are laid out on one line (horizontal or vertical).
+  - `wrap` - Flex items wrap to multiple lines (top to bottom).
+  - `wrap-reverse` - Flex items wrap to multiple lines (bottom to top).
+
+> Note: you can define both `flex-direction` and `flex-wrap` using the `flex-flow` shorthand property. In `flex-flow` shorthand first specify direction value then wrap value.
+
+- Up until now all properties `display` and `flex-flow` (shorthand for `flex-direction` and `flex-wrap`) are assigned to parent element - flex container. 
+
+- To control how much space flex items take up inside the container use the `flex` shorthand property assigned to the flex item elements. `flex` is a shorthand for:
+  - `flex-grow` - 
+  - `flex-shrink` - 
+  - `flex-basis` - 
+
+See example files illustrate points above flexbox-wrap0-mdn.html and flexbox1-mdn.html
+
+CONTINUE HERE, FINISH ABOVE
 
 - To control how the items will be spaced in the container use the `justify-content` property with the values:
   - `flex-start` - Default. The items are placed at the start of the container, and any extra space is placed after all the items.
