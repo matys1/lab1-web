@@ -248,11 +248,16 @@ See an example file illustrate points above flexbox0-mdn.html
 - To control how much space flex items take up inside the container use the `flex` shorthand property assigned to the flex item elements. `flex` is a shorthand for:
   - `flex-grow` - 
   - `flex-shrink` - 
-  - `flex-basis` - 
+  - `flex-basis` -  
+  https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox#flexible_sizing_of_flex_items
 
 See example files illustrate points above flexbox-wrap0-mdn.html and flexbox1-mdn.html
 
-CONTINUE HERE, FINISH ABOVE
+CONTINUE FROM ABOVE LINK & DEFINITIONS  
+USEFUL LINKS BELOW:  
+https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout  
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout  
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout  
 
 - To control how the items will be spaced in the container use the `justify-content` property with the values:
   - `flex-start` - Default. The items are placed at the start of the container, and any extra space is placed after all the items.
