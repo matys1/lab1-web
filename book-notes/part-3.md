@@ -246,18 +246,13 @@ See an example file illustrate points above flexbox0-mdn.html
 - Up until now all properties `display` and `flex-flow` (shorthand for `flex-direction` and `flex-wrap`) are assigned to parent element - flex container. 
 
 - To control how much space flex items take up inside the container use the `flex` shorthand property assigned to the flex item elements. `flex` is a shorthand for:
-  - `flex-grow` - 
-  - `flex-shrink` - 
-  - `flex-basis` -  
-  https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox#flexible_sizing_of_flex_items
+  - `flex-grow` - specifies how much of the remaining space in the flex container should be assigned to the item. The remaining space is the size of the flex container minus the size of all flex items' sizes together (returning a number > 0). If all sibling items have the same flex grow factor, then all items will receive the same share of remaining space, otherwise it is distributed according to the ratio defined by the different flex grow factors.
+  - `flex-shrink` - spcifies how much excess space should be detracted from the item to fit it into the flex container. The excess space is the size of the flex container minus the size of all flex items' sizes together (returning a number < 0). If all sibling items have the same flex shrink factor, then all items will be detracted the same share of excess space, otherwise it is detracted according to the ratio defined by the different flex shrink factors.
+  - `flex-basis` - specifies the initial main size of a flex item. It sets the size of the content box unless otherwise set with `box-sizing`. It's not a strict min or max, it's just an initial width before grow and shrink are applied.
 
 See example files illustrate points above flexbox-wrap0-mdn.html and flexbox1-mdn.html
 
-CONTINUE FROM ABOVE LINK & DEFINITIONS  
-USEFUL LINKS BELOW:  
-https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout  
-https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout  
-https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout  
+CONTINUE FROM: https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox#horizontal_and_vertical_alignment. EVERYTHING ABOVE IS DONE.
 
 - To control how the items will be spaced in the container use the `justify-content` property with the values:
   - `flex-start` - Default. The items are placed at the start of the container, and any extra space is placed after all the items.
@@ -348,7 +343,10 @@ Comment: In the book they referred to fixed, liquid and hybrid layouts. I think 
 
 **Other relevant links:**
 - https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance#inherited_properties
-- https://cssgridgarden.com/
+- https://cssgridgarden.com/  
+- https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout  
+- https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout  
+- https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout  
 
 **Overflow and collapsing wrapper explanation:**
 - The use of `overflow: hidden;` to prevent the wrapper element from collapsing if it contains only floats.  
