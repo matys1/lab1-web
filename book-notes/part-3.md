@@ -250,33 +250,37 @@ See an example file illustrate points above flexbox0-mdn.html
   - `flex-shrink` - spcifies how much excess space should be detracted from the item to fit it into the flex container. The excess space is the size of the flex container minus the size of all flex items' sizes together (returning a number < 0). If all sibling items have the same flex shrink factor, then all items will be detracted the same share of excess space, otherwise it is detracted according to the ratio defined by the different flex shrink factors.
   - `flex-basis` - specifies the initial main size of a flex item. It sets the size of the content box unless otherwise set with `box-sizing`. It's not a strict min or max, it's just an initial width before grow and shrink are applied.
 
-See example files illustrate points above flexbox-wrap0-mdn.html and flexbox1-mdn.html
+See example files illustrate points above flexbox-wrap0-mdn.html and flexbox1-mdn.html.
 
-CONTINUE FROM: https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox#horizontal_and_vertical_alignment. EVERYTHING ABOVE IS DONE.
-
-- To control how the items will be spaced in the container use the `justify-content` property with the values:
+- Control where the flex items sit on the main axis using `justify-content` property with values:
   - `flex-start` - Default. The items are placed at the start of the container, and any extra space is placed after all the items.
   - `flex-end` - The items are placed at the end of the container, and any extra space is placed before all the items.
-  - `center` - The items are placed in the center of the container, and extra free space is placed evenly at the start and end.
-  - `space-between` - The items are evenly distributed in the line, with the first item right at the start and the last placed right at the end.
-  - `spac-around` - The items are placed evenly on the line, with equal space all around them.
+  - `center` - The items are placed in the center of the container, and extra space is placed evenly at the start and end.
+  - `space-between` - The items are evenly distributed on the line, with the first item placed flush at the start and the last placed flush at the end.
+  - `spac-around` - The items are evenly distributed on the line, with the space before the first item and the space after the last item being half the space between the items.
+  - `space-evenly` - The items are evenly distributed on the line, with equal space all around all items.
 
-- To control how the browser distributes space between and around content items along the main-axis of a flex container use the `justify-content` property. See possible values in "mnd web docs".
-
-- To control how the browser distributes space between and around content items perpendicular to the main-axis of a flex container use the `justify-content` property with values:
-  - `stretch` - Default. The items should stretch to fill the whole container while respecting min-width and max-width rules.
+- Control where the flex items sit on the cross axis using `align-items` property with values:
+  - `stretch` - Default. The items should stretch to fill the whole container while respecting `min-width` and `max-width` rules.
   - `center` - Items are centered along the cross axis.
   - `baseline` - Items are aligned so that their baselines align.
   - `flex-start` - The items are positioned at the start of the element (the top for horizontal and the left for vertical ltr layouts).
   - `flex-end` - The items are positioned at the end of the element (the bottom for horizontal and the right for vertical ltr layouts).
 
-- If the items in the container are distributed across multiple lines, to control how any extra space between the lines will be distributed use the `align-content` property.
+> Note, you can override the `align-items` property that's assigned to the flex container by using `align-self` property assigned to the individual flex item(s).
+
+See example file illustrate points above flex-align0-mdn.html.
+
+- If the items in the container are distributed across multiple lines, to control how any extra space between the lines will be distributed use the `align-content` property. Has no effect if you have only one line.
   - `stretch` - Default. Lines stretch to take up the remaining space.
-  - `center` - Lines are packed in the center of the container, with extra space placed evenly before and after.
-  - `space-between` - The first line is placed at the start of the container, and the last line is at the end, and remaining lines are evenly distributed between them.
-  - `space-around` - The lines are evenly distributed, with extra space placed before and after each line.
-  - `flex-start` - Lines are pushed to the start of the container, with extra space placed after.
-  - `flex-end` - Lines are pushed to the end of the container, with extra space placed first.
+  - `center` - Lines are placed in the center of the container, with extra space placed evenly before and after.
+  - `flex-start` - Lines are placed at the start of the container, with extra space placed after.
+  - `flex-end` - Lines are placed at the end of the container, with extra space placed first.
+  - `space-between` - The lines are evenly distributed, with the first line placed flush at the start and the last placed flush at the end.
+  - `spac-around` - The lines are evenly distributed, with the space before the first line and the space after the last line being half the space between the lines.
+  - `space-evenly` - The line are evenly distributed, with equal space all around all lines.
+
+CONTINUE FROM https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox#ordering_flex_items EVERYTHING ABOVE IS DONE.
 
 - Once you have a flex container, any element placed inside it is a flexbox item. Flexbox items appear on the page in the same order in which they appear in the HTML, but with the `order` property, you can change that. 
 
