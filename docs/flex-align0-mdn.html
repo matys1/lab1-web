@@ -15,7 +15,7 @@
       button {
         font-size: 18px;
         line-height: 1.5;
-        width: 15%;
+        width: 30%;
       }
       div {
         height: 100px;
@@ -23,12 +23,17 @@
       }
       /* Add your flexbox CSS below here */
       div {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
+        display: flex; /*remember, there's also inline-flex*/
+        flex-flow: row wrap; /*shorthand of `flex-direction` and `flex-wrap`*/
+        align-items: center; /*cross axis alignment*/
+        justify-content: space-around; /*main axis alignment*/
+        align-content: space-evenly; /*space between lines when you have multiple lines*/
       }
       button:first-child {
-        align-self: flex-end;
+        align-self: flex-end; /*overrides `align-items` but doesn't override `align-content`*/
+      }
+      button:first-child {
+        order: 1; /*places the first button (Smile) last*/
       }
     </style>
   </head>
@@ -39,6 +44,7 @@
       <button>Wink</button>
       <button>Shrug</button>
       <button>Blush</button>
+      <button>Cry</button>
     </div>
   </body>
 </html>

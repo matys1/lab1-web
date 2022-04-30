@@ -224,7 +224,36 @@ Useful resource for CSS-based list navigation: https://www.w3schools.com/css/css
 
 - The CSS Flexbox is not intended to be used for a full page layout, but rather for smaller page components and small-scale layouts. If you want a full page layout use CSS Grid instead.
 
-- The method allows you to place the items in a more flexible fashion, not strictly adhering the to normal flow of the page. Use the `display: flex;` property on a parent element (flex container) that will hold all the child elements (flex items) in the layout. 
+![flex-layout](imgs/flex-layout.jpg)  
+*(displays flex container and flex items and the concept of main and cross axis, starting and ending points)*
+
+- The flex layout properties can be assigned to either the parent element (flex container) or the child elements (flex items). This is where the properties discussed in this secion belong:
+
+**Flex container:**
+```
+display:
+flex-flow:
+  flex-direction:
+  flex-wrap:
+justify-content: /*main axis*/
+align-items: /*cross axis*/
+align-content: /*multiple lines*/
+gap:
+  row-gap:
+  column-gap:
+```
+
+**Flex items:**
+```
+flex:
+  flex-grow:
+  flex-shrink:
+  flex-basis:
+align-self: (overrides align-items)
+order:
+```
+
+- The method allows you to place the items in a more flexible fashion, not strictly adhering the to normal flow of the page. Use the `display: flex;` property on a parent element (making it flex container) that will hold all the flex items in the layout. 
 
 - The flex container is acting like a block-level element in terms of how it interacts with the rest of the page, but its children are laid out as flex items. 
   > Note: use `display: inline-flex;` to have the flex container act like an inline element instead of a block-level element. The children will be laid out as flex items the same way regardless.
@@ -242,8 +271,6 @@ See an example file illustrate points above flexbox0-mdn.html
   - `wrap-reverse` - Flex items wrap to multiple lines (bottom to top).
 
 > Note: you can define both `flex-direction` and `flex-wrap` using the `flex-flow` shorthand property. In `flex-flow` shorthand first specify direction value then wrap value.
-
-- Up until now all properties `display` and `flex-flow` (shorthand for `flex-direction` and `flex-wrap`) are assigned to parent element - flex container. 
 
 - To control how much space flex items take up inside the container use the `flex` shorthand property assigned to the flex item elements. `flex` is a shorthand for:
   - `flex-grow` - specifies how much of the remaining space in the flex container should be assigned to the item. The remaining space is the size of the flex container minus the size of all flex items' sizes together (returning a number > 0). If all sibling items have the same flex grow factor, then all items will receive the same share of remaining space, otherwise it is distributed according to the ratio defined by the different flex grow factors.
@@ -269,8 +296,6 @@ See example files illustrate points above flexbox-wrap0-mdn.html and flexbox1-md
 
 > Note, you can override the `align-items` property that's assigned to the flex container by using `align-self` property assigned to the individual flex item(s).
 
-See example file illustrate points above flex-align0-mdn.html.
-
 - If the items in the container are distributed across multiple lines, to control how any extra space between the lines will be distributed use the `align-content` property. Has no effect if you have only one line.
   - `stretch` - Default. Lines stretch to take up the remaining space.
   - `center` - Lines are placed in the center of the container, with extra space placed evenly before and after.
@@ -280,14 +305,15 @@ See example file illustrate points above flex-align0-mdn.html.
   - `spac-around` - The lines are evenly distributed, with the space before the first line and the space after the last line being half the space between the lines.
   - `space-evenly` - The line are evenly distributed, with equal space all around all lines.
 
-CONTINUE FROM https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox#ordering_flex_items EVERYTHING ABOVE IS DONE.
+- Flexbox items appear on the page in the same order in which they appear in the HTML, but with the `order` property, you can change that. The default value is `0`. Flex items with higher order values will appear later in the display order than items with lower order values. Flex items with the same order value will appear in the same order in which they appear in the HTML. You can also use negative numbers.  
 
-- Once you have a flex container, any element placed inside it is a flexbox item. Flexbox items appear on the page in the same order in which they appear in the HTML, but with the `order` property, you can change that. 
+- You can use the `order` property in creative ways to, for example, rank and disaply the best selling products at the top of the webpage based on database entries.  
 
-- Using positive or negative integers, you change the order. The lower the number, the closer to the start the item will appear. Items with the same value will be displayed in the order in which they appear in HTML.
+- See flex-align0-mdn.html illustrate points above. 
 
-- You can use the `order` property in creative ways to, for example, rank and disaply the best selling products at the top of the webpage based on database entries.
+> Note, there is also a `gap` property (shorthand for `row-gap` and `column-gap`), however, they are not as widely used in flexbox layouts due to the prominance of alternatives discussed above.
 
+- See complex-flexbox-mdn.html for complex nested flexbox layout example.
 - For the example from the book see the flexbox-layout.html.
 
 ### CSS Grid layout technique
