@@ -311,17 +311,55 @@ See example files illustrate points above flexbox-wrap0-mdn.html and flexbox1-md
 
 - See flex-align0-mdn.html illustrate points above. 
 
-> Note, there is also a `gap` property (shorthand for `row-gap` and `column-gap`), however, they are not as widely used in flexbox layouts due to the prominance of alternatives discussed above.
+> Note, there is also a `gap` property (shorthand for `row-gap` and `column-gap`), however, they are not as widely used in flexbox layouts as they are in grid layouts due to the prominance of alternatives discussed above.
 
 - See complex-flexbox-mdn.html for complex nested flexbox layout example.
 - For the example from the book see the flexbox-layout.html.
 
 ### CSS Grid layout technique
 
-- Use the `display` property to define the container element using 3 possible values:
+- CSS Grid Layout is a two-dimensional layout system for the web. It lets you lay content out in rows and columns and will typically have gaps between each row and column. It has many features that make building complex layouts straightforward.
+
+- Basic terminology of CSS Grid:
+  - Grid container - Parent element on which `display: grid` is applied.
+  - Grid item - Child elements of the grid container.
+  - Grid line - The dividing lines that make up the structure of the grid. They can be either vertical or horizontal.
+  - Grid cell - Single unit of the grid. Space between two vertical and two horizontal grid lines.
+  - Grid track - A row or a column. Space between two vertical or two horizontal grid lines.
+  - Grid area - The total space surrounded by four grid lines. A grid area may be composed of any number of grid cells.
+  - Gutters - Also known as gaps or alleys. The spacing between grid tracks.
+  - Grid axis - Consists of block/column axis and inline/row axis.
+
+- Use the `display` property to define the grid container element using two possible values:
   - `grid` - block-level grid.
   - `inline-grid` - inline grid.
-  - `subgrid` - with nested grids, indicates that the nested grid should take the sizes of its rows and columns from the parent grid rather than requiring the designer to specify new ones.
+
+- Declaring `display: grid` will not make the grid items immediately look any different. It gives you a one column grid, so your items will continue to display one below the other as they do in normal flow.
+
+- To create columns use the `grid-template-columns` property. The property accepts a space delimited list of values. The number of values indicates the number of columns that will be created while the weight of the values indicate the width of the columns.
+
+- CSS Grid introduces a completely new unit type `fr` which represents a fraction of the leftover space in the grid container. The `fr` unit distributes space proportionally (similar to how grow and shrink works in flexbox). For example:
+
+```css
+.container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+}
+```
+
+- The first track now gets `2fr` of the available space and the other two tracks get `1fr`, making the first track larger. You can mix `fr` units with fixed length units - in such a case the space needed for the fixed tracks is used up first; the remaining space is then distributed to the other tracks.
+
+- To create gaps between tracks we use the `gap` property (shorthand for `column-gap` and `row-gap`).
+
+- Use the CSS Grid-specific `repeat()` function to repeat track listings. The first value in the function is the number of time you want it repeated and the second value is the track lsiting. For example, instead of listing `grid-template-columns: 1fr 1fr 1fr;` you can do `grid-template-columns: repeat(3, 1fr);` instead. This is because CSS Grid is often defined by a dozen or more columns and this way it's easier to work with the layout.
+
+- When you use `grid-template-columns` or `grid-template-rows` functions you create an explicit row or column grid. The implicit row or column grid is created when content is placed outside of the explicit grid. For example, you can create explicit column grid but as extra content is moved into rows it creates an implicit row grid.
+
+- By default, tracks created in the implicit grid are `auto` sized, which in general means that they're large enough to accommodate their content. If you wish to give implicit grid tracks a size, you can use the `grid-auto-rows` and `grid-auto-columns` properties.
+
+- The best practice is to use the CSS Grid-specific `minmax()` function which lets you set a minimum and maximum size for a track, for example, `minmax(100px, auto)`. The minimum size is `100px`, but the maximum is `auto`, which will expand automatically to accommodate more content.
+
+- CONTINUE FROM https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids#as_many_columns_as_will_fit. EVERYTHING ABOVE IS DONE. EVERYTHING BELOW IS FROM THE BOOK.
 
 - Then define the grid columns and rows with the `grid-template-columns` and `grid-template-rows` properties, both of which use space-separated lists of values.
 
