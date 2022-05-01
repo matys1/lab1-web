@@ -330,6 +330,8 @@ See example files illustrate points above flexbox-wrap0-mdn.html and flexbox1-md
   - Gutters - Also known as gaps or alleys. The spacing between grid tracks.
   - Grid axis - Consists of block/column axis and inline/row axis.
 
+### Creating grid
+
 - Use the `display` property to define the grid container element using two possible values:
   - `grid` - block-level grid.
   - `inline-grid` - inline grid.
@@ -359,7 +361,20 @@ See example files illustrate points above flexbox-wrap0-mdn.html and flexbox1-md
 
 - The best practice is to use the CSS Grid-specific `minmax()` function which lets you set a minimum and maximum size for a track, for example, `minmax(100px, auto)`. The minimum size is `100px`, but the maximum is `auto`, which will expand automatically to accommodate more content.
 
-- CONTINUE FROM https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids#as_many_columns_as_will_fit. EVERYTHING ABOVE IS DONE. EVERYTHING BELOW IS FROM THE BOOK.
+- To create a layout with as many columns as will fit (on the same row), you can set the value of `grid-template-columns` using the `repeat()` function, but instead of passing in a number, pass in the keyword `auto-fill`. For example, `grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));`. The grid is creating as many 200-pixel columns as will fit into the container, then sharing whatever space is leftover among all the columns.
+
+### Placing things on the grid
+
+![grid-layout](imgs/grid-layout.jpg)
+*(displays grid container and grid items and the concept of grid lines; left to right, top to bottom from 1-4)*
+
+- CSS Grid always has lines and are numbered beginning with 1 and relate to the writing mode of the document (e.g. english ltr and arabic rtl).
+
+> Note, there's always 1 more grid line than there are columns or rows. For example, above you have 3 columns and 4 vertical grid lines. A layout with 1 columns will have 2 vertical grid lines and so forth.
+
+- We can arrange things in accordance with these lines by specifying the start and end line. Use properties `grid-column` (shorthand for `grid-column-start` amd `grid-column-end`) and `grid-row` (shorthand for `grid-row-start` and `grid-row-end`). When using the shorthands, separate the start and end values using forward slash (`/`).
+
+- CONTINUE FROM "Note: you can also use the value -1" and see 8-placement-starting-point-mdn.
 
 - Then define the grid columns and rows with the `grid-template-columns` and `grid-template-rows` properties, both of which use space-separated lists of values.
 
