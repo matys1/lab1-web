@@ -363,18 +363,86 @@ See example files illustrate points above flexbox-wrap0-mdn.html and flexbox1-md
 
 - To create a layout with as many columns as will fit (on the same row), you can set the value of `grid-template-columns` using the `repeat()` function, but instead of passing in a number, pass in the keyword `auto-fill`. For example, `grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));`. The grid is creating as many 200-pixel columns as will fit into the container, then sharing whatever space is leftover among all the columns.
 
-### Placing things on the grid
+- For an example see 0-starting-point-mdn.html
+
+### Placing things on the grid (line layout)
 
 ![grid-layout](imgs/grid-layout.jpg)
 *(displays grid container and grid items and the concept of grid lines; left to right, top to bottom from 1-4)*
 
 - CSS Grid always has lines and are numbered beginning with 1 and relate to the writing mode of the document (e.g. english ltr and arabic rtl).
 
-> Note, there's always 1 more grid line than there are columns or rows. For example, above you have 3 columns and 4 vertical grid lines. A layout with 1 columns will have 2 vertical grid lines and so forth.
+> Note, there's always 1 more grid line than there are columns or rows. For example, above you have 3 columns and 4 vertical grid lines. A layout with 1 column will have 2 vertical grid lines and so forth.
 
-- We can arrange things in accordance with these lines by specifying the start and end line. Use properties `grid-column` (shorthand for `grid-column-start` amd `grid-column-end`) and `grid-row` (shorthand for `grid-row-start` and `grid-row-end`). When using the shorthands, separate the start and end values using forward slash (`/`).
+- If we do not explicitly place the element on to the grid in any way they will lay out according to the auto-placement rules, one item in each of the first seven cells (according to picture above.).
 
-- CONTINUE FROM "Note: you can also use the value -1" and see 8-placement-starting-point-mdn.
+- You can override the auto placement rules and arrange elements in accordance with these lines by specifying the start and end line. Use property `grid-area` which is a shorthand for properties `grid-column` (shorthand for `grid-column-start` and `grid-column-end`) and `grid-row` (shorthand for `grid-row-start` and `grid-row-end`). When using the shorthands, separate the start and end values using forward slash (`/`).
+
+```
+grid-area - grid-column - grid-column-start
+                        - grid-column-end
+
+          - grid-row    - grid-row-start
+                        - grid-row-end
+```
+
+- For the `grid-area` property the order of values specified must be:
+  1. `grid-row-start`
+  2. `grid-column-start`
+  3. `grid-row-end`
+  4. `grid-column-end`  
+
+For example, `grid-area: 1 / 1 / 4 / 2;`
+
+- If you use anything other than `grid-area` and if an item only spans one track you can omit the `grid-column-end` or `grid-row-end` values. Grid defaults to spanning one track. This is called a default span. For example:
+
+```css
+header {
+  grid-column: 1 / 3;
+  grid-row: 1; /*same as `grid-row: 1 / 2;`*/
+}
+```
+
+- If you look at the picture of CSS Grid above, you'll notice that on the bottom and right side there are negative numbers. You can use these numbers to count backward, for example `-1` would represent the last vertical line (line 4), `-2` would represent line 3 and so forth. Note, though that on the right side there's only `-1` at the top where you would expect it to be on the bottom and see 3 more negative numbers running to the top. The reason for this is that backwards counting only applies to explicit row or columns grids and does not take into account any rows or columns added in the implicit grid outside of that.
+
+- This comes in handy when you need to stretch an item right across the entire grid:
+
+```css
+header {
+  grid-column: 1 / -1; /*same as 1 / 3*/
+  grid-row: 1;
+}
+```
+
+- Lastly, you can also use a `span` keyword followed by a number of tracks you would like the area to span. For example:
+
+```css
+header {
+  grid-column: 1 / span 2; /*same as 1 / 3 or 1 / -1*/
+  grid-row: 1;
+}
+```
+
+or the other way around:
+
+```css
+header {
+  grid-column: span 2 / 3; /*same as 1 / 3 or 1 / -1 or 1 / span 2*/
+  grid-row: 1;
+}
+```
+
+- For an example, see the 8-placement-starting-point(line)-mdn.html. 
+
+### Placing things on the grid (area layout)
+
+- When you use CSS Grid Layout you always have lines. However, there is an alternate method to use for positioning items on the grid which you can use alone or in combination with line-based placement. This method involves placing our items using named template areas. 
+
+CONTINUE FROM https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Grid_Template_Areas#naming_a_grid_area. THEN CONTINUE FROM https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids#positioning_with_grid-template-areas "The rules for grid-template-areas are as follows:".
+
+- For an example, see the 8-placement-starting-point(area)-mdn.html. 
+
+EVERYTHING BELOW IS FROM THE BOOK.
 
 - Then define the grid columns and rows with the `grid-template-columns` and `grid-template-rows` properties, both of which use space-separated lists of values.
 

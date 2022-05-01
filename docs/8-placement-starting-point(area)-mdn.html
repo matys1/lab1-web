@@ -13,7 +13,7 @@
         .container {
             display: grid;
             grid-template-columns: 1fr 3fr;
-            grid-gap: 20px;
+            gap: 20px;
         }
         header,
         footer {
@@ -25,27 +25,27 @@
         aside {
             border-right: 1px solid #999;
         }
-        /*up until this point you have 3 ver x 3 hor lines (2 cols 2 rows)*/
+        /*up until this point you have 3 ver x 3 hor lines (2 cols & 2 rows)
+        you defined 2 columns explicitly using `grid-template-columns` property and the rows are created implicitly by auto-placing the 4 elements*/
+        .container {
+          grid-template-areas:
+              "header header"
+              "sidebar content"
+              "footer footer"; /*this line creates the 3rd row*/
+        }
         header {
-          grid-column: 1 / 3;
-          grid-row: 1; /*same as 1 / 2*/
+          grid-area: header;
         }
-
         article {
-          grid-column: 2; /*same as 2 / 3*/
-          grid-row: 2; /*same as 2 / 3*/
+          grid-area: content;
         }
-
         aside {
-          grid-column: 1; /*same as 1 / 2*/
-          grid-row: 2; /*same as 2 / 3*/
+          grid-area: sidebar;
         }
-
         footer {
-          grid-column: 1 / 3;
-          grid-row: 3; /*same as 3 / 4*/
+          grid-area: footer;
         }
-        /*now you have 3 ver x 4 hor lines (2 cols 3 rows)*/
+        /*now you have 3 ver x 4 hor lines (2 cols & 3 rows)*/
     </style>
 </head>
 <body>
