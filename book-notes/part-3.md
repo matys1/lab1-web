@@ -328,9 +328,30 @@ See example files illustrate points above flexbox-wrap0-mdn.html and flexbox1-md
   - Grid track - A row or a column. Space between two vertical or two horizontal grid lines.
   - Grid area - The total space surrounded by four grid lines. A grid area may be composed of any number of grid cells.
   - Gutters - Also known as gaps or alleys. The spacing between grid tracks.
-  - Grid axis - Consists of block/column axis and inline/row axis.
+  - Grid axis - Consists of block/column axis (vertical) and inline/row axis (horizontal).
 
-### Creating grid
+> Note that many CSS Grid properties have shorthands. While shorthands are encouranged for CSS Flexbox, using high-level shorthands for CSS Grid (like `grid` and `grid-template`) can be confusing and might inadvertently lead to resetting of rules that cannot be specified through the shorthands.
+
+### Defining grid
+
+Grid definition properties in this section; shorthands and longhands:  
+```
+display:
+grid-template-columns:
+grid-template-rows:
+gap:
+  column-gap:
+  row-gap:
+grid-auto-rows:
+grid-auto-columns:
+```
+
+Grid creation functions in this section:
+```
+repeat()
+minmax()
+fit-content() /*obscure, check MDN*/
+```
 
 - Use the `display` property to define the grid container element using two possible values:
   - `grid` - block-level grid.
@@ -338,7 +359,11 @@ See example files illustrate points above flexbox-wrap0-mdn.html and flexbox1-md
 
 - Declaring `display: grid` will not make the grid items immediately look any different. It gives you a one column grid, so your items will continue to display one below the other as they do in normal flow.
 
+> Note, keep in mind auto placement in CSS Grid. CSS Grid Layout specification contains rules that control what happens when you create a grid and do not explicitly place some or all of the child items (explicit placing discussed in the next two sections regarding line-based and area-based placements). The auto placement defaults to arranging items by row. You can change this by using the `grid-auto-flow` property.
+
 - To create columns use the `grid-template-columns` property. The property accepts a space delimited list of values. The number of values indicates the number of columns that will be created while the weight of the values indicate the width of the columns.
+
+- You can also create explicit rows using the `grid-template-rows` property or don't and rely on the implicit creation of rows instead. The video on MDN about Grids had a nice example of using `auto` and fractional values to create responsive row sizing.
 
 - CSS Grid introduces a completely new unit type `fr` which represents a fraction of the leftover space in the grid container. The `fr` unit distributes space proportionally (similar to how grow and shrink works in flexbox). For example:
 
@@ -349,11 +374,13 @@ See example files illustrate points above flexbox-wrap0-mdn.html and flexbox1-md
 }
 ```
 
-- The first track now gets `2fr` of the available space and the other two tracks get `1fr`, making the first track larger. You can mix `fr` units with fixed length units - in such a case the space needed for the fixed tracks is used up first; the remaining space is then distributed to the other tracks.
+- The first track now gets `2fr` of the available space and the other two tracks get `1fr`, making the first track larger. You can mix `fr` units with fixed and relative length units - in such a case the space needed for the fixed and relative tracks is used up first; the remaining space calculated in fractions is then distributed to the other tracks. 
+
+- For example, `grid-template-columns: 15% 3fr 1fr;`. In the example you have a three-column layout with a 15% left column and the remaining columns taking up three-quarters and one-quarter of the remaining available space.
 
 - To create gaps between tracks we use the `gap` property (shorthand for `column-gap` and `row-gap`).
 
-- Use the CSS Grid-specific `repeat()` function to repeat track listings. The first value in the function is the number of time you want it repeated and the second value is the track lsiting. For example, instead of listing `grid-template-columns: 1fr 1fr 1fr;` you can do `grid-template-columns: repeat(3, 1fr);` instead. This is because CSS Grid is often defined by a dozen or more columns and this way it's easier to work with the layout.
+- Use the CSS Grid-specific `repeat()` function to repeat track listings. The first value in the function is the number of times you want it repeated and the second value is the track lsiting. For example, instead of listing `grid-template-columns: 1fr 1fr 1fr;` you can do `grid-template-columns: repeat(3, 1fr);` instead. This is because CSS Grid is often defined by a dozen or more columns and this way it's easier to work with the layout.
 
 - When you use `grid-template-columns` or `grid-template-rows` functions you create an explicit row or column grid. The implicit row or column grid is created when content is placed outside of the explicit grid. For example, you can create explicit column grid but as extra content is moved into rows it creates an implicit row grid.
 
@@ -367,6 +394,17 @@ See example files illustrate points above flexbox-wrap0-mdn.html and flexbox1-md
 
 ### Placing things on the grid (line layout)
 
+Line-based grid layout properties in this section; shorthands and longhands:
+```
+grid-area:
+  grid-column:
+    grid-column-start:
+    grid-column-end:
+  grid-row:
+    grid-row-start:
+    grid-row-end:
+```
+
 ![grid-layout](imgs/grid-layout.jpg)
 *(displays grid container and grid items and the concept of grid lines; left to right, top to bottom from 1-4)*
 
@@ -377,14 +415,6 @@ See example files illustrate points above flexbox-wrap0-mdn.html and flexbox1-md
 - If we do not explicitly place the element on to the grid in any way they will lay out according to the auto-placement rules, one item in each of the first seven cells (according to picture above.).
 
 - You can override the auto placement rules and arrange elements in accordance with these lines by specifying the start and end line. Use property `grid-area` which is a shorthand for properties `grid-column` (shorthand for `grid-column-start` and `grid-column-end`) and `grid-row` (shorthand for `grid-row-start` and `grid-row-end`). When using the shorthands, separate the start and end values using forward slash (`/`).
-
-```
-grid-area - grid-column - grid-column-start
-                        - grid-column-end
-
-          - grid-row    - grid-row-start
-                        - grid-row-end
-```
 
 - For the `grid-area` property the order of values specified must be:
   1. `grid-row-start`
@@ -434,38 +464,95 @@ header {
 
 - For an example, see the 8-placement-starting-point(line)-mdn.html. 
 
+- Grid "frameworks" tend to be based around 12 or 16-column grids. With CSS Grid, you don't need any third party tool to give you such a framework. For an example, see 11-grid-system-starting-point-mdn.html.
+
 ### Placing things on the grid (area layout)
+
+Area-based grid layout properties in this section; shorthands and longhands:
+```
+grid-area*
+grid
+  grid-template
+    grid-template-rows
+    grid-template-columns
+    grid-template-areas*
+  grid-auto-rows
+  grid-auto-columns
+  grid-auto-flow
+```
+*(Note that only properties with * sign are specifically area-related, others are shorthands that combine both area-related properties and grid definition properties)*
 
 - When you use CSS Grid Layout you always have lines. However, there is an alternate method to use for positioning items on the grid which you can use alone or in combination with line-based placement. This method involves placing our items using named template areas. 
 
-CONTINUE FROM https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Grid_Template_Areas#naming_a_grid_area. THEN CONTINUE FROM https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids#positioning_with_grid-template-areas "The rules for grid-template-areas are as follows:".
+- Similar to how `grid-area` property works in line-based layouts, we can also define an area by giving it a name and then specify the location of that area in the value of the `grid-template-areas` property. 
+
+- You can assign any name you want to the areas using the `grid-area` property. This property alone will not create any layout, but you will have named areas to use in a layout. For example:
+
+```css
+header { grid-area: head; }
+footer { grid-area: foot; }
+section { grid-area: main; }
+aside { grid-area: side; }
+nav { grid-area: nav; }
+```
+*(from the book)*
+
+or
+
+```css
+header {
+  grid-area: header;
+}
+article {
+  grid-area: content;
+}
+aside {
+  grid-area: sidebar;
+}
+footer {
+  grid-area: footer;
+}
+```
+*(from MDN)*
+
+- After defining the names you can create the layout using the `grid-template-areas` property. Instead of placing my items using line numbers specified on the items themselves, you create the whole layout on the grid container. If you repeat the values that content will then span those columns or rows. For example:
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 20px;
+  grid-template-areas:
+  "header header"
+  "sidebar content"
+  "footer footer";
+}
+```
+
+- You can also leave grid cells empty using this method by using the full stop character (` . `) surrounded by a space on both sides. Extra white space is ignored and you can insert multiple spaces in order to visually align the values in your code.
+
+- There are a few things that will make your grid invalid and the property will be ignored:
+  - Creating L-shaped areas are not allowed (currently).
+  - The grid has to be complete. You need to have every cell of the grid filled. Place dots if a cell is meant to be left empty.
+  - The areas must be rectangular.
+  - Areas can't be repeated in different locations.
+
+- For example, in the above code to make the sidebar span the entire left side uder header you can also do this:
+
+```css
+.container {
+  grid-template-areas:
+  "header header"
+  "sidebar content"
+  "sidebar footer";
+}
+```
 
 - For an example, see the 8-placement-starting-point(area)-mdn.html. 
 
-EVERYTHING BELOW IS FROM THE BOOK.
-
-- Then define the grid columns and rows with the `grid-template-columns` and `grid-template-rows` properties, both of which use space-separated lists of values.
-
-- CSS Grid adds a new unit of measure `fr` which refers to the free speca in the container. The browser first removes any space taken by non-flexible items and then divides up the remaining space among the elements with `fr` units. For example, you might have a three-column layout with a 15% left column and the remaining columns taking up three-quarters and one-quarter of the remaining available space.
-  - For example, `grid-template-columns: 15% 3fr 1fr;`.
-
-- To make it easier, you can name different items using the `grid-area` property. For example, you might name your layout elements like:
-
-```css
-header { grid-area: header; }
-footer { grid-area: footer; }
-section { grid-area: main; }
-aside { grid-area: sidebar; }
-nav { grid-area: navigation; }
-```
-
-- Then you define your layout grid with the `grid-template-areas` property. You reference the names of a grid area in the cell in which you want them to display. If you repeat it, the content will span those columns or rows. And a period is an empty cell in the layout.
-
-- Note, When you turn a container element into a grid container, the grid elements are only the immediate children of that container.
-
 - For the example from the book see the grid-layout.html.
 
-- In summary, do not do layouts using the fixed, liquid or hybdrid layouts using the floats and negative margins. Also do not use the CSS Table unless it's absolutely needed. Use CSS Grid for full page layouts. User CSS Flexbox for components and smaller-scale layouts. In general, it seems like nowadays web development is centered around Responsive Web Design (RWD) and mobile-first (which includes CSS Grid and Flexbox among other things).
+- In summary, do not do layouts using the fixed, liquid or hybdrid layouts using the floats and negative margins. These terms and approaches in general are outdated. Also do not use the CSS Table unless there's a very specific reason for it. Use CSS Grid for full page layouts and CSS Flexbox for components and smaller-scale layouts. In general, it seems like nowadays web development is centered around Responsive Web Design (RWD) and mobile-first (both of which include CSS Grid and Flexbox among other things).
 
 ---
 
@@ -496,8 +583,9 @@ Comment: In the book they referred to fixed, liquid and hybrid layouts. I think 
 - https://developer.mozilla.org/en-US/docs/Web/CSS/inheritance#inherited_properties
 - https://cssgridgarden.com/  
 - https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout  
-- https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout  
-- https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout  
+- https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout (see more useful links; some of which I used under Guides)  
+- https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout (see more useful links; some of which I used under Guides)  
+- Excellent resource for CSS Grid (area based layout + media queries): https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Grid_Template_Areas#redefining_the_grid_using_media_queries
 
 **Overflow and collapsing wrapper explanation:**
 - The use of `overflow: hidden;` to prevent the wrapper element from collapsing if it contains only floats.  
@@ -852,4 +940,4 @@ loadimg.src = "assets/loading-sprite.png";
 
 A tool that helps you build curves: http://cubic-bezier.com/  
 The example of animated dog: https://htmljenn.com/mckinley-talking.html  
-A tool to build SVG graphics and animate them: https://inkscape.org/en/  
+A tool to build SVG graphics and animate them: https://inkscape.org/en/ 
