@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Quotable Quotes</title>
+    <script>
+      function getQuote() { //create a function
+        // Create the arrays
+        quotes = new Array(4);
+        sources = new Array(4);
+        
+        // Initialize the arrays with quotes
+        // Notice the + for concatentation below. In JS a line break means end of command.
+        quotes[0] = "When I was a boy of 14, my father was so " +
+        "ignorant...but when I got to be 21, I was astonished " +
+        "at how much he had learned in 7 years.";
+        sources[0] = "Mark Twain";
+        
+        quotes[1] = "Everybody is ignorant. Only on different " +
+        "subjects.";
+        sources[1] = "Will Rogers";
+        
+        quotes[2] = "They say such nice things about people at " +
+        "their funerals that it makes me sad that I'm going to " +
+        "miss mine by just a few days.";
+        sources[2] = "Garrison Keillor";
+        
+        quotes[3] = "What's another word for thesaurus?";
+        sources[3] = "Steven Wright";
+        
+        // Get a random index into the arrays
+        a = Math.random(); //decimal from 0 to 1
+        b = quotes.length; //count of quotes, so always 4
+        c = a * b          //random decimal * 4
+        i = Math.floor(c); //(0 to 0.24)*4 < 1 = 0 
+                           //(0.25 to 0.49)*4 < 2 = 1 
+                           //(0.5 to 0.74)*4 < 3 = 2
+                           //(0.75 to 0.99)*4 < 4 = 3; 
+                           //(1)*4 = 4 (undefined)
+        console.log(a);
+        console.log(b);
+        console.log(c);
+        console.log(i);
+        
+        // Write out the quote as HTML
+        document.write("<p style='background-color: #ffb6c1'>\"");
+        document.write(quotes[i] + "\"");
+        document.write("<em>- " + sources[i] + "</em>");
+        document.write("</p>");
+      }
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <h1>Quotable Quotes</h1>
+    <p>Following is a random quotable quote. To see a new quote
+    just reload this page.</p>
+    <script>
+      getQuote(); //call the function
+    </script>
+  </body>
+</html>

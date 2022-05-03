@@ -282,7 +282,7 @@ h1#serious {font-weight: 36pt; font-family: Arial;}
 	<head>
 		<meta charset="utf-8">
 		<title>Your Title</title>
-		<script src="js/scripts.js"></script>
+		<script src="/path/to/script.js"></script>
 	</head>
 ```
 
