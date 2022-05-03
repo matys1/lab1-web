@@ -27,7 +27,7 @@
 
 - Because the DOM API is the only collection of methods and properties natively available to scripting languages such as JavaScript in browsers for manipulating the object graph, the distinction between this collection and the internal object graph that it accesses is normally not relevant, so the term "DOM" is often used as if it were the object graph itself.
 
-- The DOM represents a document with a hierarchical tree of nodes. 
+- The DOM represents a `Document` with a hierarchical tree of nodes. 
 
 ```html
 <html>
@@ -52,8 +52,47 @@
 
 - As mentioned above, the DOM API is built using multiple APIs (standardized methods and properties) that work together. The DOM Core represents the functionality used for XML documents, and also serves as the basis for HTML DOM API. From there, it is expanded by other APIs as needed, such as, the SVG API for representing SVG documents to the DOM Core. The DOM defines the interfaces that describes documents and objects. These interfaces are a means of specifying a way to access and manipulate an application's internal representation of a document. 
 
-- The Document interface represents any web page loaded in the browser and serves as an entry point into the web page's content, which is the DOM tree. However, there are other interfaces defined in the DOM like `Window` and `Node`.
+- The `Document` interface represents any web page loaded in the browser and serves as an entry point into the web page's content, which is the DOM tree. However, there are other interfaces defined in the DOM specification, such as, `Window` and `Node`.
 
 - The DOM API is used to build websites. The DOM was designed to be independent of any particular programming language, making the structural representation of the document available from a single, consistent API. Even if most web developers will only use the DOM through JavaScript, implementations of the DOM can be built for any language, such as Python.
 
-Continue from "What Is Unobtrusive JavaScript?"
+- In very simple and incomplete terms the DOM is like the overarching framework. The overall container object is called the `document`. Any element that you create within the `document` to which you’ve given an `id` can be referenced by that `id`. For example, if you have a `<div>` with the `id` `wrapper`, then in the DOM that element is referenced as:
+
+```js
+document.wrapper
+```
+
+- If you wanted to change the style of the element you would change the style object associated with it, for example:
+
+```js
+document.wrapper.style.background-color="#ffffff"
+```
+
+### Rules to unobtrusive JavaScript
+
+- It should be usable - without being noticed
+- It should be easily degradable - no error messages, silently disappear
+- Make it accessible - core site functions shouldn't rely on JS
+- Keep it in separate files from structure and style  
+
+See the unobtrusive version of js-random-quote.html here js-unobtrusive-random-quote.html. Some of the changes include:
+- including a fallback text
+- use of ids
+- updating the DOM by using the `innerHTML` method
+- moving the script just before the closing `</body>` tag, but ideally it should live in an external file
+
+> I finished with reading and notes of this lesson, however, before moving on with the lesson 20 below perhaps try creating this image gallery described in "Changing Images Based on User Interaction". The book doesn't provide a complete code listing, but perhaps you can figure it out based on the other js exercises and some research if needed? Things you'll need to do:
+>  - find your own images and have two versions of each - large and small (look into this free image software Gimp or whatever it was called)
+>  - write some unique text for each image that will change when you select an image
+>  - reuse some of the components from the previous js exercises from this lesson
+
+## LESSON 20
+
+Continue reading & notes. See above comment though.
+
+---
+
+**Links in the book:**
+
+Official DOM specification: http://www.w3.org/DOM/  
+Some JS library for image galleries: http://lokeshdhakar.com/projects/lightbox/   
