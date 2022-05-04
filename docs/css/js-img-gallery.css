@@ -13,8 +13,11 @@ body {
 h1 {
   font-size: 1.3em;
 }
+h2 {
+  font-size: 1.15em;
+}
 #large-image {
-  width: 100%; 
+  width: 100%;
   max-width: 100%; 
   height: auto;
   border: solid 1px black;
@@ -28,6 +31,7 @@ h1 {
 #lg-img {
   grid-area: lg-img;
   padding: 10px;
+  text-align: center;
 }
 #sm-imgs {
   grid-area: sm-imgs;
@@ -41,6 +45,8 @@ h1 {
 #text {
   grid-area: text;
   padding: 10px;
+  display: flex;
+  flex-flow: column nowrap;
 }
 
 #main {
@@ -54,14 +60,28 @@ h1 {
   "text";
 }
 
-@media (min-width: 450px) {
+.border:hover {
+  outline: solid 4px rgb(255, 187, 0);
+}
+
+@media (min-width: 550px) {
   #main {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 310px auto;
     gap: 20px;
     grid-template-areas:
     "head    head"
     "lg-img  text"
     "sm-imgs sm-imgs";
+  }
+  #text {
+    overflow-y: scroll;
+  }
+  #large-image {
+    width: auto;
+    height: auto;
+    max-width: 100%; 
+    max-height: 100%;
   }
 }
