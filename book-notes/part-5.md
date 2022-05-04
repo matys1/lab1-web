@@ -88,7 +88,7 @@ See the unobtrusive version of js-random-quote.html here js-unobtrusive-random-q
 
 ## LESSON 20
 
-Continue reading & notes. See above comment though.
+Continue reading & notes. See above comment though...............
 
 ---
 
