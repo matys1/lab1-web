@@ -72,7 +72,9 @@ h2 {
 .border:hover {
   outline: solid 4px rgb(255, 187, 0);
 }
+/*everything above (default) is for all devices smaller than 700px width - mobile first*/
 
+/*everything below is only for large screens (non-mobile)*/
 @media (min-width: 700px) {
   #main {
     display: grid;

@@ -81,18 +81,21 @@ See the unobtrusive version of js-random-quote.html here js-unobtrusive-random-q
 - updating the DOM by using the `innerHTML` method
 - moving the script just before the closing `</body>` tag, but ideally it should live in an external file
 
-> I finished with reading and notes of this lesson, however, before moving on with the lesson 20 below perhaps try creating this image gallery described in "Changing Images Based on User Interaction". The book doesn't provide a complete code listing, but perhaps you can figure it out based on the other js exercises and some research if needed? Things you'll need to do:
->  - find your own images and have two versions of each - large and small (look into this free image software Gimp or whatever it was called)
->  - write some unique text for each image that will change when you select an image
->  - reuse some of the components from the previous js exercises from this lesson
+### Changing Images Based on User Interaction
 
-## LESSON 20
+- The book doesn't provide a complete code listing for this example, but I decided to take a couple of days to create, from scratch, a mini website like in the book to the best of my ability. See js-img-gallery.html.
 
-Continue reading & notes. See above comment though!!!!
+- Overall it worked out great. I used both Grid and Flexbox extensively for the layouts. HTML was quite simple with the only exception being the JS event handlers embedded in the HTML that I borrowed from the book. The external JS file is solely for the chaning of the text that accompanies each picture with code partially lifted from previous projects in the book and some stackoverflow.
+
+- Overall good example and can use it as basis for next projects. This was really my first "large" project I did completely from scratch.
 
 ---
 
 **Links in the book:**
 
 Official DOM specification: http://www.w3.org/DOM/  
-Some JS library for image galleries: http://lokeshdhakar.com/projects/lightbox/   
+Some JS library for image galleries: http://lokeshdhakar.com/projects/lightbox/  
+
+## LESSON 20
+
+- 
