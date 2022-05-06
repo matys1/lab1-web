@@ -221,4 +221,4 @@ JSON docs: http://www.json.org/
 
 ## LESSON 21
 
-Reading & Notes.
+Continue reading from 'Controlling Positioning with JavaScript'. Then continue with notes.
