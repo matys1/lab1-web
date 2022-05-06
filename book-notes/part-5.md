@@ -104,7 +104,7 @@ Getting started with JavaScript Programming
 
 - A **statement** is a section of code that performs a single action. A statement is typically a single line of JavaScript, though you can also break a statement across multiple lines or include more than one statement in a single line.
 
-- A semicolon (`;`) marks the end of a statement, but you can also omit the semicolon if you start a new line after the statement.
+- A semicolon (`;`) marks the end of a statement, but you can also omit the semicolon if you start a new line after the statement. So you can separate statements by either using a semicolon or a new line or both.
 
 - Below are four valid statements. Because they are each on a new line, the semicolon is optional, though if you were to but all on the same line, you would have to use semicolon.
 
@@ -115,7 +115,7 @@ mins = now.getMinutes();
 secs = now.getSeconds();
 ```
 
-- A **function** is a number of JavaScript statements that are treated as a single unit. A statement that uses a function is referred to as a function call. A function can take a parameter - an expression inside the parentheses - that tells the function what to do. In addition, a function can return a value to a waiting variable.
+- A **function** is a number of JavaScript statements that are treated as a single unit. A statement that uses a function is referred to as a function call. A function can accept a parameter and also return a value. A parameter is an expression inside the parentheses that tells the function what to do. A function can also return a value to a waiting variable.
 
 - For example, the following function call prompts the user for a response and stores it in the text variable:
 
@@ -148,4 +148,77 @@ var fred = 27;
 
 - A **loop** is a group of statements that repeat a certain number of times. For example, the `for` statement is one of several stements used for loops. 
 
-CONTINUE FROM "Event Handlers". Everything above done.
+- An **event handler** is a script that tells the browser what to do when a certain event occurs. For example, events such as when the mouse button is pressed or when a page is finished loading. You specify the event handler as an attribute within the HTML tag and include the JavaScript statement to handle the event within the quotation marks. You can define your own functions to act as event handlers, for example: 
+
+```js
+<img src="button.gif" onmouseover="highlight();">
+```
+
+> Note, Using an attribute on the HTML tag is not unobtrusive. You’ll learn how to make event handlers unobtrusively in later lessons.
+
+### Order of script execution
+
+Any number `<script>` tag pairs, external JavaScript files and event handlers can be used within a single document. Below describes scripts in which areas of the document execute first. If there are multiple scrits specified within the same area, they are evaluated in the order that they are written in.
+
+1. Sets of `<script>` tags within the `<head>`.
+2. Sets of `<script>` tags within the `<body>` while the page loads and displays.
+3. Event handlers are executed when their events occur.
+
+> It’s important to know that every time the browser encounters a `<script>` tag, it stops concurrent downloading to download and parse just that script. All other HTML tags and elements are threaded, which means browsers can download several at a time. This is why it’s important to have as few `<script>` tags in your document as possible, and, whenever possible, to load them last in the HTML.
+
+- Remember than JavaScript is case sensitive. The basic rules are:
+  - Keywords such as `for` and `if` are alaways lower case.
+  - Built-in objects such as `Math` and `Date` are always capitalized.
+  - DOM object names such as `setAttribute` and `getElementById` are camel case with the first letter being in lower case.
+
+- Variable, object and function names can include uppercase and lowercase letters, numbers and the underscore ( `_` ). They must begin with a letter or an underscore though. The names also must not be reserver keywords. See a full list of reserved keywords on MDN.
+
+- JavaScript ignores whitespace. Use it as liberally as you wish.
+
+- Two types of comments:
+
+```js
+// single line comment
+
+/*
+multi-line
+comment
+*/
+```
+
+- Two key points and reminders:
+  - User external JavaScript files whenever possible, and as few as possible. This way the page loads faster and encourages the writing of modular scripts that can be reused.
+  - Use a semicolon at the end of each statement and use only one statement per line. This improves readability and makes it easier to debug.
+
+### Using JSON
+
+- JSON-encoded data is expressed as a sequence of `parameter` and `value` pairs, with a colon separating each parameter and its value. These `"parameter":"value"` pairs are separated by commas. The whole sequence is enclosed in curly braces to form a JSON object.
+
+- For example, the following creates a variable that stores a JSON object called `yourObject`:
+
+```js
+var yourObject = {
+   "param1":"value1",
+   "param2":"value2",
+   "param3":"value3"
+};
+```
+
+- JSON objects can have properties and methods accessed directly using the usual dot notation:
+
+```js
+alert(yourJSONObject.param1); // alerts 'value1'
+```
+
+- It is easy to convert a JSON object into a string through a process known as serialization; serialized data is convenient for storage or transmission around networks. JSON is used a lot in APIs.
+
+---
+
+**Links in the book:**
+
+List of reserved keywords: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords  
+JSON docs: http://www.json.org/  
+
+## LESSON 21
+
+Reading & Notes.
