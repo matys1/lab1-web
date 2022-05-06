@@ -98,4 +98,54 @@ Some JS library for image galleries: http://lokeshdhakar.com/projects/lightbox/
 
 ## LESSON 20
 
-- 
+Getting started with JavaScript Programming
+
+### Basic concepts and terms:
+
+- A **statement** is a section of code that performs a single action. A statement is typically a single line of JavaScript, though you can also break a statement across multiple lines or include more than one statement in a single line.
+
+- A semicolon (`;`) marks the end of a statement, but you can also omit the semicolon if you start a new line after the statement.
+
+- Below are four valid statements. Because they are each on a new line, the semicolon is optional, though if you were to but all on the same line, you would have to use semicolon.
+
+```js
+now = new Date();
+hours = now.getHours();
+mins = now.getMinutes();
+secs = now.getSeconds();
+```
+
+- A **function** is a number of JavaScript statements that are treated as a single unit. A statement that uses a function is referred to as a function call. A function can take a parameter - an expression inside the parentheses - that tells the function what to do. In addition, a function can return a value to a waiting variable.
+
+- For example, the following function call prompts the user for a response and stores it in the text variable:
+
+```js
+text = prompt("Enter some text.")
+```
+
+- A **variable** is a container that can store a number, a string of text, or another value. For example:
+
+```js
+var fred = 27;
+```
+
+> Note, use single equality operator (`=`) for assignments. Use double or triple equality opeartor for comparisons (`==` or `===`), like for example, in a conditional statement.
+>
+> When choosing between a double or tripe equality operator for comparisons, the best practice suggests it's always better to use the triple equality operator.
+
+- An **object** is a collection of related data and/or functionality. Where a variable stores a single piece of information, an object can store two or more pieces of data at once. Objects usually consist of several variables (which inside an object are called *properties*) and functions (inside an object called *methods*). 
+
+- *Properties* are the variables that store the objects data. For example, an object might represent an individual person with properties like name, address and telephone number providing the information about this person. For example, `Bob.address` or `Bob.phone`.
+
+- *Methods* are functions that work with an object's data. For example, our person object might include a `display()` method to display the person's information. In JavaScript terminology, the statement `Bob.display()` would display Bob’s details.
+
+- JavaScript supports three kinds of objects:
+  - Built-in objects like `Date`, `Array`, `String`, `Math`, `Boolean`, `Number`, and `RegExp`.
+  - DOM objects. For example `alert()` function is a method of `window` object.
+  - Customer objects that you build yourself, like the person object discussed above.
+
+- A **conditional statement** checks for certain conditions when the script runs. For example, an `if` statement.
+
+- A **loop** is a group of statements that repeat a certain number of times. For example, the `for` statement is one of several stements used for loops. 
+
+CONTINUE FROM "Event Handlers". Everything above done.
