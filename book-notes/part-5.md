@@ -361,8 +361,14 @@ window.location.href="http://www.google.com";
 - To add new text to a page (instead of modifying existing text) you must first create a new text node using the `createTextNode()` method. Then you need to add the new text node to the document using the `appendChild` method.
   - See an example of using the above methods in l21-add-text.html.
 
-CONTINUE WITH "Summary". EVERYTHING ABOVE IS DONE.
+- Bonus: did a bonus exercise see l21-bonus-hiding-showing.html.
 
 ---
 
 **Links in the book:**
+
+A complete list of all available properties and methods: http://www.w3.org/TR/DOM-Level-3-Core/  
+
+## LESSON 22
+
+Continue with reading & notes.
