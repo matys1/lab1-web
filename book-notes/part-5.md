@@ -347,10 +347,22 @@ window.location.href="http://www.google.com";
   - `hasChildNodes` - Returns the Boolean value `true` if the object has one or more child nodes or `false` if it has none.
   - `cloneNode` - Creates a copy of an existing node. If a parameter of `true` is supplied, the copy will also include any child nodes of the original node.
 
-### Creating positionable elements and controlling positioning with JavaScript
+### Controlling positioning, visibility and text with JavaScript
 
 - After learning about the structure of the DOM in sections above, you can start thinking about how you can control any element in a web page. You can group elements in a container elements and move all of the child objects by controlling just the container.
+  - See an example of moving a object around the page using JavaScript and showing and hiding it l21-movable-layers.html
 
-- See an example of moving a object around the page using JavaScript and showing and hiding it l21-movable-layers.html
+- An alternative to using `display: none` and `display: block` is to use the `visibility` property that every object has with possible values `"visible"` or `"hidden"`.
+  - See an example of using `visibility` property in l21-hiding-showing.html.
 
-COTNINUE FROM "Hiding and Showing Objects". EVERYTHING ABOVE IS DONE.
+- Modify the contents of any element using the `nodeValue` property. The `nodeValue` property of a text node contains its actual text, and the text node is the child of the element (node).
+  - See an example of using the `nodeValue` property in l21-modify-text.html.
+
+- To add new text to a page (instead of modifying existing text) you must first create a new text node using the `createTextNode()` method. Then you need to add the new text node to the document using the `appendChild` method.
+  - See an example of using the above methods in l21-add-text.html.
+
+CONTINUE WITH "Summary". EVERYTHING ABOVE IS DONE.
+
+---
+
+**Links in the book:**

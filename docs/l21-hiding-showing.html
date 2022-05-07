@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Hiding or Showing Objects</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <h1 id="heading1">This is the first heading</h1>
+    <h1 id="heading2">This is the second heading</h1>
+    <p>
+      Using the W3C DOM, you can choose whether to show or hide 
+      the headings on this page using the checkboxes below.
+    </p>
+    <form name="checkboxform">
+      <input type="checkbox"name="checkbox1" onclick="showHide();"checked><span style="font-weight:bold;">Show first heading</span><br>
+      <input type="checkbox"name="checkbox2" onclick="showHide();"checked><span style="font-weight:bold;">Show second heading</span><br>
+    </form>
+    <script>
+      function showHide() {
+        var heading1 = document.getElementById("heading1"); //store the heading1 object in variable
+        var heading2 = document.getElementById("heading2"); //store the heading2 object in variable
+        var showheading1 = document.checkboxform.checkbox1.checked; //store the state of the heading1 checkbox
+        var showheading2 = document.checkboxform.checkbox2.checked; //store the state of the heading2 checkbox
+        //the below is called 'conditional (ternary) operator' and is an alternative to if...else statement
+        //the below logic will assign "visible" or "hidden" value to heading1.style.visibility property based on the state of the checkbox showheading1 or showheading2
+        //note that when you click on the checkbox the state of it changes and only after is the function evaluated
+        //it reads like: if showheading1 = true then .visibility = "visible" else .visibility = "hidden"
+        heading1.style.visibility = (showheading1) ? "visible": "hidden";
+        heading2.style.visibility = (showheading2) ? "visible": "hidden";
+      }
+    </script>
+  </body>
+</html>
