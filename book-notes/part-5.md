@@ -221,4 +221,136 @@ JSON docs: http://www.json.org/
 
 ## LESSON 21
 
-Continue reading from 'Controlling Positioning with JavaScript'. Then continue with notes.
+### Understanding DOM
+
+- JavaScript can change and manipulate documents in the browser even after the page has loaded. It can add or remove elements, change text and much more - all dynamically without requiring additional requests to a server.
+
+- To work with the browser and documents, JavaScript uses the hierarchy of parent and child objects found within the DOM that represent all the content and components of a web document and the browser that renders it. When you refer to a DOM object, you use the parent object name followed by the child object name or names, separated by periods.
+
+```js
+window.document.getElementById("someElement")
+```
+
+> Note that in the book they refer to DOM interfaces as objects.
+
+- The `window` object represents the browser window and is the parent object for other objects like `document`, `location`, `history` etc. Even though `window` is the parent object, in most situations you can omit it, for example: 
+
+```js
+document.getElementById("someElement")
+```
+
+### Working with the `document` object - getting information about a Document
+
+- Some of the properties of the `document` object:
+  - `document.URL` - returns document's URL; cannot be changed
+  - `document.title` - returns the value of `<title>` tag; can be changed
+  - `document.referrer` - returns the URL of the page the user was viewing before the current page - usually the page with a link to the curret page; cannot be changed
+  - `document.lastModified` - returns the date the document was last modified
+  - `document.cookie` - enables you to read or set a cookie used within the document
+  - `document.images` - returns a collection of images used in the document
+
+### Writing text in a Document
+
+- `document.write()` method can write text as part of the HTML in a document
+
+### Working with `link` and `anchor` object
+
+- A document can contain, and very likley does, multiple links. A `link` object is a child of the `document` object and has a list of properties with the `href` property containing the entire URL, and other properties define other, smaller, portions of it.
+
+- A `links` array contains all `link` objects in the current page. A property of the array, `document.links.length`, indicates the number of `link` ojects (and thus links) in the page.
+
+For example, the following statement assigns the entire URL of the first link stored in the array to the variable `link1`:
+
+```js
+var link1 = links[0].href; //omits the document.
+//below is just an illustration of points above
+document.link
+document.links
+document.links.length
+document.links[0].href
+```
+
+- Similarly, there's an `anchor` object, an `anchors` array and a `document.anchors.length` property. For example, you could use `anchors` array to loop through all the anchors on a given page to dynamically generate a table of contents at the top of the page.
+
+### Working with the `history` object
+
+- The `history` object is another child property of the `window` object. The object holds information about the locations (URLs) that have been visited before and after the current one, and it includes methods to go to previous or next locations.
+
+- The `history` object has one property `history.length` which returns the number of different locations the user has visited.
+
+- The `history` object has three methods you can use to move through the history list:
+  - `history.go` - accepts positive and negative integers to open a specific URL from the history list. For example `history.go(-2)` is the same as clicking the back button twice.
+  - `history.back` - loads the preceding URL in the history list (one step back)
+  - `history.forward` - loads the next URL in the history list (one step forward)
+
+- For an example on how to create your own navigation back and forth buttons see l21-back-forth-buttons.html
+
+### Working with the `location` object
+
+- The `location` object is another child property of the `window` object. The object holds information about the URL currently loaded in the browser window. You can also load a URL into the current window by assigning a value to the `href` property:
+
+```js
+window.location.href="http://www.google.com";
+```
+
+- The `location` object has the same set of properties as the `link` object. The following is the list of properties (prefix them with `location.` or `link.` as needed): `protocol`, `hostname`, `port`, `pathname`, `search`, `host` and `hash`.
+
+> Although the `location.href` property usually contains the same URL as the `document.URL` property described earlier in this lesson. But you can’t change the `document.URL` property. Always use `location.href` to load a new page in a given window.
+
+- The `location` object also has three methods:
+  - `location.assign` - loads a new document e.g. `location.assign("https://www.google.com")`
+  - `location.reload` - same as the refresh button in the browser
+  - `location.replace` - replaces the current location with a new one, but unlike the properties above you cannot use the back button (good for temporary pages etc.).
+
+### More about the DOM structure
+
+- Reiterates on the DOM tree: the DOM adds objects under the document object for every element of a page. In the DOM, each container within the page and its contents are represented by an object. The objects are organized into a treelike structure, with the document object itself at the root of the tree and with individual elements such as the heading and paragraph of text at the leaves of the tree.
+
+- Each container or element in a document is called a node in the DOM. You can refer to nodes by assigning an ID or by navigating the tree using the relationships between the nodes.
+
+- The element and the text the element contains are treated as two separate nodes. The formed being refered to as node and the latter as text node. For example, the actual text in the paragraph is a node in itself and is a child of the `p` object rather than being a grandchild of the `body` object. Similarly, the text within the `<h1>` tags is a child of the `h1` object.
+
+- The DOM uses another term for organization of objects: siblings. This refers to objects that have the same parent - in other words, objects at the same level in the DOM object tree.
+
+### Working with DOM nodes
+
+- Each node (object) in the DOM tree can be accessed in JavaScript. Basic node properties:
+  - `nodeName` - The name of the node (not the ID). For nodes based on HTML tags, such as `<p>` or `<body>`, the name is the tag name: `p` or `body`. For the document node, the name is a special code: `#document`. Similarly, text nodes have the name `#text`. This is a read-only value.
+  - `nodeType` - An integer describing the node’s type, such as `1` for normal HTML tags, `3` for text nodes, and `9` for the document node. This is a read-only value.
+  - `nodeValue` - The actual text contained within a text node. This property returns `null` for other types of nodes.
+  - `innerHTML` - The HTML content of any node. You can assign a value including HTML tags to this property and change the DOM child objects for a node dynamically.
+
+> The `innerHTML` property is often the easiest way to change content in a page. The `innerHTML` property is not officially part of the standard but is supported by all major browsers and is safe to use. You can also accomplish this in a more standard way by deleting and creating nodes described below.
+
+- Node relationship properties (as described in the DOM structure section above):
+  - `firstChild` - The first child object for a node. For nodes that contain text, such as `h1` or `p`, the text node containing the actual text is the first child.
+  - `lastChild` - The node’s last child object.
+  - `childNodes` - An array that includes all of a node’s child nodes. You can use a loop with this array to work with all the nodes under a given node.
+  - `previousSibling` - The sibling (node at the same level) previous to the current node.
+  - `nextSibling` - The sibling after the current node.
+
+### Document methods
+
+- The `document` node itself has several very useful methods:
+  - `getElementById(id)` - Returns the element with the specified `id` attribute.
+  - `getElementsByTagName(tag)` - Returns an array of all the elements with a specified tag name. You can use the wildcard `*` to return an array containing all the nodes in the document.
+  - `createTextNode(text)` - Creates a new text node containing the specified text, which you can then add to the document.
+  - `createElement(tag)` - Creates a new HTML element for the specified tag. As with `createTextNode`, you need to add the element to the document after creating it. You can assign content within the element by changing its child objects or the `innerHTML` property.
+
+### Node methods
+
+- Each node within a page has a number of methods available. Which of them are valid depends on the node’s position in the page and whether it has parent or child nodes:
+  - `appendChild(new)` - Appends the specified new node after all the object’s existing nodes.
+  - `insertBefore(new, old)` - Inserts the specified new child node before the specified old child node, which must already exist.
+  - `replaceChild(new, old)` - Replaces the specified old child node with a new node.
+  - `removeChild(node)` - Removes a child node from the object’s set of children.
+  - `hasChildNodes` - Returns the Boolean value `true` if the object has one or more child nodes or `false` if it has none.
+  - `cloneNode` - Creates a copy of an existing node. If a parameter of `true` is supplied, the copy will also include any child nodes of the original node.
+
+### Creating positionable elements and controlling positioning with JavaScript
+
+- After learning about the structure of the DOM in sections above, you can start thinking about how you can control any element in a web page. You can group elements in a container elements and move all of the child objects by controlling just the container.
+
+- See an example of moving a object around the page using JavaScript and showing and hiding it l21-movable-layers.html
+
+COTNINUE FROM "Hiding and Showing Objects". EVERYTHING ABOVE IS DONE.
