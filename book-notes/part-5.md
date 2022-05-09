@@ -123,7 +123,7 @@ secs = now.getSeconds();
 text = prompt("Enter some text.")
 ```
 
-- A **variable** is a container that can store a number, a string of text, or another value. For example:
+- A **variable** is a container that can store a number, a text string, an object or another value. For example:
 
 ```js
 var fred = 27;
@@ -133,7 +133,7 @@ var fred = 27;
 >
 > When choosing between a double or tripe equality operator for comparisons, the best practice suggests it's always better to use the triple equality operator.
 
-- An **object** is a collection of related data and/or functionality. Where a variable stores a single piece of information, an object can store two or more pieces of data at once. Objects usually consist of several variables (which inside an object are called *properties*) and functions (inside an object called *methods*). 
+- An **object** is a collection of related data and/or functionality. Where a variable stores a single piece of information (a single entity), an object can store two or more pieces of data at once. Objects usually consist of several variables (which inside an object are called *properties*) and functions (inside an object called *methods*). Note that even though an object can consist of several variables, you can also assign an object to a variable.
 
 - *Properties* are the variables that store the objects data. For example, an object might represent an individual person with properties like name, address and telephone number providing the information about this person. For example, `Bob.address` or `Bob.phone`.
 
@@ -169,7 +169,7 @@ Any number `<script>` tag pairs, external JavaScript files and event handlers ca
 - Remember than JavaScript is case sensitive. The basic rules are:
   - Keywords such as `for` and `if` are alaways lower case.
   - Built-in objects such as `Math` and `Date` are always capitalized.
-  - DOM object names such as `setAttribute` and `getElementById` are camel case with the first letter being in lower case.
+  - DOM object names such as `setAttribute` and `getElementById` use "lower camel case" naming convention where you stick together multiple words, using lower case for the whole first word and then capitalize subsequent words.
 
 - Variable, object and function names can include uppercase and lowercase letters, numbers and the underscore ( `_` ). They must begin with a letter or an underscore though. The names also must not be reserver keywords. See a full list of reserved keywords on MDN.
 
@@ -371,4 +371,127 @@ A complete list of all available properties and methods: http://www.w3.org/TR/DO
 
 ## LESSON 22
 
-Continue with reading & notes.
+- Key concepts in this lesson: variables, strings, arrays, functions (group code) and objects (group data)
+
+### Using variables with `let` and constants with `const` (from MDN)
+
+> Note that this book is using `var` for variable definitions. This is outdated and you should always use `let` or `const` instead of `var`. The `let` and `const` declarations also fix a number of issues that are present when using the `var` declaration.
+
+- Declare variables using `let` like this:
+
+```js
+let myName;
+let myAge;
+```
+
+- If you try to return them they will return a value of `undefined`. Don't confuse a variable that exists but has no defined value with a variable that doesn't exist at all - they are very different things. Returning a variable that doesn't exist will produce an error.
+
+- Once you declare a variable, you can initialize it with a value. For example:
+
+```js
+myName = "Chris";
+myAge = 37;
+```
+
+- As a shorthand, you can declare and initialize a variable at the same time. For example:
+
+```js
+let myName = "Chris";
+let myAge = 37;
+```
+
+- If you want to update a variable (change the value it stores) you would use the same syntax as initializing a variable. For example:
+
+```js
+myName = "Tom";
+myAge = 28;
+```
+
+> Note, you only use the `let` declaration once - when declaring a new variable for the first time. You don't use it when you want to initialize it with a value or update the value the variable stores (for example, when incrementing or decrementing it), attempting to redeclare the same variable will return an error.
+
+- However, when you use `var` you can declare and initilize a variable and declare it again afterwards and it will still work. You can also redeclare variables using `var`. These and more confusing and inconsistent behaviours are fixed when using `let` to create a more consistent and predictable outcome. That's why you should always use `let` instead of `var`.
+
+- In JavaScript you can also declare constants using `const`. Constants are like variables, except that:
+  - You must initialize them at the same time as you declare them
+  - You cannot update them (assign a new value) after you've initialized them
+
+- Even though you cannot update constants, you can update the content of the value that the constant stores. For example, if you assign an object to a constant you can update, add, or remove properties of that object, because even though the content of the object has changed, the constant is still pointing to the same object. For example:
+
+```js
+const bird = { species : 'Kestrel'};
+console.log(bird.species);  // "Kestrel"
+
+bird.species = 'Striated Caracara';
+console.log(bird.species);  // "Striated Caracara"
+```
+
+- Using constants is very useful because it tells anyone looking at your code that this name will never be assigned to a different value. Any time they see this name, they will know what it refers to. Therefore you should always use `const`, and only use `let` when you have to.
+
+- Because JavaScript is a "dynamically typed language", which means that, unlike some other languages, you don't need to specify what data type a variable will contain, you can use the special operator `typeof` to return the data type of the variable. For example:
+
+```js
+typeof myName
+```
+
+- The differences between `var`, `let` and `const` make it so you always want to explicitly write your declarations using either `let` or `const` because if you omit them and declare and initialize using, for example, only `myName = "Chris";` it will default to functioning as `var`, which you don't want.
+
+### Using variables with `var` (from book)
+
+- Choosing a variable name:
+  - Variable names can include both upper- and lowercase letters, digits (0-9) and an underscore ( _ )
+  - The first character must be either a letter or an underscore (though it's recommended to not use an underscore as the first character)
+  - And like everything in JavaScript variable names are case sensitive
+
+- A variable’s scope is the area of the script in which that variable can be used. There are two types of variables:
+  - **Global variables** have the entire script (and other scripts in the same HTML document) as their scope. They can be used anywhere, even within functions. To create a global variable you declare it in the main script outside of any functions. Using the `var` keyword when declaring global variables is optional, however, it's considered best practice to do it anyway to improve readability.
+  - **Local variables** have a single function as their scope. They can be used only within the function they are created in. In addition, the variables in the function’s parameter list are always local variables. Using the `var` keyword when declaring local variables is mandatory. This forces JavaScript to create a local variable, even if there is a global variable with the same name, however, it's best practice to keep variable names distinct, even if you are using them in different scopes.  
+  *(note that some of the above is obsolete due to `let` and `const`)*
+
+- Use a single euqal sign (`=`) to assign a value to a variable.
+  - For example `var a = 40`.
+  - You can use any expression to the right of the equal sign, including other variables. For example to increment a variable by `1` you use `a = a + 1`.
+  - A shorthand for incrementing and decrementing variables are `+=` and `-=` operators. For example `a += 1` and `a -= 1`. Note that you can also use the `+=` shorthand to concatenante text to a string, for example, this statement adds a period to the current contents of a string variable named `sentence` like `sentence += ".";`.
+  - An even shorter way is to use the increment and decrement operators `++` and `--` which inrement and decrement by 1 by default. For example `a++` increments variable `a` by 1 and `a--` decrements variable `a` by 1.
+  - You can also use the increment and decrement operators before the variable name, for example: `++a` and `--a`. However:
+    - If the operator is after the variable name (`a++`), the increment or decrement happens after the current expression is evaluated. For example, `alert(a++)` will display an alert with value `40` and only then increment `a` to `41`.
+    - If the operator is before the variable name (`++a`), the increment or decrement happens before the current expression is evaluated. For example, `alert(++a)` will first increment `a` to `41` and only then display an alert with value `41`.
+
+> Note that ultimately it doesn't matter if you use the longhand or shorthand syntax, either way the value returned is the same. It's just there for convenience.
+
+- The most popular (note this is not an exhaustive list) operators in JavaScript are: 
+  - A `+` sign for string concatenation and numeric additon.
+  - The usual arithmetic operators `-`, `*`, `/`, `%` (modulo), `++` (increment) and `--` (decrement).
+
+- JavaScript uses the usual mathematical operator precedence to evaluate expressions. Meaning, parentheses are evaluated first, followed by multiplication and division, followed by addition and subtraction.
+
+### Data Types in JavaScript
+
+- JavaScript is a "dynamically typed language" so you don't need to specify the type of data a variable will store. 
+
+- The basic JavaScript data types are:
+  - Number - Both integers (e.g. `25`) and floating-point numbers (e.g. `1.4142138`).
+  - Boolean - Either `true` or `false`.
+  - String - Strings are actually `String` objects (e.g. `"Have a nice day"`)
+  - Null - The null value, represented by the keyword `null`.
+
+- You can change the value a variable holds and the values don't need to be the same data type. For example you can define a variable `var total = 31;` and then change it to `total = "albatross";`.
+
+- JavaScript handles conversions between data types for you automatically whenever it can. For example if a variable `total` contains a numeric values of `40`, then `document.write("The total is " + total);` would return `"The total is 40"`. 
+
+- In situations where you end up with a string containing a number and need to convert it to a regular numeric value you can use functions below. Both functions ignore the nonnumeric portion of the string, for example `var stringvar = "30 angry polar bears";` parsed like `var numvar = parseInt(stringvar);` would store only the number `30`.
+  - `parseInt` - converts a string to an integer number
+  - `parseFloat` - converts a string to a floating-point number
+
+> Note, if a valid number is not found, the function returns the special value `NaN`, meaning not a number.
+
+### Working with `String` objects
+
+- JavaScript stores strings as `String` objects. There are common string manipulation techniques that use methods (built-in functions) of the `String` object.
+
+- There are two ways you can create a `String` object and there is no difference in the strings created by the two methods. The former uses a variable and the latter uses a object-oriented syntax:
+  - `var a = "this is a string";` (recommended, just use `let` instead)
+  - `a = new String("this is a string");`
+
+*(Note there's a small error in the book where it states "the following statement replaces the contents of the `stringtest` variable with a new string". It doesn't actually update the `stringtest` variable, it redeclares it because of the presence of `var`. This is why you should use `let` instead as this kind of behaviour is not allowed and would rightfully return an error.)*
+
+CONTINUE FROM "Calculating the Length of a String".
