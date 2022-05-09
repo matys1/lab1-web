@@ -494,4 +494,58 @@ typeof myName
 
 *(Note there's a small error in the book where it states "the following statement replaces the contents of the `stringtest` variable with a new string". It doesn't actually update the `stringtest` variable, it redeclares it because of the presence of `var`. This is why you should use `let` instead as this kind of behaviour is not allowed and would rightfully return an error.)*
 
-CONTINUE FROM "Calculating the Length of a String".
+- To find how many characters a string variable contains use the `length` property of the `String` object. For example, below will return integer value `15` which can be used in any numeric expression.
+
+```js
+var stringtest = "This is a test.";
+console.log(stringtest.length);
+```
+
+- To convert the contents of a string to all uppercase or all lowercase use `toUpperCase` and `toLowerCase` methods. For example: 
+
+```js
+document.write(stringtest.toLowerCase());
+
+//or if you want to change the stored string value itself
+stringtest = stringtest.toLowerCase();
+```
+
+> Note that methods always use parentheses, even when there are no parameters. Properties don't.
+
+- Understanding index parameters:
+  - Index always starts with `0`. For example, 4th character will have an index of `3`.
+  - The first index value is inclusive and the second is noninclusive. For example, a second index of `6` includes up to index `5` (the sixth character).
+  - You can specify the two indexes in either order. The smaller one will be assumed to be the first index.
+
+- The `substring()` method returns a portion of the original string between two index values, which you must specify in parentheses. For example:
+
+```js
+var alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+alpha.substring(0,4) //returns ABCD.
+alpha.substring(10,12) //returns KL.
+alpha.substring(6,7) //returns G; 6 inclusive 7 exclusive leaves only 6.
+alpha.substring(6,6) //returns the null value; 6 inclusive 6 exclusive leaves nothing.
+alpha.substring(6,5) //returns F; 5 is assumed to be the first index (inclusive) 6 exclusive.
+```
+
+- The `charAt()` method returns a single character from a specified index position within a string. For example:
+
+```js
+alpha.charAt(0) //returns A.
+alpha.charAt(12) //returns M.
+```
+
+- To find a substring use the `indexOf` method to search for the substring beginning from left to right or the `lastIndexOf` method to search for the substring beginning from right to left. Both methods will return the **starting** (leftmost) index position of the substring. 
+
+- Both methods accept one or two parameters. The first parameter specifies the substring you're searching for. The second parameter (inclusive) optionally specifies the starting position from which you want the search to start. Note that for `indexOf` the default starting positon is `0` but for `lastIndexOf` the default starting position is the max index value (which in below example is `10`). For example:
+
+```js
+var nums = "10100111001" //this is a string; 11 characters in total, last index of 10 
+console.log(nums.indexOf("1")) //returns 0
+console.log(nums.indexOf("1",1)) //returns 2
+console.log(nums.lastIndexOf("1")) //returns 10
+console.log(nums.lastIndexOf("1",9)) //returns 7
+console.log(nums.lastIndexOf("11",9)) //returns 6
+```
+
+CONTINUE FROM "Using Numeric Arrays". Everything above is done.
