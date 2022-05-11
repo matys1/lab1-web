@@ -553,9 +553,14 @@ console.log(nums.lastIndexOf("11",9)) //returns 6
 - An array is a numbered group of data items that you can treat as a single unit. Arrays can contain strings, numbers, objects, or other types of data. Each item in an array is called an element. 
 
 You can create a numeric array in three different ways:
-- (Option 1) Create an array called, for example, `scores` with four elements: `scores = new Array(4);`
+- (Option 1) You can create an empty array or an array of a specific length. When you create an empty array the `length` property will return `0`. If you create an array of a specific length (a single number specifying the number of elements), then the `length` property will return the number of elements the array constains. Thus, you can create, for example, an array named `scores` in the following ways:
 
-- Then, assign values to the elements in the array using indexes like  
+```js
+scores = new Array(); //empty array; console.log(scores.length) returns 0
+scores = new Array(4); //array with 4 elements; console.log(scores.length) returns 4
+```
+
+- Then, regardless with it's an empty array or an array of specific length, you assign values to the elements (if elements don't exist, like in an empty array, the elements will be created) in the array using indexes, for example:  
 
 ```js
 scores[0] = 39;
@@ -564,11 +569,50 @@ scores[2] = 100;
 scores[3] = 49;
 ```
 
-- (Option 2) You can also declare an array and specify values for elements at the same time like `scores = new Array(39,40,100,49);`
-- (Option 3) You can also use a shorthand syntax to declare an array and specify its contents like `scores = [39,40,100,49];`
+- (Option 2) You can also declare an array and specify values for elements at the same time. Notice that if you use a single number in the parentheses (like in option 1) it defines the array length, if you use two or more numbers, it creates elements and assigns those numbers as element values. For example: `scores = new Array(39,40,100,49);`. Has a `console.log(scores.length)` of `4`.
+
+- (Option 3) You can also use a shorthand syntax to declare an array and specify its contents like `scores = [39,40,100,49];`.
 
 > Note when to use parentheses `( )` and when to use brackets `[ ]`.
 
 - It doesn’t matter which of the above methods you use, all create equivalent arrays. The last method is the simplest and has the most distinct syntax though. 
 
-CONTINUE FROM "Understanding Array Length". Everything above is done.  
+- You don't have to assign values or create array elements in a consecutive order. The below example creates an empty array and then creates and assigns values to elements 1 and 6 (index `0` and `5`). The `console.log(test.length)` returns `6`, and if you try to return a value from, for example, element 3 using `console.log(test[2])` it will return `undefined`.
+
+```js
+test = new Array();
+test[0] = 21;
+test[5] = 22;
+```
+
+- All the methods discussed so far for creating numeric arrays work also with string arrays. In fact, JavaScript doesn't make a distinction between the two. Also, you can use string array elements anywhere you would use a string. You can even apply string methods to array elements, for example:
+
+```js
+names = ["John H. Watson", "Sherlock Holmes"]; //creates a string array with 2 elements
+console.log(names[0].substring(0,4)); //returns John
+```
+
+- Two string manipulation methods `split()` and `join()` are useful for splitting a string into individual parts or combining multiple strings into one (both methods use a delimiter). For example:
+
+```js
+//string split
+const name = "John Q. Public"; //create a constant that stores a string
+parts = name.split(" "); //split using space and store in a string array named parts
+console.log(parts[0]); //first element returns John
+console.log(parts[1]); //second element returns Q.
+console.log(parts[2]); //third element returns Public
+
+//string join
+const fullname = parts.join(" "); //concatenates array elements into a const named fullname
+console.log(fullname) //returns John Q. Public
+```
+
+- Use the `sort` method for string arrays to return an alphabetically sorted version of the array. For example:
+
+```js
+names = ["ZZ", "AA", "DD", "CC"]; //create a string array with 4 elements
+names.sort(); //sort the array in alphabetical order
+console.log(names); //returns the array in a new sorted order 
+```
+
+CONTINUE FROM "Sorting a Numeric Array". Everything above is done. Check MDN if the sort method really doesn't work on numeric arrays in modern JS.
