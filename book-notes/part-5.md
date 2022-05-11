@@ -552,22 +552,23 @@ console.log(nums.lastIndexOf("11",9)) //returns 6
 
 - An array is a numbered group of data items that you can treat as a single unit. Arrays can contain strings, numbers, objects, or other types of data. Each item in an array is called an element. 
 
-- Creating a numeric array:
-  - For example, create an array called `scores` with four elements like `scores = new Array(4);`
-  - Assign values to the elements in the array using indexes like  
+You can create a numeric array in three different ways:
+- (Option 1) Create an array called, for example, `scores` with four elements: `scores = new Array(4);`
 
-  ```js
-  scores[0] = 39; 
-  scores[1] = 40; 
-  scores[2] = 100; 
-  scores[3] = 49;
-  ```
+- Then, assign values to the elements in the array using indexes like  
 
-  - You can also declare an array and specify values for elements at the same time like `scores = new Array(39,40,100,49);`
-  - You can also use a shorthand syntax to declare an array and specify its contents like `scores = [39,40,100,49];`
+```js
+scores[0] = 39;
+scores[1] = 40;
+scores[2] = 100;
+scores[3] = 49;
+```
+
+- (Option 2) You can also declare an array and specify values for elements at the same time like `scores = new Array(39,40,100,49);`
+- (Option 3) You can also use a shorthand syntax to declare an array and specify its contents like `scores = [39,40,100,49];`
 
 > Note when to use parentheses `( )` and when to use brackets `[ ]`.
 
 - It doesn’t matter which of the above methods you use, all create equivalent arrays. The last method is the simplest and has the most distinct syntax though. 
 
-CONTINUE FROM "Understanding Array Length". Everything above is done.
+CONTINUE FROM "Understanding Array Length". Everything above is done.  
