@@ -607,7 +607,7 @@ const fullname = parts.join(" "); //concatenates array elements into a const nam
 console.log(fullname) //returns John Q. Public
 ```
 
-- Use the `sort` method for string arrays to return an alphabetically sorted version of the array. For example:
+- Use the `sort()` method for string arrays to return an alphabetically sorted (ascending) version of the array. For example:
 
 ```js
 names = ["ZZ", "AA", "DD", "CC"]; //create a string array with 4 elements
@@ -615,4 +615,45 @@ names.sort(); //sort the array in alphabetical order
 console.log(names); //returns the array in a new sorted order 
 ```
 
-CONTINUE FROM "Sorting a Numeric Array". Everything above is done. Check MDN if the sort method really doesn't work on numeric arrays in modern JS.
+- Whenever the `sort()` method is invoked to sort an array, it sorts the elements of the array *in place*, meaning the output of the method automatically overwrites the input (the contents of the array itself). This means that the old order of the array is no longer be available. Consider the example below:
+
+```js
+const test = ["ZZ", "AA", "DD", "CC"]; //create a constant string array
+console.log(test); //returns the array ["ZZ", "AA", "DD", "CC"]
+const test2 = test.sort(); //overwrites the test array in a sorted order, also assigns it to a new constant test2 
+console.log(test); //returns ['AA', 'CC', 'DD', 'ZZ']
+console.log(test2); //returns ['AA', 'CC', 'DD', 'ZZ']
+```
+
+- The `sort()` method is built upon converting the elements into strings before performing the comparison. Numeric and time sorts therefore are not reliable unless you specify an optional `compareFunction()` within the `sort()` method. The compare function must specify the first element of comparison `a` and the second element of comparison `b`. If you omit the `compareFunction()` then the `sort()` method will default to comparing strings. The syntax of the compare function for numeric values is:
+
+```js
+function functionName(a, b) {
+  return a - b; //ascending order; b - a would be descending
+}
+```
+
+> When sorting in ascending order `a - b`, if comparison returns a negative number then `a` belongs before `b`, if it returns 0 then keep original order and if it returns a positive number then `a` belongs after `b`.
+
+- See below example on how to sort a numeric array. Note that instead of defining the `compareFunction()` and then passing it as a parameter to the `sort()` method like below, you can also just define it inline directly within the `sort()` method.
+
+```js
+const numbers = [4, 2, 5, 1, 3]; //define a constant numeric array
+function compareFunction (a, b) { //define a compareFunction
+  return a - b;
+};
+numbers.sort(compareFunction); //sort the numbers array by passing the compareFunction
+console.log(numbers); //returns the same numbers array but now sorted [1, 2, 3, 4, 5]
+```
+
+- For a nice example regarding string arrays and displaying a sorted result see l22-sort.html and l22-sort.js. 
+
+CONTINUE FROM "Using Functions".
+
+---
+
+**Useful links:**
+
+String definition: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#creating_strings  
+JavaScript escape sequences (e.g. "/n" newline character): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String#escape_sequences  
+The `sort()` method: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
