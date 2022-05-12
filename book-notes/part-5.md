@@ -648,7 +648,55 @@ console.log(numbers); //returns the same numbers array but now sorted [1, 2, 3, 
 
 - For a nice example regarding string arrays and displaying a sorted result see l22-sort.html and l22-sort.js. 
 
-CONTINUE FROM "Using Functions".
+### Using functions to organize your scripts
+
+- A function is a group of JavaScript statements that can be treated as a single unit. The most basic syntax for defining a function is:
+
+```js
+function functionName() {
+  //statements go here
+};
+```
+
+- The curly braces `{ }` enclose all statements within the function and allows browser to determine where the function starts and ends. 
+
+- For the statements within the function to execute you must call the function first. Notice in the below example how the statements that are not contained within a function execute automatically when page is loaded, but do not when they are inside a function.
+
+```js
+//alert is executed automatically when page loads
+<script>
+    alert("Greetings!");
+</script>
+
+//alert is not executed automatically when page loads; function must be called first
+<script>
+  function Greet() {
+    alert("Greetings!");
+  };
+</script>
+```
+
+- Notice that the parentheses `( )` in the above example are empty. To make a function more dynamic you can add parameters. Parameters are variables that are assigned values passed to the function each time it is called.
+
+- You define parameters when you define the function. Below example defines a parameter named `who` for the `Greet` function:
+
+```js
+function Greet(who) {
+  alert("Greetings, " + who + "!");
+}
+```
+
+- To call a function, use the function's name as a statement in a script or as an action associated with an event. Within parentheses include the values for the function's parameters, if any. For example, in order to call the above function you you simply need to execute the below statement:
+
+```js
+Greet("Matiss");
+```
+
+- The value `"Matiss"` gets passed to the function which is then assigned to the `who` variable. You can define and call multi-parameter functions separating the variables in the definition and the values using comma (`,`).
+
+- To see an example of defining and calling a function with a parameter see l22-function.html.
+
+CONTINUE FROM "Returning a Value".  
 
 ---
 
