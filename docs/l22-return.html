@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Function Example: Average</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <h1>Function Example: Average</h1>
+    <p>The following is the result of the function call.</p>
+    <p>
+      <script>
+        function Average(a,b,c,d)  { //define a function named Average with 4 parameters
+          let result = (a + b + c + d) / 4; //assign the output of the calculation to a variable named result
+          return result; //return the value stored in the result variable
+        };
+        let score = Average(3,4,5,6); //call the function Average and pass 4 parameter values, store the returned output of the function in a variable named score
+        document.write("The average is: " + score); //print a string concatenated with the value stored in the score variable
+      </script>
+    </p>
+  </body>
+</html>

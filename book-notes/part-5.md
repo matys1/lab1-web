@@ -133,7 +133,7 @@ var fred = 27;
 >
 > When choosing between a double or tripe equality operator for comparisons, the best practice suggests it's always better to use the triple equality operator.
 
-- An **object** is a collection of related data and/or functionality. Where a variable stores a single piece of information (a single entity), an object can store two or more pieces of data at once. Objects usually consist of several variables (which inside an object are called *properties*) and functions (inside an object called *methods*). Note that even though an object can consist of several variables, you can also assign an object to a variable.
+- An **object** is a collection of related data and/or functionality. Where a variable stores a single piece of information (a single entity), an object can store two or more pieces of data at once. Objects usually consist of several variables (which inside an object are called *properties*) and functions (inside an object called *methods*). Objects encapsulate these related variables and functions into efficient packages and act as handy data containers. Note that even though an object can consist of several variables, you can also assign an object to a variable.
 
 - *Properties* are the variables that store the objects data. For example, an object might represent an individual person with properties like name, address and telephone number providing the information about this person. For example, `Bob.address` or `Bob.phone`.
 
@@ -696,7 +696,15 @@ Greet("Matiss");
 
 - To see an example of defining and calling a function with a parameter see l22-function.html.
 
-CONTINUE FROM "Returning a Value".  
+- The functions in above examples displayed an alert pop-up, however, a function can also return a value. To send the result back to the script that called the function, you include the `return` keyword as part of the function definition. See an example of the use of the `return` keyword in l22-return.html.
+
+### Working with Objects
+
+- See [LESSON 20](#lesson-20) for a basic definition and an introduction to Objects in JavaScript. Objects contain one or more properties (variables) and each object property contains a value.
+
+> Note, all HTML elements contain attributes. `.value` is a property that sets or returns the value of an attribute.
+
+CONTINUE FROM "Creating Objects".
 
 ---
 
