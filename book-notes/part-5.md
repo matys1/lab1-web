@@ -135,9 +135,9 @@ var fred = 27;
 
 - An **object** is a collection of related data and/or functionality. Where a variable stores a single piece of information (a single entity), an object can store two or more pieces of data at once. Objects usually consist of several variables (which inside an object are called *properties*) and functions (inside an object called *methods*). Objects encapsulate these related variables and functions into efficient packages and act as handy data containers. Note that even though an object can consist of several variables, you can also assign an object to a variable.
 
-- *Properties* are the variables that store the objects data. For example, an object might represent an individual person with properties like name, address and telephone number providing the information about this person. For example, `Bob.address` or `Bob.phone`.
+- *Properties* are the variables that store the objects data. And just like variables, each property has a value. For example, an object might represent an individual person with properties like name, address and telephone number providing the information about this person. To read a property's value, you simply reference the object name and property name, separated by a period. For example, `Bob.address` or `Bob.phone`. You can change a property's value by using the `=` operator, just as you can change the assignment of a value to a variable.
 
-- *Methods* are functions that work with an object's data. For example, our person object might include a `display()` method to display the person's information. In JavaScript terminology, the statement `Bob.display()` would display Bob’s details.
+- *Methods* are functions that work with an object's data and each object can have one or more methods. Like other functions, methods can accept arguments in parentheses, and they can return values. For example, our person object might include a `display()` method to display the person's information. In JavaScript terminology, the statement `Bob.display()` would display Bob’s details.
 
 - JavaScript supports three kinds of objects:
   - Built-in objects like `Date`, `Array`, `String`, `Math`, `Boolean`, `Number`, and `RegExp`.
@@ -700,11 +700,24 @@ Greet("Matiss");
 
 ### Working with Objects
 
-- See [LESSON 20](#lesson-20) for a basic definition and an introduction to Objects in JavaScript. Objects contain one or more properties (variables) and each object property contains a value.
+- See [LESSON 20](#lesson-20) for a basic definition and an introduction to Objects in JavaScript.
 
-> Note, all HTML elements contain attributes. `.value` is a property that sets or returns the value of an attribute.
+- The below exercises focus on creating `Card` objects that contain information about a person. Each person is represented by a new `Card` object which contains properties for name, address and phone number.
 
-CONTINUE FROM "Creating Objects".
+- The first step to creating an object is to name the object and its properties. In order to do this you need to define a function that creates a new instace of the `Card` object. This function is called the *constructor*. For example:
+
+```js
+function Card(name,email,address,phone) {
+  this.name = name;
+  this.email = email;
+  this.address = address;
+  this.phone = phone;
+}
+```
+
+- The constructor is a simple function that accepts parameters to initialize a new object and assigns them to the corresponding properties. Think of it like setting up a template for the object. Use `this` keyword in object definition to refer to the current object that's being created.
+
+CONTINUE FROM "Defining an Object Method".
 
 ---
 
