@@ -704,7 +704,7 @@ Greet("Matiss");
 
 - The below exercises focus on creating `Card` objects that contain information about a person. Each person is represented by a new `Card` object which contains properties for name, address and phone number.
 
-- The first step to creating an object is to name the object and its properties. In order to do this you need to define a function that creates a new instace of the `Card` object. This function is called the *constructor*. For example:
+- STEP 1: The first step to creating an object is to define the object and its properties. In order to do this you need to define a function that creates a new instace of the `Card` object. This function is called the *constructor*. For example:
 
 ```js
 function Card(name,email,address,phone) {
@@ -715,9 +715,35 @@ function Card(name,email,address,phone) {
 }
 ```
 
-- The constructor is a simple function that accepts parameters to initialize a new object and assigns them to the corresponding properties. Think of it like setting up a template for the object. Use `this` keyword in object definition to refer to the current object that's being created.
+- The constructor is a simple function that accepts parameters to initialize a new object and assigns them to the corresponding properties. This means that all `Card` objects will have the same properties. Think of it like setting up a template. Use `this` keyword in object definition to refer to the current object that's being created.
 
-CONTINUE FROM "Defining an Object Method".
+- STEP 2: After you've defined the constructor function that will create the `Card` objects and their properties, you can define a function that the object can use as a method. Below is an example of a function that reads the properties from the current object (`this`), prints each one with a label string before it, and then creates a new line.
+
+```js
+function printCard() {
+  let name_line = "Name: " + this.name + "<br>\n";
+  let email_line = "Email: " + this.email + "<br>\n";
+  let address_line = "Address: " + this.address + "<br>\n";
+  let phone_line = "Phone: " + this.phone + "<hr>\n";
+  document.write(name_line, email_line, address_line, phone_line);
+}
+```
+
+- STEP 3: Now that you have a function that prints a card, you need to make the `printCard` function part of the function definition for `Card` objects for it to become a method of the `Card` object. Below is the amended version of the constructor function from STEP 1:
+
+```js
+function Card(name,email,address,phone) {
+   this.name = name;
+   this.email = email;
+   this.address = address;
+   this.phone = phone;
+   this.printCard = printCard;
+}
+```
+
+> Note, consider using lowercase names like `address` for properties and lower camel case names like `printCard` for methods as a way to distinguish and make it clear which one is a property and which is a method.
+
+CONTINUE FROM "Creating an Object Instance".
 
 ---
 
