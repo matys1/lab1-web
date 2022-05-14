@@ -698,7 +698,7 @@ Greet("Matiss");
 
 - The functions in above examples displayed an alert pop-up, however, a function can also return a value. To send the result back to the script that called the function, you include the `return` keyword as part of the function definition. See an example of the use of the `return` keyword in l22-return.html.
 
-### Working with Objects
+### Creating and using Objects
 
 - See [LESSON 20](#lesson-20) for a basic definition and an introduction to Objects in JavaScript.
 
@@ -715,7 +715,9 @@ function Card(name,email,address,phone) {
 }
 ```
 
-- The constructor is a simple function that accepts parameters to initialize a new object and assigns them to the corresponding properties. This means that all `Card` objects will have the same properties. Think of it like setting up a template. Use `this` keyword in object definition to refer to the current object that's being created.
+- The constructor is a simple function that accepts parameters to initialize a new object and assigns them to the corresponding properties. This means that all `Card` objects will have the same properties. Think of it like setting up a template. 
+
+> Note the use of `this` keyword in the object definition and later in the method definition. The `this` keyword refers to the current object - the one that's being created.
 
 - STEP 2: After you've defined the constructor function that will create the `Card` objects and their properties, you can define a function that the object can use as a method. Below is an example of a function that reads the properties from the current object (`this`), prints each one with a label string before it, and then creates a new line.
 
@@ -743,7 +745,43 @@ function Card(name,email,address,phone) {
 
 > Note, consider using lowercase names like `address` for properties and lower camel case names like `printCard` for methods as a way to distinguish and make it clear which one is a property and which is a method.
 
-CONTINUE FROM "Creating an Object Instance".
+- After you've created an object definition (step 1), a method (step 2) and included the method to be part of the object definition (step 3) you can start creating new `Card` objects using the `new` keyword. For example, the below statement creates a new `Card` object named `tom`:
+
+```js
+//option 1
+tom = new Card("Tom Jones", "tom@jones.com", "123 Elm Street, Sometown ST 77777", "555-555-9876");
+```
+
+- You must enter the required parameters in the same order that they appear in the object definition. The new object named `tom` is called an instance of the `Card` object. Just as there can be several variables or arrays, there can be several instances of an object you define. 
+
+- Alternatively, you can create an empty `Card` object and then assign its properties:
+
+```js
+//option 2
+holmes = new Card();
+holmes.name = "Sherlock Holmes";
+holmes.email = "sherlock@holmes.com";
+holmes.address = "221B Baker Street";
+holmes.phone = "555-555-3456";
+```
+
+- After you've create an instance of the `Card` object using either of the two options above, you can use the `printCard` method to display its information, for example:
+
+```js
+tom.printCard();
+```
+
+- For an example see l22-card-object.html.
+
+### Extending built-in Objects
+
+- JavaScript includes the ability to extend built-in objects by adding new properties or methods. For example, you can extend the `String` object that manipulates strings in unique ways.
+
+- To add new properties or methods use the `prototype` keyword which allows you to change the definition of an object outside its constructor function.
+
+- For example, you can add a method to the `String` object definition named `heading` which converts a string into an HTML heading with a level (1-6) of your choosing. For an example see l22-extending-object.html.
+
+### CONTINUE FROM "Using the Math Object".
 
 ---
 

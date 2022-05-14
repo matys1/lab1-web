@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Test of Heading Method</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <script>
+      function addHeading(level) { //method definition
+        let html = "h" + level; //concatenates "h" + parameter level (1-6)
+        let text = this.toString(); //use this keyword to refer to the current object (current string; strings are objects) that the method is being applied to and return a string representing the object using the toString() method
+        let opentag = "<" + html + ">"; //concatenates "<" + "h" + level (1-6) + ">"
+        let closetag = "</" + html + ">"; //concatenates "</" + "h" + level (1-6) + ">"
+        return opentag + text + closetag; //opentag + string representing the String object the method is being applied to + closetag
+      }
+      String.prototype.heading = addHeading; //extends the String object definition by adding the addHeading function as a method named heading
+      document.write("This is a heading 1".heading(1)); //string object "This is a heading 1" and a heading() method with parameter 1 applied to it
+      document.write("This is a heading 2".heading(2)); //string object "This is a heading 2" and a heading() method with parameter 2 applied to it
+      document.write("This is a heading 3".heading(3)); //string object "This is a heading 3" and a heading() method with parameter 3 applied to it
+    </script>
+  </body>
+</html>
