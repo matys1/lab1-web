@@ -781,7 +781,16 @@ tom.printCard();
 
 - For example, you can add a method to the `String` object definition named `heading` which converts a string into an HTML heading with a level (1-6) of your choosing. For an example see l22-extending-object.html.
 
-### CONTINUE FROM "Using the Math Object".
+### Using `Math` Object
+
+- The `Math` object is a built-in JavaScript object with properties representing mathematicl constants and methods representing mathematical functions. You don't need to create a math object because it exists automatically in every program.
+
+- Methods for rounding decimals:
+  - `Math.ceil()` - rounds a number up to the next largest integer.
+  - `Math.floor()` - returns the largest integer less than or equal to a given number.
+  - `Math.round()` - returns the value of a number rounded to the nearest integer.
+
+CONTINUE FROM "All these methods take the number to be rounded as their only parameter."
 
 ---
 
