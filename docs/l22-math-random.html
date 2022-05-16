@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Math Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <h1>Math Example</h1>
+    <p>How random are JavaScript's random numbers?<br>
+    Let's generate 5000 of them and find out.</p>
+    <script>
+      let total = 0; //total variable stores the sum of all generated numbers, starts at 0
+      for (i = 1; i <= 5000; i++) { //for (initial expr; condition expr; increment expr); keeps looping until condition expr returns false
+        let num = Math.random(); //generate and store a random number (0 inc. to 1 exc.) in num variable
+        total += num; //add the random number generated to the total variable
+        if (i % 1000 === 0) { //modulo 1000 is equal to 0 every thousandth iteration e.g. 1000, 2000, 3000, 4000, 5000 etc. 
+          document.write("Generated " + i + " numbers...<br>"); //when it does return 0 then print the number of iterations reached
+        };
+      }; //note that because i starts with 1 and not 0 and condition expr is <= 5000 the i ends with 5001 (for a total of 5000 iterations)
+      var average = total / 5000; //calculate the average by dividing the total (sum of all generated numbers) by the number of total iterations
+      average = Math.round(average * 1000) / 1000; //round the average to 3 digits after the decimal point using 1000; you can use 100 to round to 2 digits
+      document.write("<h2>Average of 5000 numbers is: " + average + "</h2>"); //print the final statement displaying the average
+    </script>
+  </body>
+</html>
