@@ -550,7 +550,9 @@ console.log(nums.lastIndexOf("11",9)) //returns 6
 
 ### Working with Arrays
 
-- An array is a numbered group of data items that you can treat as a single unit. Arrays can contain strings, numbers, objects, or other types of data. Each item in an array is called an element. 
+- An array is a numbered group of data items that you can treat as a single unit. Arrays can contain strings, numbers, objects, or any other types of data. Each item in an array is called an element. 
+
+> Note, that arrays are just variables and you should use `let` or `const` in array declarations. The book it outdated in this aspec and doesn't explicity mention this.
 
 You can create a numeric array in three different ways:
 - (Option 1) You can create an empty array or an array of a specific length. When you create an empty array the `length` property will return `0`. If you create an array of a specific length (a single number specifying the number of elements), then the `length` property will return the number of elements the array constains. Thus, you can create, for example, an array named `scores` in the following ways:
@@ -773,6 +775,11 @@ tom.printCard();
 
 - For an example see l22-card-object.html.
 
+> Note: many objects in JavaScript, such as DOM objects, include parent and child objects (objects nested within objects). You can also create these nested structures and include child objects in your custom object definitions. In order to do that, just create a constructor function for the child object and then add a property to the parent object definition that corresponds to it.  
+> For example, if you created a `Nicknames` object to store nicknames for individuals, you could add it as a child object in the `Card` object's constructor like `this.nick = new Nicknames();`.
+
+> Note 2: since an object can be assgined to an array and arrays can contain multiple array elements, it means that you can also create an array of custom objects. You would need to create the object definition as usual as well as define an array. Then assign a new object to each array element (for example, `cardarray[1] = new Card();`). You can even use a loop to assign objects to an entire array at once.
+
 ### Extending built-in Objects
 
 - JavaScript includes the ability to extend built-in objects by adding new properties or methods. For example, you can extend the `String` object that manipulates strings in unique ways.
@@ -843,8 +850,6 @@ today.setFullYear(1995);
 let utcDate = new Date(Date.UTC(2018, 11, 1, 0, 0, 0));
 ```
 
-CONTINUE FROM "Summary".
-
 ---
 
 **Useful links:**
@@ -854,3 +859,7 @@ CONTINUE FROM "Summary".
 - The `sort()` method: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort  
 - Full list of properties and methods available in `Math` object: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math  
 - Proposal Temporal (replacement of `Date`): https://tc39.es/proposal-temporal/docs/index.html  
+
+## LESSON 23
+
+Continue reading and writing.
