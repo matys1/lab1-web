@@ -862,4 +862,33 @@ let utcDate = new Date(Date.UTC(2018, 11, 1, 0, 0, 0));
 
 ## LESSON 23
 
-Continue reading and writing.
+- This lesson looks at two flow control concepts in JavaScript: 
+  - **Conditionals** 
+    - `if...esle` statement
+    - comparison operators
+    - logical operators 
+    - ternary operator 
+    - `switch` statement 
+  - **Loops** 
+    - `for` loops 
+    - `while` loops 
+    - `do...while` loops
+    - infinite loops with `break` and `continue`
+    - `for...in` loops
+
+> Note, the book doesn't cover the `label` statement and the `for...of` loops (see MDN Loops link below). Otherwise the lesson is quite comprehensive.
+
+- Note that braces (`{ }`) in JavaScript are used to group individual statements in code blocks (for example, in case of a function). In certain circumstances, however, braces can have other meanings as well.
+
+- Statements in JavaScript are executed in the order in which they appear, one after the other. Because this order isn't always practical, flow control statements let you control the order in which code is executed. A funcion could also be considered a flow control statement since you can define a function at the start of the program and execute it at any point down the line.
+
+### The `if...else` statement
+
+- Continue from "The if Statement".
+
+---
+
+**Useful links:**
+
+- MDN Conditionals: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/conditionals  
+- MDN Loops and iteration (very good): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration  
