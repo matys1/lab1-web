@@ -882,9 +882,89 @@ let utcDate = new Date(Date.UTC(2018, 11, 1, 0, 0, 0));
 
 - Statements in JavaScript are executed in the order in which they appear, one after the other. Because this order isn't always practical, flow control statements let you control the order in which code is executed. A funcion could also be considered a flow control statement since you can define a function at the start of the program and execute it at any point down the line.
 
+### Conditional and logical operators
+
+- Either side of a conditional expression can be a variable, a constant, or an expression. For example, you can compare a variable and a value or compare two variables. Between the two values to be compared is a conditional operator:
+  - `===` Strict equality
+  - `!==` Strict non-equality
+  - `<` Less than
+  - `>` Greater than
+  - `<=` Less than or equal to
+  - `>=` Greater than or equal to
+
+> Note, that `==` and `!=` are also valid conditional operators, but using the strict versions is considered best practice and tend to lead to fewer errors.
+
+- You can combine multiple conditional expressions using logical operators:
+  - `&&` - AND; allows you to chain together two or more expressions so that all of them have to individually evaluate to `true` for the whole expression to return `true`.
+  - `||` - OR; allows you to chain together two or more expressions so that one or more of them have to individually evaluate to `true` for the whole expression to return `true`.
+  - `!` - NOT; can be used to negate an expression.
+
+```js
+//returns true only if both phone and email are blank
+phone === "" && email === ""
+
+//returns true if either phone or email or both are blank
+phone === "" || email === ""
+
+//returns true only if phone is not blank and email is blank
+!phone === "" && email === ""
+
+//equivalent to above
+phone !== "" && email === ""
+```
+
 ### The `if...else` statement
 
-- Continue from "The if Statement".
+- The most popular conditional statement in JavaScript. There are different ways and forms of writing `if...else` statements. Starting from the most basic:
+
+```js
+if (condition) /*code to run if condition is true */;
+```
+
+- However, the above single-line syntax only works if you have only one statement to execute when the condition evaluates to `true`, like `alert("condition was true!")`. If you want to execute multiple statements spanning multiple lines (a code block) you must use curly braces (`{ }`), for example:
+
+```js
+if (condition) {
+  /*code to run if
+  condition is true*/
+};
+```
+
+- It's best practice to always use the curly braces and multi-line syntax even if you only have one statement to execute as it will make it more consistent with the rest of your program and it will be easier to read and maintain the code in case you need to include more statements in the future.
+
+- You can extend the `if` statement by adding an `else` statement that tells the JavaScript interpreter what to do if the condition evaluates to `false`. 
+
+```js
+if (condition) {
+  /*code to run if condition is true*/
+} else {
+  /*code to run if condition is false*/
+}
+```
+
+- The above example contains one condition leading to two potential outcomes, but if you want to test for multiple conditions with multiple outcomes, you must add `else if` statement between the `if` and `else`.
+
+```js
+if (condition1) {
+  /*code to run if condition1 is true*/
+} else if (condition2) {
+  /*code to run if condition2 is true*/
+} else if (condition3) {
+  /*code to run if condition3 is true*/
+} else {
+  /*code to run if all of the above conditions are false*/
+}
+```
+
+- JavaScript also support a Ternary operator, a small bit of syntax that tests a condition and returns **one** value/expression if it is `true`, and another if it is `false`. Note that the emphasis is on **one** value/expression as opposed to multiple statements in a code block surrounded with curly braces (`{ }`) like you can when using a full `if...else` statement. The basic syntax is for a ternary operator is:
+
+```js
+(condition) ? /*value/expr if true*/ : /*value/expr if false*/;
+```
+ 
+- It's also possible to chain the ternary operator to get a similar outcome as when using `else if`. For more details see the MDN link below.
+
+CONTINUE: do the example in "Testing Multiple Conditions with if and else".
 
 ---
 
@@ -892,3 +972,4 @@ let utcDate = new Date(Date.UTC(2018, 11, 1, 0, 0, 0));
 
 - MDN Conditionals: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/conditionals  
 - MDN Loops and iteration (very good): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration  
+- MDN Ternary operator: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator  
