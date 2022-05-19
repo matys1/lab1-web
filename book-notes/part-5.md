@@ -878,7 +878,7 @@ let utcDate = new Date(Date.UTC(2018, 11, 1, 0, 0, 0));
 
 > Note, the book doesn't cover the `label` statement and the `for...of` loops (see MDN Loops link below). Otherwise the lesson is quite comprehensive.
 
-- Note that braces (`{ }`) in JavaScript are used to group individual statements in code blocks (for example, in case of a function). In certain circumstances, however, braces can have other meanings as well.
+- Note that braces (`{ }`) in JavaScript are used to group individual statements in a code block called a *block statement* (see MDN link below). Note that in certain circumstances, however, braces can have other meanings as well like object construction.
 
 - Statements in JavaScript are executed in the order in which they appear, one after the other. Because this order isn't always practical, flow control statements let you control the order in which code is executed. A funcion could also be considered a flow control statement since you can define a function at the start of the program and execute it at any point down the line.
 
@@ -964,7 +964,60 @@ if (condition1) {
  
 - It's also possible to chain the ternary operator to get a similar outcome as when using `else if`. For more details see the MDN link below.
 
-CONTINUE: do the example in "Testing Multiple Conditions with if and else".
+- For an `else...if` example see l23-ifelse.html.
+
+### The `switch` statement:
+
+- The `else...if` statement is best for cases where you have only a few choices, and each one requires a reasonable amount of code to be run, and/or the conditions are complex (for example, multiple logical operators). However, when you have a number of values (outcomes) you want to test against a single expression or variable then `switch` is better suited as it also improves readability. Basic syntax;
+
+```js
+switch (expression) {
+  case outcome1:
+    //run this code
+    break;
+  case outcome2:
+    //run this code
+    break;
+
+  //include as many cases as you like
+
+  default:
+    //when expression doesn't match any of above values, run this code instead
+}
+```
+
+- You're not limited to single-line code in each of the `case` statements, you can include as many lines of code as you want. And you're not required to enclose the multi-line statements in curtly braces (`{ }`).
+
+- Notice the `break` statement at the end of each `case` statement. This is needed to signal the interpreter that once it finds the match and executes the relevant section of code to then break out of the `switch` statement altogether and continue with the rest of the program. If you omit the `break` statement it might inadvertently execute multiple matching `case` statements.
+
+- The `default` statement is entirely optional and doesn't require a `break` statement at the end as it comes last after all the `case` statements.
+
+### The `for` loops
+
+- A `for` loop repeats until a specified condition evaluates to false. The basic syntax is:
+
+```js
+for ([initialExpression]; [condition]; [incrementExpression]) {
+  /*run this code*/
+};
+```
+
+- All 3 of the `for` loop components are [optional], but usually all 3 are present:
+  - `initialExpression` - sets up the initial state of the loop. Usually initializes one or more loop counters. Allows an expression of any complexity and also allows for declaration of variables.
+  - `condition` - a condition that must evaluate to `true` to keep the loop running. If omitted, the condition is assumed to be `true`.
+  - `incrementExpression` - executes with each iteration of the loop. Usually increments the counter(s) initialized in the `initialExpression`.
+
+- An example of a simple `for` loop that prints 10 lines:
+
+```js
+for (i=0; i<10; i++) {
+  document.write("This is line " + i + "<br>");
+};
+```
+
+- Note that if the loop includes only a single-line statement you can omit the curly braces (`{ }`). 
+
+CONTINUE FROM "The loop in this example contains a document.write statement that will be repeatedly executed."
 
 ---
 
@@ -973,3 +1026,4 @@ CONTINUE: do the example in "Testing Multiple Conditions with if and else".
 - MDN Conditionals: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/conditionals  
 - MDN Loops and iteration (very good): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration  
 - MDN Ternary operator: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator  
+- MDN block statements: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/block  
