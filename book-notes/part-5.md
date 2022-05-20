@@ -994,7 +994,7 @@ switch (expression) {
 
 ### The `for` loops
 
-- A `for` loop repeats until a specified condition evaluates to false. The basic syntax is:
+- A `for` loop repeats until a specified condition evaluates to `false`. The basic syntax is:
 
 ```js
 for ([initialExpression]; [condition]; [incrementExpression]) {
@@ -1002,10 +1002,12 @@ for ([initialExpression]; [condition]; [incrementExpression]) {
 };
 ```
 
-- All 3 of the `for` loop components are [optional], but usually all 3 are present. All 3 components allow an expression of any complexity (including declaration of variables):
-  - `initialExpression` - sets up the initial state of the loop. Usually initializes one or more loop counters.
-  - `condition` - a condition that must evaluate to `true` to keep the loop running. If omitted, the condition is assumed to be `true`.
-  - `incrementExpression` - executes with each iteration of the loop. Usually increments the counter(s) initialized in the `initialExpression`.
+- All of the `for` loop components are optional and all allow an expression of any complexity (including declaration of variables). The below is the order of execution:
+  1. `initialExpression` - executed only once when the loop is initialized. Sets up the starting state of the loop. Usually initializes one or more loop counters.
+  2. `condition` - executes with each iteration. A condition that must evaluate to `true` to keep the loop running. If omitted, the condition is assumed to be `true`.
+  3. A statement or multiple statements contained in a block statement (`{ }`) within the loop.
+  4. `incrementExpression` - executes with each iteration. Usually increments the counter(s) initialized in the `initialExpression`.
+  5. Control returns to step 2.
 
 - An example of a simple `for` loop that prints 10 lines below and can also be seen l23-for-loop.html.
 
@@ -1017,7 +1019,7 @@ for (i=0; i<10; i++) {
 
 - Note that if the loop includes only a single-line statement you can omit the curly braces (`{ }`), however, it's best practice like discussed before to have a consistent style and use them regardless. <mark>DOES THIS APPLY TO ALL LOOPS?</mark>
 
-# The `while` loops:
+### The `while` loops:
 
 - A `while` loop executes the statements it contains as long as a specified `condition` evaluates to `true`. If the `condition` becomes `false`, the execution stops and control passes to the first statement outside the loop. Basic syntax:
 
@@ -1046,11 +1048,115 @@ while (n < 3) {
 
 - You can do the same exact example using the `for` loop instead. In fact, the `for` loop is nothing more than a special kind of `while` loop that handles an initialization and an increment for you, all in one line.
 
-# The `do...while` loops:
+### The `do...while` loops:
 
-- A `do...while` loop is just like a `while` loop, except the `condition` test occurs **after** any of the statements in the loop are executed (unlike in the `for` or `while` loop). This means that the statements will execute once more after the `condition` returns `false`. Basic syntax:
+- A `do...while` loop is just like a `while` loop, except the `condition` test occurs **after** the statements in the loop are executed (unlike in the `for` or `while` loop). This means that the `do...while` loop is guaranteed to run at least once (when the loop is first initialized and before the `condition` is tested). Both `while` and `do...while` loops terminate as soon as the `condition` returns `false`. Basic syntax:
 
-CONTINUE "Using do...while Loops" but use the example from MDN.. the book example doesn't give you a full snippet.
+```js
+do {
+  //statements to run
+} while (condition);
+```
+
+- For example, the below `do...while` loop will run and execute its statements once (logging `6`) before it's terminated:
+
+```js
+let i = 5;
+do {
+  i += 1; //executes
+  console.log(i); //executes
+} while (i < 5); //condition false, terminates
+```
+
+- However, if you were to re-write the same loop as a `while` loop it terminates before it get the chance to execute any of its statements (therefore doesn't log anything):
+
+```js
+let i = 5;
+while (i < 5) { //condition false, terminates
+  i += 1; //doesn't execute
+  console.log(i); //doesn't execute
+};
+```
+
+### The `label`, `break` and `continue` statements:
+
+- The `label` statement prefixes a statement with an identifier which you can refer to from elsewhere in your program. The name of the `label` statement can be any word that is not a reserved word followed by colon (`:`). You can only refer to `label` using a `break` or a `continue` statement. Basic syntax:
+
+```js
+label:
+//statement; e.g. a loop
+
+//or
+label: {
+  //statements in a block statement
+}
+```
+
+> The `label` statements are most commonly used with loops, however, you can also label simple block statements (`{ }`), but only `break` statements can make use of non-loop labels.
+
+- The `break` statement terminates any loop, a `switch` statement (as seen before) or a labeled statement. It terminates the:
+  - innermost enclosing loop or `switch` (when used without a `label`)
+  - specified labeled statement (when used with a `label`)
+
+```js
+break;
+//or
+break label;
+```
+
+- When terminated it transfers control to the following outside statement:
+
+```js
+outer_block: {
+  inner_block: {
+    console.log('a'); // executed
+    break outer_block; // breaks out of both inner_block and outer_block
+    console.log('b'); // skipped
+  };
+  console.log('c'); // skipped
+};
+console.log('d'); // executed and continues from here
+```
+
+- The `continue` statement only works with loops. The `continue` statement doesn't terminate the loop entirely (unlike `break`), it only terminates the current iteration of innermost enclosing loop skipping to:
+  - the top of innermost enclosing loop (when used without a `label`)
+  - the top of labeled loop (when used with a `label`)
+
+```js
+continue;
+//or
+continue label;
+```
+
+- When the current iteration is terminated, in a `while` loop it jumps back to the `condition`, but in a `for` loop it jumps to the `incrementExpression` before it goes to the `condition`:
+
+```js
+outerloop:
+for (i=0; i<5; i++) {
+  console.log('a'); //executed 5 times
+    while(true) { //infinite inner loop
+      console.log('b'); //executed 5 times
+      continue outerloop; //jumps back 5 times to for loop i++ before comparison i<5
+      console.log('c'); //skipped
+    }
+  console.log('d'); //skipped
+}
+// logs a and b 5 times; c and d are never executed
+```
+
+> Note to use labeled `break` or `continue` statements they must be nested within this labeled statement. For Example, the labeled `break` or `continue` statements could refer to the outer loop, instead of the current inner loop. Refering to a loop that's outside the nested structure will return an error.
+
+### The `for...in` and `for...of` loops
+
+- The `for...in` statement iterates over all properties of an object. A different property name is assigned to `variable` on each iteration of an `object`. The basic syntax:
+
+```js
+for (variable in object) {
+  //statements
+}
+```
+
+CONTINUE: In the book I have to continue from "Looping Through Object Properties" but before I do so I have to understand the `for...in` and `for...of` loops. I added the two examples from the section in the book (looping an object l23-loop-object.html and looping a names array l23-loop-object.html) that I need to also go over. The book uses `for...in` to loop an array but MDN says you should better use `for...of` instead but you cannot just swap the `in` for `of`.. doesn't work. Everything above though is done 100%.
 
 ---
 
