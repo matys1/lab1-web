@@ -1156,7 +1156,8 @@ for (variable in object) {
 }
 ```
 
-CONTINUE: In the book I have to continue from "Looping Through Object Properties" but before I do so I have to understand the `for...in` and `for...of` loops. I added the two examples from the section in the book (looping an object l23-loop-object.html and looping a names array l23-loop-object.html) that I need to also go over. The book uses `for...in` to loop an array but MDN says you should better use `for...of` instead but you cannot just swap the `in` for `of`.. doesn't work. Everything above though is done 100%.
+CONTINUE: In the book I have to continue from "Looping Through Object Properties" but before I do so I have to understand and write about the `for...in` and `for...of` loops.  
+I added the two examples from the section in the book (looping an object l23-loop-object.html and looping a names array l23-loop-array.html) that I have now gone over, commented fully and understood. The book uses `for...in` to loop an array but MDN and other sources say you should better use `for...of` for arrays instead so I modified it correctly.
 
 ---
 
@@ -1166,3 +1167,5 @@ CONTINUE: In the book I have to continue from "Looping Through Object Properties
 - MDN Loops and iteration (very good): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Loops_and_iteration  
 - MDN Ternary operator: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator  
 - MDN block statements: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/block  
+- Comparing for...in and for...of (see Conclusion): https://dev.to/swastikyadav/difference-between-forof-and-forin-loop-in-javascript-j2o  
+- Understanding JavaScript string comparison (in l23-loop-array.html): https://javascript.info/comparison#string-comparison  

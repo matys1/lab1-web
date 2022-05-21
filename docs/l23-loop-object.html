@@ -8,9 +8,9 @@
   <body>
     <h1>Loop the navigator object and return all property and value pairs:</h1>
     <script>
-      for (i in navigator) {
-        document.write("<p>Property: " + i + "<br>");
-        document.write("Value: " + navigator[i] + "</p>");
+      for (const i in navigator) { //loop properties in navigator object; returns property and value pairs
+        document.write("<p>Property: " + i + "<br>"); //print property names
+        document.write("Value: " + navigator[i] + "</p>"); //print propery values
       };
     </script>
   </body>
