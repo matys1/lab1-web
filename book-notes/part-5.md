@@ -873,10 +873,11 @@ let utcDate = new Date(Date.UTC(2018, 11, 1, 0, 0, 0));
     - `for` loops 
     - `while` loops 
     - `do...while` loops
-    - infinite loops with `break` and `continue`
+    - `label`, `break` and `continue`
     - `for...in` loops
+    - `for...of` loops
 
-> Note, the book doesn't cover the `label` statement and the `for...of` loops (see MDN Loops link below). Otherwise the lesson is quite comprehensive.
+> Note, the book doesn't cover the `label` statement and the `for...of` loops (information taken from MDN links below). Otherwise the lesson is quite comprehensive.
 
 - Note that braces (`{ }`) in JavaScript are used to group individual statements in a code block called a *block statement* (see MDN link below). Note that in certain circumstances, however, braces can have other meanings as well like object construction.
 
@@ -1146,18 +1147,64 @@ for (i=0; i<5; i++) {
 
 > Note to use labeled `break` or `continue` statements they must be nested within this labeled statement. For Example, the labeled `break` or `continue` statements could refer to the outer loop, instead of the current inner loop. Refering to a loop that's outside the nested structure will return an error.
 
-### The `for...in` and `for...of` loops
+### The `for...in` loop
 
-- The `for...in` statement iterates over all properties of an object. A different property name is assigned to `variable` on each iteration of an `object`. The basic syntax:
+- The `for...in` statement iterates over all enumerable properties of an object that are keyed by strings (ignoring ones keyed by Symbols), including inherited enumerable properties. Basic syntax:
 
 ```js
-for (variable in object) {
+for (let variable in object) { //use const if not re-assigning value in statements
   //statements
 }
 ```
 
-CONTINUE: In the book I have to continue from "Looping Through Object Properties" but before I do so I have to understand and write about the `for...in` and `for...of` loops.  
-I added the two examples from the section in the book (looping an object l23-loop-object.html and looping a names array l23-loop-array.html) that I have now gone over, commented fully and understood. The book uses `for...in` to loop an array but MDN and other sources say you should better use `for...of` for arrays instead so I modified it correctly.
+- You can declare the `variable` and give it any name you want inside the statement parenthasis. A different property name is assigned to the `variable` on each iteration of an `object`. The below example also uses JavaScript template literals (see MDN link below) to return property names and values:
+
+```js
+let obj = {a: 1, b: 2, c: 3};
+
+for (const prop in obj) { 
+  console.log(`${prop} = ${obj[prop]}`); //returns property name = property value
+};
+```
+
+> Note, that even though you can use `for...in` for also iterating, for example, arrays it's not recommended to do so. **Use `for...in` only for iterating objects.**
+
+- See an example l23-loop-object.html
+
+### The `for...of` loop
+
+- The `for...of` statement creates a loop iterating over iterable objects, including: built-in `String`, `Array`, array-like objects (e.g., `arguments` or `NodeList`), `TypedArray`, `Map`, `Set`, and user-defined iterables. It invokes a custom iteration hook with statements to be executed for the value of each distinct property of the object. Basic syntax: 
+
+```js
+for (let variable of iterable) { //use const if not re-assigning value in statements
+  //statements
+}
+```
+
+- Just like with `for...in`, you can declare the `variable` and give it any name you want inside the statement parenthasis. A different property value is assigned to the `variable` on each iteration of an `object`. For example:
+
+```js
+let array = [10, 20, 30];
+
+for (const element of array) {
+  console.log(element); //returns value of each array element
+};
+```
+
+> Note, `for...of` is great for iterating `Array`, `String` and other iterables. It's more practical to store data in arrays instead of objects and it's very common to use loops for working with arrays making `for...of` an important tool for when working with data. 
+
+- See an example l23-loop-array.html. The book originally uses `for...in` in the example, but since it requires to iterate an `Array`, I changed it to a more appropriate `for...of`.
+
+- In the example, you can replace lines 10 and 12 with a code `names[i++]=next` on line 10 if you want an even shorter version of the same progam. Remember, `i++` performs the expression and only then increments, but `++i` increments first and then performs the expression.
+
+TO DO:
+- do i need to add anything about infinite loops? (next to label, break, cont.)
+- test the variable declaraions in loops (the note I made in iPhone notes)
+- check the section highlightd using `<mark>`
+
+EVERYTHING ELSE DONE.
+
+WHEN ABOVE POINTS DONE MOVE TO LESSON 24 READ & WRITE.
 
 ---
 
@@ -1169,3 +1216,4 @@ I added the two examples from the section in the book (looping an object l23-loo
 - MDN block statements: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/block  
 - Comparing for...in and for...of (see Conclusion): https://dev.to/swastikyadav/difference-between-forof-and-forin-loop-in-javascript-j2o  
 - Understanding JavaScript string comparison (in l23-loop-array.html): https://javascript.info/comparison#string-comparison  
+- MDN Template literals: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals  
