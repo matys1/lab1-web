@@ -873,7 +873,7 @@ let utcDate = new Date(Date.UTC(2018, 11, 1, 0, 0, 0));
     - `for` loops 
     - `while` loops 
     - `do...while` loops
-    - `label`, `break` and `continue`
+    - infinite loops, `label`, `break` and `continue`
     - `for...in` loops
     - `for...of` loops
 
@@ -993,6 +993,12 @@ switch (expression) {
 
 - The `default` statement is entirely optional and doesn't require a `break` statement at the end as it comes last after all the `case` statements.
 
+### General note on loops
+
+- The `while` and `do...while` loops do not handle the `initialExpression` and `incremenExpression` as part of their syntax like the `for`-type loops do. This means that for `while` and `do...while` loops you need to declare `initialExpression` outside the actual loop. Declaring `initialExpression` within the loop will cause it to re-declare the variable each iteration potentially creating an infinite loop. You're free to declare other variables as needed in all loops.
+
+- Applies to all loops: if the loop includes only a single-line statement to execute you can omit wrapping it in a block statement using curly braces (`{ }`). However, it's best practice, like discussed before, to have a consistent style and use them regardless. This impoves readability, consistency and makes it easier to maintain code if you want to add additional statements in the future.
+
 ### The `for` loops
 
 - A `for` loop repeats until a specified condition evaluates to `false`. The basic syntax is:
@@ -1017,8 +1023,6 @@ for (i=0; i<10; i++) {
   document.write("<p>This is line " + i + "</p>");
 };
 ```
-
-- Note that if the loop includes only a single-line statement you can omit the curly braces (`{ }`), however, it's best practice like discussed before to have a consistent style and use them regardless. <mark>DOES THIS APPLY TO ALL LOOPS?</mark>
 
 ### The `while` loops:
 
@@ -1079,7 +1083,28 @@ while (i < 5) { //condition false, terminates
 };
 ```
 
-### The `label`, `break` and `continue` statements:
+### Infinite loops and the `label`, `break` and `continue` statements:
+
+- You have to be careful when working with loops to not create an infinite loop by accident. Exiting an infinite loop is not always possible as most of the time it will consume all memory, freeze/lock-up and you need to restart the browser. A basic syntax for creating an infinite loop is:
+
+```js
+while (true) {
+   //statements
+}
+```
+
+- You can use, for example, a `break` statement (described more below) as a way out of an infinite loop. In the example below, an `if` statememt checks for a condition, and as soon as the condition is met, the loop terminates and the control is passed to the next statement outside the loop.
+
+```js
+let n = 0; //declare variable named n and initilize it with 0
+while (true) { //infinite loop
+  console.log(n); //print n
+  n++; //increment n
+  if (n === 5) { //if n equals 5
+    break; //terminate loop
+  };
+};
+```
 
 - The `label` statement prefixes a statement with an identifier which you can refer to from elsewhere in your program. The name of the `label` statement can be any word that is not a reserved word followed by colon (`:`). You can only refer to `label` using a `break` or a `continue` statement. Basic syntax:
 
@@ -1197,15 +1222,6 @@ for (const element of array) {
 
 - In the example, you can replace lines 10 and 12 with a code `names[i++]=next` on line 10 if you want an even shorter version of the same progam. Remember, `i++` performs the expression and only then increments, but `++i` increments first and then performs the expression.
 
-TO DO:
-- do i need to add anything about infinite loops? (next to label, break, cont.)
-- test the variable declaraions in loops (the note I made in iPhone notes)
-- check the section highlightd using `<mark>`
-
-EVERYTHING ELSE DONE.
-
-WHEN ABOVE POINTS DONE MOVE TO LESSON 24 READ & WRITE.
-
 ---
 
 **Useful links:**
@@ -1217,3 +1233,7 @@ WHEN ABOVE POINTS DONE MOVE TO LESSON 24 READ & WRITE.
 - Comparing for...in and for...of (see Conclusion): https://dev.to/swastikyadav/difference-between-forof-and-forin-loop-in-javascript-j2o  
 - Understanding JavaScript string comparison (in l23-loop-array.html): https://javascript.info/comparison#string-comparison  
 - MDN Template literals: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals  
+
+## LESSON 24
+
+CONTINUE READ & WRITE.
