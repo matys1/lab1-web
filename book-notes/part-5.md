@@ -1236,4 +1236,4 @@ for (const element of array) {
 
 ## LESSON 24
 
-CONTINUE READ & WRITE.
+CONTINUE NOTES. READ FROM LESSON 25.
