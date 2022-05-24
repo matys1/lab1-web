@@ -1236,4 +1236,15 @@ for (const element of array) {
 
 ## LESSON 24
 
-CONTINUE NOTES. READ FROM LESSON 25.
+CONTINUE NOTES. READ FROM LESSON 25. 
+
+Read (skimmed through some parts) the below MDN Learn Events link. Very useful info to supplement what's in the book. I think I should just re-reading once more and then continue with notes of the book.  
+
+---
+
+**Useful links:**
+
+- MDN Learn Events: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events  
+- MDN Event handlers (overview): https://developer.mozilla.org/en-US/docs/Web/Events/Event_handlers  
+- MDN Event API: https://developer.mozilla.org/en-US/docs/Web/API/Event  
+- MDN EventTarget.addEventListener(): https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener  
