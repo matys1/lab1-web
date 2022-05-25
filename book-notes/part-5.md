@@ -1238,13 +1238,75 @@ for (const element of array) {
 
 CONTINUE NOTES. READ FROM LESSON 25. 
 
-Read (skimmed through some parts) the below MDN Learn Events link. Very useful info to supplement what's in the book. I think I should just re-reading once more and then continue with notes of the book.  
+- attaching event handler and event listeners. The listener listens out for the event happening, and the handler is the code that is run in response to it happening.
+
+```js
+myElement.addEventListener('listener', handler)
+```
+
+- Events differ in different programming environments (web pages vs server side vs extensions).
+
+- The recommended mechanism for adding event handlers in web pages is the `addEventListener()` method. The method specifies two parameters: the name of the event we want to register this handler for, and the code that comprises the handler function we want to run in response to it.
+
+- Some events, such as `click`, are available on nearly any element. Others are more specific and only useful in certain situations: for example, the `play` event is only available on some elements, such as `<video>`.
+
+- If you've added an event handler using `addEventListener()`, you can remove it again using the `removeEventListener()` method, or alternatively by passing an `AbortSignal` to `addEventListener()` and then later calling `abort()` on the controller owning the `AbortSignal`, for example:
+
+```js
+const controller = new AbortController();
+
+btn.addEventListener('click', changeBackground, {signal: controller.signal});
+
+controller.abort();
+```
+
+- By making more than one call to addEventListener(), providing different handlers, you can have multiple handlers for a single event. Both functions would now run when the element is clicked:
+
+```js
+myElement.addEventListener('click', functionA);
+myElement.addEventListener('click', functionB);
+```
+
+- Using `addEventListener()` is recommended and best practice. However, there are two other inferior ways of registering event handlers that you might see: 
+  - Event handler properties
+    - Objects (such as buttons) that can fire events also usually have properties whose event name is pre-fixed with `on` such as `onclick`. To listen for the event, you can assign the handler function to the property.
+      ```js
+      btn.onclick = changeBackground; //this
+      btn.addEventListener('click', changeBackground) //instead of this
+      ```
+    - One major drawback of using event handler properties instead of `addEventListener()` method is that you can only assign one handler to the property. Attempting to assign a second handler will just overwrite the first, for example:
+      ```js
+      element.onclick = function1;
+      element.onclick = function2; //this handler function2 overwrites the above
+      ```
+  - Inline event handlers (DO NOT EVER USE)
+    - Inline event handlers (or event handler HTML attributes) is the earliest form of handling events on the web and is outdated. It relies on inserting JavaScript directly inside the attribute, for example:
+      ```html
+      <button onclick="changeBackground()">Press me</button>
+      ```
+    - You can find HTML attribute equivalents for many of the event handler properties (note, they use the same naming schema with `on` prefix). You should never use these attributes because it's obtrusive, you mix HTML and JS (many server configs disallow inline JS as a security measure), and it can quickly become a maintenance nightmare. For example, imagine having to add event handler HTML attribute to hundreds of buttons. With JS you could you could easily add an event handler function to all the buttons on the page no matter how many there were:
+      ```js
+      const buttons = document.querySelectorAll('button');
+
+      for (const button of buttons) {
+        button.addEventListener('click', changeBackground);
+      }
+      ```
+
+- finished the -2. I think i now have a decent grasp on the AbortController. need to move on to the event object which is -3.
 
 ---
 
+**Core links:**
+
+- MDN Event handlers (overview): https://developer.mozilla.org/en-US/docs/Web/Events/Event_handlers  
+- MDN Learn Events: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events  
+- MDN Events (listeners; e.g. click): https://developer.mozilla.org/en-US/docs/Web/Events 
+- MDN Event Interfaces (objects; e.g. MouseEvent) that contain properties and methods: https://developer.mozilla.org/en-US/docs/Web/API/Event   
+
 **Useful links:**
 
-- MDN Learn Events: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events  
-- MDN Event handlers (overview): https://developer.mozilla.org/en-US/docs/Web/Events/Event_handlers  
-- MDN Event API: https://developer.mozilla.org/en-US/docs/Web/API/Event  
-- MDN EventTarget.addEventListener(): https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener  
+- JS works in body but not head: https://stackoverflow.com/questions/34213116/javascript-works-in-body-but-not-in-header  
+- MDN `querySelectorAll()` method (see NodeList definition as well): https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll
+- MDN `addEventListener()`: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener  
+- MDN `AbortController` object (interface): https://developer.mozilla.org/en-US/docs/Web/API/AbortController  
