@@ -1293,7 +1293,17 @@ myElement.addEventListener('click', functionB);
       }
       ```
 
-- finished the -2. I think i now have a decent grasp on the AbortController. need to move on to the event object which is -3.
+- To the event handler function you can optionally pass a parameter (you can use any name, such as `event`, `evt` or `e`). This is refered to as the **event object**, and it is automatically passed to event handlers to provide extra features and information.
+
+- The `target` property of the event object is always a reference to the element the event occurred upon. For example, if you attach an event listener & handler to a `<div>`, it's a reference of that `<div>` itself. This becomes particularly handly when it comes to event delegation described below.
+
+- Different events, such as `click`, `dblclick`, `focus` etc. belong to different event objects (also called interfaces). These objects contain different properties and methods depending on the types of events that are associated with them. For example, both `click` and `dblclick` events belong to `MouseEvent` object whereas `focus` belongs to `FocusEvent` object. `MouseEvent` object has propertes like `clientX` and `clientY` that return exact coorinates of where the click occured but the `FocusEvent` object doesn't have them.
+
+- For an example of `keydown` event that belong to `KeyboardEvent` object that contains a read-only `key` property that tells you which key was pressed see l24-mdn-events-4.html.
+
+FINISH THE BELOW POINT AND MDN FROM https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#preventing_default_behavior AND -5.html and js.
+
+- In the event handler function you can also inplement logic that includes the `preventDefault()` method to prevent the associated default action from executing. 
 
 ---
 
