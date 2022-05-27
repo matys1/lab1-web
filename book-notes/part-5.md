@@ -1301,9 +1301,13 @@ myElement.addEventListener('click', functionB);
 
 - For an example of `keydown` event that belong to `KeyboardEvent` object that contains a read-only `key` property that tells you which key was pressed see l24-mdn-events-4.html.
 
-FINISH THE BELOW POINT AND MDN FROM https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#preventing_default_behavior AND -5.html and js.
+- In the event handler function you can also inplement logic that includes the `preventDefault()` method to prevent an associated default action of an event from executing. Calling `preventDefault()` during any stage of event flow cancels the event, meaning that any default action normally taken by the implementation as a result of the event will not occur.
 
-- In the event handler function you can also inplement logic that includes the `preventDefault()` method to prevent the associated default action from executing. 
+- For example, you could prevent a check-box from being ticked, prevent certain keystrokes (like capital letters) from being entered into an input field or preventing a form to be submitted.
+
+- See an example of preventing a form submission l24-mdn-events-5.html. In the example a very simple check inside a handler for the `submit` event (the `submit` event is fired on a form when it is submitted) that tests whether the text fields are empty. If they are, we call the `preventDefault()` function on the event object — which stops the form submission — and then display an error message.
+
+CONTINUE FROM https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#event_bubbling_and_capture. ABOVE IS DONE. YOU CAN RE-READ THE ABOVE 3 PARAGRAPHS AND SEE CHECK WHY THE SUCCESS MESAGE ONLY FLASHES FOR LESS THAN 1S BUT OTHERWISE MOVE ON TO THE EVENT BUBBLING SECTION.
 
 ---
 
