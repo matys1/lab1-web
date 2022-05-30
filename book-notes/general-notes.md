@@ -22,3 +22,21 @@ CMS is a software application that allows users to build and manage a website wi
 ### Links:
 
 - https://blog.hubspot.com/blog/tabid/6307/bid/7969/what-is-a-cms-and-why-should-you-care.aspx
+
+## Static and Jamstack site hosting (https://jamstack.org/):
+- Netlify - https://netlify.com/ (probably nr. 1; founder started Jamstack)
+- Vercel - https://vercel.com/ (seems like close second; or maybe better is some cases)
+- GitHub Pages - https://pages.github.com/ (basic)
+- Microsoft Azure - https://azure.microsoft.com/en-us/services/app-service/static/ (MS offering)
+
+## Install node.js and start a local server:
+- https://nodejs.org/en/
+- https://www.npmjs.com/package/http-server (choose 1 step under installation and 1 step under usage)
+- https://www.npmjs.com/package/express (a larger framework, can be used instead of http-server though probably overkill for basic learning)
+- https://www.npmjs.com/package/live-server (there's also a node npm package that does the same thing as VSC Live Server)
+  - See also: https://stackoverflow.com/questions/71369819/difference-between-vscode-live-server-and-node-live-server
+
+## Code sharing websites for web dev:
+
+- https://www.designbombs.com/code-sharing-websites/
+  - https://jsfiddle.net/ (very nice)

@@ -9,7 +9,7 @@ function formsub(e) { //declare function named 'formsub' and pass associated eve
     e.preventDefault(); //prevent the default behaviour of a form to be submitted and
     para.innerHTML = 'You need to fill in both names!'; //print a message 
   } else { //else
-    para.innerHTML = 'Success!'; //print success for form being submitted (flashes only for 1s)
+    para.innerHTML = 'Success!'; //print success for form being submitted (flashes only for 1s ??)
   };
 };
 

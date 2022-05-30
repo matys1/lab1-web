@@ -1305,9 +1305,9 @@ myElement.addEventListener('click', functionB);
 
 - For example, you could prevent a check-box from being ticked, prevent certain keystrokes (like capital letters) from being entered into an input field or preventing a form to be submitted.
 
-- See an example of preventing a form submission l24-mdn-events-5.html. In the example a very simple check inside a handler for the `submit` event (the `submit` event is fired on a form when it is submitted) that tests whether the text fields are empty. If they are, we call the `preventDefault()` function on the event object — which stops the form submission — and then display an error message.
+- See an example of preventing a form submission l24-mdn-events-5.html. In the example, a very simple check (an `if` statement) is inside the handler for the `submit` event (the `submit` event is fired on a form when it is submitted) that tests whether either of the text fields are empty. If they are, we call the `preventDefault()` function on the event object — which stops the form submission — and then displays an error message. If they are not empty, the form is submitted.
 
-CONTINUE FROM https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#event_bubbling_and_capture. ABOVE IS DONE. YOU CAN RE-READ THE ABOVE 3 PARAGRAPHS AND SEE CHECK WHY THE SUCCESS MESAGE ONLY FLASHES FOR LESS THAN 1S BUT OTHERWISE MOVE ON TO THE EVENT BUBBLING SECTION.
+CONTINUE FROM https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#event_bubbling_and_capture. ABOVE IS DONE. (optional: create a post using jsfiddle or something about the 1s success message in l24-mdn-events-5.html).
 
 ---
 
