@@ -9,7 +9,8 @@ function formsub(e) { //declare function named 'formsub' and pass associated eve
     e.preventDefault(); //prevent the default behaviour of a form to be submitted and
     para.innerHTML = 'You need to fill in both names!'; //print a message 
   } else { //else
-    para.innerHTML = 'Success!'; //print success for form being submitted (flashes only for 1s ??)
+    para.innerHTML = 'Success!'; //print success for form being submitted
+    e.preventDefault() //but then prevent the default behaviour of a form being submitted. this fixes the message only flashing for 1s and then clearing or crashing (404 in jsfiddle). There are more attributes and things that need to be specified to properly handle <form> submissions that I will probably learn in next lessons.
   };
 };
 
