@@ -1307,7 +1307,9 @@ myElement.addEventListener('click', functionB);
 
 - See an example of preventing a form submission l24-mdn-events-5.html. In the example, a very simple check (an `if` statement) is inside the handler for the `submit` event (the `submit` event is fired on a form when it is submitted) that tests whether either of the text fields are empty. If they are, we call the `preventDefault()` function on the event object — which stops the form submission — and then displays an error message. If they are not empty, the form is submitted.
 
-CONTINUE FROM https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#event_bubbling_and_capture. ABOVE IS DONE.
+- Event bubbling and capture are terms that describe phases in how the browser handles events targeted at nested elements. 
+
+ADDED 3 EXAMPLES. CONTINUE FROM https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#bubbling_and_capturing_explained TO ADD 2 MORE EXAMPLES. THEN YOU NEED TO UNDERSTAND THEM 100% AND ADD COMMENTS. THEN YOU NEED TO ADD NOTES FROM THIS ENTIRE SECTION: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#event_bubbling_and_capture. THEN CONTINUE WITH BOOK.
 
 ---
 
