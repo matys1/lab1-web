@@ -1307,7 +1307,38 @@ myElement.addEventListener('click', functionB);
 
 - See an example of preventing a form submission l24-mdn-events-5.html. In the example, a very simple check (an `if` statement) is inside the handler for the `submit` event (the `submit` event is fired on a form when it is submitted) that tests whether either of the text fields are empty. If they are, we call the `preventDefault()` function on the event object — which stops the form submission — and then displays an error message. If they are not empty, the form is submitted.
 
+### Event bubbling and capture
+
 - Event bubbling and capture are terms that describe phases in how the browser handles events targeted at nested elements. 
+
+#### Setting a listener on a parent element
+
+- See an example l24-mdn-events-6.html. There's a `<button>` element inside a parent `<div>` element. A click event handler is added only to the parent element. The parent element fires a click event and thus the event handler regardless if you click the `<button>` (child) or the `<div>` (parent). The `<button>` is inside the `<div>`, so when you click the button you're also implicitly clicking the element it is inside thanks to a concept called **bubbling up**.
+
+- When you click on the `<button>` element, the event occurs on the `<button>` element, but since there's no event listener added to the `<button>` element it goes unregistered and nothing happens at this stage. The event then travels to its parent element `<div>` which does have an event listener, the click is registered and it fires the event handler.
+
+> The event bubbles up from the innermost element that was clicked and travels to its parent elements.
+
+- Two distinct read-only properties that belong to the `Event` interface/object are:
+  - `currentTarget` - always refers to the element to which the event handler has been attached. Thus the above example will return `DIV` regardless if you clicked on the `<button>` or the `<div>`. 
+  - `target` - identifies the element on which the event occurred and which may be its descendant. Thus the above example will return `DIV` if you clicked on the `<div>` and will return `BUTTON` if you clicked on the `<button>`.
+
+- The `tagName` is a read-only property of the `Element` interface/object and returns the tag name of the element on which it's called (in all-caps).
+
+#### Bubbling example
+
+- See an example l24-mdn-events-7.html. As a continuation of the previous exercise, the same event handler that's assigned to the container `<div>` is also added to its child (`<button>`) and its parent (`<body>`). There are 3 event listeners in total. 
+
+- What happened in the previous example is the same as what happens in this example. The event bubbles up from the innermost element that was clicked. In this example if you click on the `<button>` element then:
+  1. The event occurs on the `<button>` element first and its listener fires the event handler
+  2. The event bubbles to the `<div>` element second and its listener fires the event handler
+  3. The event bubbles to the `<body>` element third and its listener fires the event handler
+
+- If you were to click on the `<div>` then only steps 2 and 3 would execute. If you were to click on the `<body>` then only step 3 would execute.
+
+- Note that if in this example you were not to add an event listener to the `<div>` and were to click the `<button>` element, then the event would bubble up like in the 3 steps described above except the step 2 would not fire an event handler since there would be no associated event listener added thus during step 2 nothing would happen and it would proceed to step 3.
+
+EVERYTHING ABOVE DONE. EXAMPLES 6 AND 7 UNDERSTOOD, COMMENTED AND NOTES ADDED. MOVE ON TO "Video player example" (and *-8.js). Below comment outdated but didn't want to delete yet.
 
 ADDED 3 EXAMPLES. CONTINUE FROM https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#bubbling_and_capturing_explained TO ADD 2 MORE EXAMPLES. THEN YOU NEED TO UNDERSTAND THEM 100% AND ADD COMMENTS. THEN YOU NEED TO ADD NOTES FROM THIS ENTIRE SECTION: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#event_bubbling_and_capture. THEN CONTINUE WITH BOOK.
 
