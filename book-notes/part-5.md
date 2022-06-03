@@ -1327,20 +1327,55 @@ myElement.addEventListener('click', functionB);
 
 #### Bubbling example
 
-- See an example l24-mdn-events-7.html. As a continuation of the previous exercise, the same event handler that's assigned to the container `<div>` is also added to its child (`<button>`) and its parent (`<body>`). There are 3 event listeners in total. 
+- See an example l24-mdn-events-7.html. As a continuation of the previous exercise, the same event handler that's assigned to the container `<div>` is also added to its child (`<button>`) and its parent (`<body>`). The 3 nested elements each have an event listener and the same event handler. 
 
 - What happened in the previous example is the same as what happens in this example. The event bubbles up from the innermost element that was clicked. In this example if you click on the `<button>` element then:
   1. The event occurs on the `<button>` element first and its listener fires the event handler
   2. The event bubbles to the `<div>` element second and its listener fires the event handler
-  3. The event bubbles to the `<body>` element third and its listener fires the event handler
+  3. The event bubbles to the `<body>` element third and its listener fires the event handler.
+
+> Note that after the step 3 the event actually continues to travel to `<html>` element, then to `Document` and finally to `Window` interfaces. However, there are no event listeners and handlers associated with them so nothing happens.
 
 - If you were to click on the `<div>` then only steps 2 and 3 would execute. If you were to click on the `<body>` then only step 3 would execute.
 
 - Note that if in this example you were not to add an event listener to the `<div>` and were to click the `<button>` element, then the event would bubble up like in the 3 steps described above except the step 2 would not fire an event handler since there would be no associated event listener added thus during step 2 nothing would happen and it would proceed to step 3.
 
-EVERYTHING ABOVE DONE. EXAMPLES 6 AND 7 UNDERSTOOD, COMMENTED AND NOTES ADDED. MOVE ON TO "Video player example" (and *-8.js). Below comment outdated but didn't want to delete yet.
+#### Video player example
 
-ADDED 3 EXAMPLES. CONTINUE FROM https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#bubbling_and_capturing_explained TO ADD 2 MORE EXAMPLES. THEN YOU NEED TO UNDERSTAND THEM 100% AND ADD COMMENTS. THEN YOU NEED TO ADD NOTES FROM THIS ENTIRE SECTION: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events#event_bubbling_and_capture. THEN CONTINUE WITH BOOK.
+- See l24-mdn-events-8.html for a similar example. First you click click the button to display the `<div>` and its containing `<video>`. Then, if you click on the video the click event registers and the event handler that contains `video.play()` method fires. The event then bubbles up to the parent `<div>` and its event handler fires hiding the `<div>` and its containing `<video>` (while the video is still playing). The event then bubbles up to `<body>` which doesn't have an event listener attached so nothing happens.
+
+- If you click only on the `<div>` by it's sides without clicking on the `<video>` then then both the `<div>` and the `<video>` get hidden. And the idea was that if you were to click on the `<video>` it would start playing but it wouldn't become hidden (which is not what happens due to bubbling effect).
+
+- An easy fix would be to just not add any event listeners to the `<div>` and let the button handle the hiding and showing, but there are other ways to handle bubbling as well.
+ 
+#### Bubbling and capturing explained
+
+- So far we've only looked at how event listeners react to event bubbling. Event capturing is rarely used and in order to do it you need to pass a third parameter `useCapture` in the `addEventListener()` method setting the value to `true`. If omitted, the default value is `false` and event bubbling is used instead. The full syntax:
+
+```js
+MyElement.addEventListener(event, handler[, useCapture]);
+```
+
+- However, it's also important to understand how events propagate through The DOM. The propagation of events is the same regardless of the value that the `useCapture` parameter is set to for the individual listeners. There are three event propagation phases and they always follow this order:
+  1. Capturing. All events go through this phase. The event moves from the outermost element/interface (document root) towards Target calling handlers assigned with `useCapture` as `true` along the way. If `false` (default) then those event handlers are not fired during this phase.
+  2. Target. Also known as target element (`event.target`). All events go through this phase. The element upon which the event happened. 
+  3. Bubbling. Whether an event enters the bubbling phase can be checked by the read-only `bubbles` property. Some events do not bubble. The events that do bubble they bubble up from the Target to the outermost element/interface (document root), calling handlers assigned using `on<event>` HTML attributes and event listeners without the `useCapture` argument or with the `useCapture` argument set to `false`.
+
+> In short: Capturing is when the event moves from the outermost element towards the inner most element (the target). Bubbling is when the event moves from the innermost element (the target) towards the outermost element.  
+
+- Note, that even though the Target phase is technically a separate category from capturing or bubbling, when using `addEventListener()` Target's handlers are fired as part of both capturing and bubbling, depending how `useCapture` is set. The only difference is that with `useCapture` set to `true` the event handlers associated with the Target will execute last, whereas when it's set to `false` they will execute first.
+
+- Use the `event.eventPhase` property to determine the current phase (capturing=`1`, target=`2`, bubbling=`3`).
+
+- You can also use the `stopPropagation()` and `stopImmediatePropagation()` methods of the `Event` interface to prevent further propagation of the current event. If an element has multiple event handlers on a single event, then even if one of them stops the bubbling, the other ones still execute. In other words, `event.stopPropagation()` stops the move upwards/downards, but on the current element all other handlers will run. To stop the bubbling and prevent handlers on the current element from running, use `event.stopImmediatePropagation()`. After it no other handlers execute.
+
+- See the commented section of the l24-mdn-events-8.html to see how to stop the event propagation of the current even using the `stopPropagation()` method.
+
+#### Event delegation
+
+- In practice, when we want some code to run when the user interacts with any one of a large number of child elements, we set the event listener on their parent and have events that happen on them bubble up to their parent rather than having to set the event listener on every child individually.
+
+- The last example, the *-9.html has been commented and understood. I deleted the previous example as it's not needed to understand bubbling and capture and it wouldn only add confusion. I understood it perfecly with that example. anyway all is done with MDN and I need to continue with the book now. Just need to go over all notes of this mdn lesson 24 so far and edit perhaps a bit some final touched and that's it. mdn is done! book now.
 
 ---
 

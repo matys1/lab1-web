@@ -1,36 +1,19 @@
-/*
- * source 1: https://dom.spec.whatwg.org/#dom-event-eventphase
- * source 2: https://stackoverflow.com/a/4616720/15266715
-*/
-const evtPhasestr = ["NONE: ", "CAPTURING_PHASE: ", "AT_TARGET: ", "BUBBLING_PHASE: "];
-const logElement = document.getElementById('log');
+const container = document.querySelector('#container'); //get the container div and store in a const named container
 
-function log(msg) {
-    logElement.innerHTML += (`<p>${msg}</p>`);
+function random(number) { //parameter named number for providing a max value to a function named random
+  return Math.floor(Math.random() * (number+1)); //generates a random number between 0 and max value
 }
 
-function phase(evt) {
-    log(evtPhasestr[evt.eventPhase] + this.firstChild.nodeValue.trim());
-}
-function gphase(evt) {
-    log(evtPhasestr[evt.eventPhase] + evt.currentTarget.toString().slice(8,-1));
+function newColor() { //define a function named newColor
+  const rndCol = `rgb(${random(255)}, ${random(255)}, ${random(255)})`; //a constant that stores a template literal string rgb(x, y, z);
+  return rndCol; //returns the const string
 }
 
-function clearOutput(evt) {
-    evt.stopPropagation();
-    logElement.innerHTML = '';
+function changeColor (e) { //define a function named changeColor and pass the MouseEvent object as parameter named e
+  e.target.style.backgroundColor = newColor(); //change the background color of the event object target element. note this is the actual target element not currentTarget - the parent div that has the handler
 }
 
-const divs = document.getElementsByTagName('div');
-for (const div of divs) {
-  div.addEventListener('click', phase, true);
-  div.addEventListener('click', phase, false);
-}
+container.addEventListener('click', changeColor); //add click event listener to the container div and changeColor event handler
 
-document.addEventListener('click', gphase, true);
-document.addEventListener('click', gphase, false);
-window.addEventListener('click', gphase, true);
-window.addEventListener('click', gphase, false);
-
-const clearButton = document.getElementById('clear');
-clearButton.addEventListener('click', clearOutput);
+//or for shorter syntax you can replace everything from line 12 with the below
+//container.addEventListener('click', e => e.target.style.backgroundColor = newColor());
