@@ -1351,8 +1351,10 @@ myElement.addEventListener('click', functionB);
 > The event bubbles up from the innermost element that was clicked and travels to its parent elements.
 
 - Two key read-only properties that belong to the `Event` interface are:
-  - `Event.currentTarget` - always refers to the element to which the event handler has been attached. Thus the above example will return `DIV` regardless if you clicked on the `<button>` or the `<div>`. 
-  - `Event.target` - identifies the element on which the event occurred and which may be its descendant. Thus the above example will return `DIV` if you clicked on the `<div>` and will return `BUTTON` if you clicked on the `<button>`. This is the property used for event delegation as well.
+  - `Event.currentTarget` - always refers to the element to which the event handler is attached to as the event traverses the DOM firing relevant handlers. Thus the above example will return `DIV` (the element the handler is attached to) regardless if you clicked on the `<button>` (child) or the `<div>`. 
+  - `Event.target` - identifies the element on which the event occured (element may be the descendant of the element the handler was attached to). Thus the above example will return `DIV` if you clicked on the `<div>` and will return `BUTTON` if you clicked on the `<button>`. It is commonly used for event delegation.
+
+> Note, `Event.target` and `Event.currentTarget` differ only during the bubbling or capturing phase of the event. Meaning that they return the same value when you place an event listener on an element and then click on that same element. However, if you were to click on the element's child causing the event to bubble, the values returned by the two properties would differ. For example, make the change in l24-mdn-event-3.js and observe the same outcome.
 
 - The `tagName` is a read-only property of the `Element` interface and returns the tag name of the element on which it's called (in all-caps).
 
@@ -1379,7 +1381,7 @@ myElement.addEventListener('click', functionB);
 
 - An alternative fix would be to just not add any event listeners to the `<div>` and let the button handle the hiding and showing, but there are explicit ways to handle bubbling as well described below.
  
-#### Bubbling and capturing explained
+##### Bubbling and capturing explained
 
 - So far we've only looked at how event listeners react to event bubbling. Event capturing is rarely used and in order to do it you need to pass a third parameter `useCapture` in the `addEventListener()` method setting the value to `true`. If omitted, the default value is `false` and event bubbling is used instead. The syntax:
 
@@ -1402,7 +1404,7 @@ MyElement.addEventListener(event, handler[, useCapture]);
 
 - See the commented section of the l24-mdn-events-8.html to see how to stop the event propagation of the current even using the `stopPropagation()` method.
 
-#### Event delegation
+##### Event delegation
 
 - Event delegation is a very powerful and commonly used feature. In practice, when we want some code to run when the user interacts with any one of a large number of child elements, we set the event listener on their parent and have events that happen on them bubble up to their parent rather than having to set the event listener on every child individually.
 
@@ -1412,16 +1414,17 @@ MyElement.addEventListener(event, handler[, useCapture]);
 
 ### Below notes from are book "Lesson 24"
 
-- CONTINUE FROM HERE. ADD LINKS THAT YOU USED BELOW. OTHER THAN ADDING LINKS, EVERYTHING IS DONE AND SHOULD MOVE ON TO THE BOOK.
+- CONTINUE FROM THE BOOK HERE. EVERYTHING ELSE DONE.
 
 ---
 
 **Core links:**
 
-- MDN Event handlers (overview): https://developer.mozilla.org/en-US/docs/Web/Events/Event_handlers  
-- MDN Learn Events: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events  
+- MDN Event handling (overview): https://developer.mozilla.org/en-US/docs/Web/Events/Event_handlers  
+- MDN Introduction to events (Learn): https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events  
 - MDN Events (event types): https://developer.mozilla.org/en-US/docs/Web/Events 
-- MDN Event Interfaces (event interfaces) that contain properties and methods: https://developer.mozilla.org/en-US/docs/Web/API/Event   
+- MDN Event Interfaces (event interfaces) that contain properties and methods: https://developer.mozilla.org/en-US/docs/Web/API/Event  
+- The `Event.target` property: https://developer.mozilla.org/en-US/docs/Web/API/Event/target
 
 **Useful links:**
 
@@ -1430,3 +1433,6 @@ MyElement.addEventListener(event, handler[, useCapture]);
 - MDN `addEventListener()`: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener  
 - MDN `AbortController` object (interface): https://developer.mozilla.org/en-US/docs/Web/API/AbortController  
 - Interface definition: https://stackoverflow.com/questions/67362268/what-is-an-interface-in-javascript  
+- Check if event bubbles: https://developer.mozilla.org/en-US/docs/Web/API/Event/bubbles  
+- Stackoverflow about event bubbling/capturing: https://stackoverflow.com/questions/4616694/what-is-event-bubbling-and-capturing  
+- Event bubbling/capturing explained (very good): https://javascript.info/bubbling-and-capturing  
