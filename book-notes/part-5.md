@@ -1270,6 +1270,8 @@ btn.addEventListener('click', changeBackground, {signal: controller.signal});
 controller.abort();
 ```
 
+- The most notable feature of using the `AbortSignal` is the ability to clean up multiple event handlers at the same time. This is done by passing the same `AbortSignal` to the different `addEventListener()` you want to be able to remove together. You can then call `abort()` on the controller owning the `AbortSignal`, and it will remove all event handlers that were added with that signal.
+
 - See l24-mdn-events-2.html for an example of removing event listeners using both methods.
 
 - You can add multiple event listeners, listening for the same type of event, but using different handlers. For example, both functions below would now run when the element is clicked:
