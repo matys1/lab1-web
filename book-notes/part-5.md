@@ -1236,19 +1236,29 @@ for (const element of array) {
 
 ## LESSON 24
 
-CONTINUE NOTES. READ FROM LESSON 25. 
+### Below are notes from MDN "Introduction to events" learning path
 
-- attaching event handler and event listeners. The listener listens out for the event happening, and the handler is the code that is run in response to it happening.
+#### Overview
+
+- Adding an event type and an event handler. Event handler can also be referred to as event listener, though strictly speaking, listener listens out for the event happening, and the handler is the code (a handler function) that is run in response to it happening. Basic syntax:
 
 ```js
-myElement.addEventListener('listener', handler)
+myElement.addEventListener('event type', handler)
 ```
 
-- Events differ in different programming environments (web pages vs server side vs extensions).
+- Events are fired inside the browser window, and tend to be attached to a specific item that resides in it. This might be a single element, a set of elements, the HTML document loaded in the current tab, or the entire browser window.
 
-- The recommended mechanism for adding event handlers in web pages is the `addEventListener()` method. The method specifies two parameters: the name of the event we want to register this handler for, and the code that comprises the handler function we want to run in response to it.
+- Events differ in different programming environments (web pages vs server side vs web extensions). Web events are not part of the core JavaScript language - they are defined as part of the APIs built into the browser.
+
+- For a simple example see l24-mdn-events-1.html.
+
+#### Using `addEventListener()`
+
+- The recommended mechanism for adding event handlers in web pages is the `addEventListener()` method, which in its simplest form accepts two parameters - one for the event type and the other for the event handler function. There are two other methods which should be avoided described below. 
 
 - Some events, such as `click`, are available on nearly any element. Others are more specific and only useful in certain situations: for example, the `play` event is only available on some elements, such as `<video>`.
+
+- You can open the same l24-mdn-events-1.html example and change the `click` event to, for example, `dblclick` or `mouseover`.
 
 - If you've added an event handler using `addEventListener()`, you can remove it again using the `removeEventListener()` method, or alternatively by passing an `AbortSignal` to `addEventListener()` and then later calling `abort()` on the controller owning the `AbortSignal`, for example:
 
@@ -1260,31 +1270,42 @@ btn.addEventListener('click', changeBackground, {signal: controller.signal});
 controller.abort();
 ```
 
-- By making more than one call to addEventListener(), providing different handlers, you can have multiple handlers for a single event. Both functions would now run when the element is clicked:
+- See l24-mdn-events-2.html for an example of removing event listeners using both methods.
+
+- You can add multiple event listeners, listening for the same type of event, but using different handlers. For example, both functions below would now run when the element is clicked:
 
 ```js
 myElement.addEventListener('click', functionA);
 myElement.addEventListener('click', functionB);
 ```
 
-- Using `addEventListener()` is recommended and best practice. However, there are two other inferior ways of registering event handlers that you might see: 
-  - Event handler properties
-    - Objects (such as buttons) that can fire events also usually have properties whose event name is pre-fixed with `on` such as `onclick`. To listen for the event, you can assign the handler function to the property.
+#### Other event listener mechanisms
+
+- Two inferior alternatives to `addEventListener()`: 
+  1. Event handler properties  
+      Objects (such as buttons) that can fire events also usually have properties whose event name is pre-fixed with `on` such as `onclick`. To listen for the event, you can assign the handler function to the property.  
+      
       ```js
       btn.onclick = changeBackground; //this
       btn.addEventListener('click', changeBackground) //instead of this
-      ```
-    - One major drawback of using event handler properties instead of `addEventListener()` method is that you can only assign one handler to the property. Attempting to assign a second handler will just overwrite the first, for example:
+      ```  
+      
+      One major drawback of using event handler properties instead of `addEventListener()` method is that you can only assign one handler to the property. Attempting to assign a second handler will just overwrite the first, for example:
+      
       ```js
       element.onclick = function1;
       element.onclick = function2; //this handler function2 overwrites the above
       ```
-  - Inline event handlers (DO NOT EVER USE)
-    - Inline event handlers (or event handler HTML attributes) is the earliest form of handling events on the web and is outdated. It relies on inserting JavaScript directly inside the attribute, for example:
+  
+  2. Inline event handlers (DO NOT EVER USE)  
+      Inline event handlers (or event handler HTML attributes) is the earliest form of handling events on the web and is outdated. It relies on inserting JavaScript directly inside the attribute, for example:
+      
       ```html
       <button onclick="changeBackground()">Press me</button>
       ```
-    - You can find HTML attribute equivalents for many of the event handler properties (note, they use the same naming schema with `on` prefix). You should never use these attributes because it's obtrusive, you mix HTML and JS (many server configs disallow inline JS as a security measure), and it can quickly become a maintenance nightmare. For example, imagine having to add event handler HTML attribute to hundreds of buttons. With JS you could you could easily add an event handler function to all the buttons on the page no matter how many there were:
+      
+      You can find HTML attribute equivalents for many of the event handler properties (note, they use the same naming schema with `on` prefix). You should never use these attributes because it's obtrusive, you mix HTML and JS (many server configs disallow inline JS as a security measure), and it can quickly become a maintenance nightmare. For example, imagine having to add event handler HTML attribute to hundreds of buttons. With JS you could you could easily add an event handler function to all the buttons on the page no matter how many there were:
+      
       ```js
       const buttons = document.querySelectorAll('button');
 
@@ -1293,25 +1314,33 @@ myElement.addEventListener('click', functionB);
       }
       ```
 
+#### Event objects
+
 - To the event handler function you can optionally pass a parameter (you can use any name, such as `event`, `evt` or `e`). This is refered to as the **event object**, and it is automatically passed to event handlers to provide extra features and information.
 
-- The `target` property of the event object is always a reference to the element the event occurred upon. For example, if you attach an event listener & handler to a `<div>`, it's a reference of that `<div>` itself. This becomes particularly handly when it comes to event delegation described below.
+- The `Event.target` property of the `Event` Interface is always a reference to the element the event occurred upon. For example, if you add an event listener to a `<button>`, pass the event object to the handler function and use the `Event.target` property, then when the button is clicked the property serves as a reference to the `<button>` itself. This ability to refer to targeted element itself becomes particularly handly when it comes to [event delegation](#event-delegation) described and with an example below.
 
-- Different events, such as `click`, `dblclick`, `focus` etc. belong to different event objects (also called interfaces). These objects contain different properties and methods depending on the types of events that are associated with them. For example, both `click` and `dblclick` events belong to `MouseEvent` object whereas `focus` belongs to `FocusEvent` object. `MouseEvent` object has propertes like `clientX` and `clientY` that return exact coorinates of where the click occured but the `FocusEvent` object doesn't have them.
+- See l24-mdn-events-3.html for an example of passing an event object and using the `Event.target` property.
 
-- For an example of `keydown` event that belong to `KeyboardEvent` object that contains a read-only `key` property that tells you which key was pressed see l24-mdn-events-4.html.
+- Note, there is also `Event.currentTarget` property which refers to the element that the handler is attached to. More examples and description of it below.
+
+- Different events, such as `click`, `dblclick`, `focus` etc. belong to different event objects (also called interfaces). These interfaces contain different properties and methods depending on the types of events that are associated with them. For example, both `click` and `dblclick` events belong to `MouseEvent` interface whereas `focus` belongs to `FocusEvent` interface. `MouseEvent` interface has propertes like `clientX` and `clientY` that return exact coorinates of where the click occured but the `FocusEvent` interface doesn't have them.
+
+- For an example of `keydown` event that belong to `KeyboardEvent` object that contains a read-only `key` property that tells you which key was pressed. For an exampl see l24-mdn-events-4.html.
+
+#### Preventing default behavior
 
 - In the event handler function you can also inplement logic that includes the `preventDefault()` method to prevent an associated default action of an event from executing. Calling `preventDefault()` during any stage of event flow cancels the event, meaning that any default action normally taken by the implementation as a result of the event will not occur.
 
 - For example, you could prevent a check-box from being ticked, prevent certain keystrokes (like capital letters) from being entered into an input field or preventing a form to be submitted.
 
-- See an example of preventing a form submission l24-mdn-events-5.html. In the example, a very simple check (an `if` statement) is inside the handler for the `submit` event (the `submit` event is fired on a form when it is submitted) that tests whether either of the text fields are empty. If they are, we call the `preventDefault()` function on the event object — which stops the form submission — and then displays an error message. If they are not empty, the form is submitted.
+- See an example of preventing a form submission l24-mdn-events-5.html. In the example, a very simple check (an `if` statement) is inside the handler for the `submit` event (the `submit` event is fired on a form when it is submitted) that tests whether either of the text fields are empty. If they are, we call the `preventDefault()` function on the event object - which stops the form submission - and then displays an error message. If they are not empty, the form is submitted.
 
-### Event bubbling and capture
+#### Event bubbling and capture
 
 - Event bubbling and capture are terms that describe phases in how the browser handles events targeted at nested elements. 
 
-#### Setting a listener on a parent element
+##### Setting a listener on a parent element
 
 - See an example l24-mdn-events-6.html. There's a `<button>` element inside a parent `<div>` element. A click event handler is added only to the parent element. The parent element fires a click event and thus the event handler regardless if you click the `<button>` (child) or the `<div>` (parent). The `<button>` is inside the `<div>`, so when you click the button you're also implicitly clicking the element it is inside thanks to a concept called **bubbling up**.
 
@@ -1319,13 +1348,13 @@ myElement.addEventListener('click', functionB);
 
 > The event bubbles up from the innermost element that was clicked and travels to its parent elements.
 
-- Two distinct read-only properties that belong to the `Event` interface/object are:
-  - `currentTarget` - always refers to the element to which the event handler has been attached. Thus the above example will return `DIV` regardless if you clicked on the `<button>` or the `<div>`. 
-  - `target` - identifies the element on which the event occurred and which may be its descendant. Thus the above example will return `DIV` if you clicked on the `<div>` and will return `BUTTON` if you clicked on the `<button>`.
+- Two key read-only properties that belong to the `Event` interface are:
+  - `Event.currentTarget` - always refers to the element to which the event handler has been attached. Thus the above example will return `DIV` regardless if you clicked on the `<button>` or the `<div>`. 
+  - `Event.target` - identifies the element on which the event occurred and which may be its descendant. Thus the above example will return `DIV` if you clicked on the `<div>` and will return `BUTTON` if you clicked on the `<button>`. This is the property used for event delegation as well.
 
-- The `tagName` is a read-only property of the `Element` interface/object and returns the tag name of the element on which it's called (in all-caps).
+- The `tagName` is a read-only property of the `Element` interface and returns the tag name of the element on which it's called (in all-caps).
 
-#### Bubbling example
+##### Bubbling example
 
 - See an example l24-mdn-events-7.html. As a continuation of the previous exercise, the same event handler that's assigned to the container `<div>` is also added to its child (`<button>`) and its parent (`<body>`). The 3 nested elements each have an event listener and the same event handler. 
 
@@ -1334,36 +1363,36 @@ myElement.addEventListener('click', functionB);
   2. The event bubbles to the `<div>` element second and its listener fires the event handler
   3. The event bubbles to the `<body>` element third and its listener fires the event handler.
 
-> Note that after the step 3 the event actually continues to travel to `<html>` element, then to `Document` and finally to `Window` interfaces. However, there are no event listeners and handlers associated with them so nothing happens.
+> Note that after the step 3 the event actually continues to travel to `<html>` element, then to `Document` and then finally to the `Window` interface. However, they don't have any event listeners attached so nothing happens.
 
 - If you were to click on the `<div>` then only steps 2 and 3 would execute. If you were to click on the `<body>` then only step 3 would execute.
 
 - Note that if in this example you were not to add an event listener to the `<div>` and were to click the `<button>` element, then the event would bubble up like in the 3 steps described above except the step 2 would not fire an event handler since there would be no associated event listener added thus during step 2 nothing would happen and it would proceed to step 3.
 
-#### Video player example
+##### Video player example
 
 - See l24-mdn-events-8.html for a similar example. First you click click the button to display the `<div>` and its containing `<video>`. Then, if you click on the video the click event registers and the event handler that contains `video.play()` method fires. The event then bubbles up to the parent `<div>` and its event handler fires hiding the `<div>` and its containing `<video>` (while the video is still playing). The event then bubbles up to `<body>` which doesn't have an event listener attached so nothing happens.
 
-- If you click only on the `<div>` by it's sides without clicking on the `<video>` then then both the `<div>` and the `<video>` get hidden. And the idea was that if you were to click on the `<video>` it would start playing but it wouldn't become hidden (which is not what happens due to bubbling effect).
+- If you click only on the `<div>` by it's sides without clicking on the `<video>` then then both the `<div>` and the `<video>` get hidden. The idea was that if you were to click on the `<video>` it would start playing but it wouldn't become hidden (which is not what happens due to bubbling effect).
 
-- An easy fix would be to just not add any event listeners to the `<div>` and let the button handle the hiding and showing, but there are other ways to handle bubbling as well.
+- An alternative fix would be to just not add any event listeners to the `<div>` and let the button handle the hiding and showing, but there are explicit ways to handle bubbling as well described below.
  
 #### Bubbling and capturing explained
 
-- So far we've only looked at how event listeners react to event bubbling. Event capturing is rarely used and in order to do it you need to pass a third parameter `useCapture` in the `addEventListener()` method setting the value to `true`. If omitted, the default value is `false` and event bubbling is used instead. The full syntax:
+- So far we've only looked at how event listeners react to event bubbling. Event capturing is rarely used and in order to do it you need to pass a third parameter `useCapture` in the `addEventListener()` method setting the value to `true`. If omitted, the default value is `false` and event bubbling is used instead. The syntax:
 
 ```js
 MyElement.addEventListener(event, handler[, useCapture]);
 ```
 
-- However, it's also important to understand how events propagate through The DOM. The propagation of events is the same regardless of the value that the `useCapture` parameter is set to for the individual listeners. There are three event propagation phases and they always follow this order:
-  1. Capturing. All events go through this phase. The event moves from the outermost element/interface (document root) towards Target calling handlers assigned with `useCapture` as `true` along the way. If `false` (default) then those event handlers are not fired during this phase.
-  2. Target. Also known as target element (`event.target`). All events go through this phase. The element upon which the event happened. 
-  3. Bubbling. Whether an event enters the bubbling phase can be checked by the read-only `bubbles` property. Some events do not bubble. The events that do bubble they bubble up from the Target to the outermost element/interface (document root), calling handlers assigned using `on<event>` HTML attributes and event listeners without the `useCapture` argument or with the `useCapture` argument set to `false`.
+- However, it's also important to understand how events propagate through The DOM, regardless of individual event listeners and the value of the `useCapture` parameter. There are three event propagation phases and they always follow this order:
+  1. Capturing. All events go through this phase. The event moves from the outermost element (document root) towards Target calling handlers assigned with `useCapture` as `true` along the way. If `false` (default) then those event handlers are not fired during this phase.
+  2. Target. Also known as target element (`Event.target`). All events go through this phase. The element upon which the event happened. 
+  3. Bubbling. Whether an event enters the bubbling phase can be checked by the read-only `bubbles` property. Some events do not bubble. The events that do, bubble up from the Target to the outermost element (document root), calling handlers assigned using `on<event>` HTML attributes and event listeners without the `useCapture` argument or with the `useCapture` argument set to `false`.
 
 > In short: Capturing is when the event moves from the outermost element towards the inner most element (the target). Bubbling is when the event moves from the innermost element (the target) towards the outermost element.  
 
-- Note, that even though the Target phase is technically a separate category from capturing or bubbling, when using `addEventListener()` Target's handlers are fired as part of both capturing and bubbling, depending how `useCapture` is set. The only difference is that with `useCapture` set to `true` the event handlers associated with the Target will execute last, whereas when it's set to `false` they will execute first.
+- Note, that even though the target phase is technically a separate category from capturing or bubbling, when using `addEventListener()` target's handlers are fired as part of both capturing and bubbling, depending how `useCapture` is set. The only difference is that with `useCapture` set to `true` the event handlers associated with the target will execute last, whereas when it's set to `false` they will execute first.
 
 - Use the `event.eventPhase` property to determine the current phase (capturing=`1`, target=`2`, bubbling=`3`).
 
@@ -1373,9 +1402,15 @@ MyElement.addEventListener(event, handler[, useCapture]);
 
 #### Event delegation
 
-- In practice, when we want some code to run when the user interacts with any one of a large number of child elements, we set the event listener on their parent and have events that happen on them bubble up to their parent rather than having to set the event listener on every child individually.
+- Event delegation is a very powerful and commonly used feature. In practice, when we want some code to run when the user interacts with any one of a large number of child elements, we set the event listener on their parent and have events that happen on them bubble up to their parent rather than having to set the event listener on every child individually.
 
-- The last example, the *-9.html has been commented and understood. I deleted the previous example as it's not needed to understand bubbling and capture and it wouldn only add confusion. I understood it perfecly with that example. anyway all is done with MDN and I need to continue with the book now. Just need to go over all notes of this mdn lesson 24 so far and edit perhaps a bit some final touched and that's it. mdn is done! book now.
+- See l24-mdn-events-9.html for an example of event delegation. This is a similar example to the very first one, but instead of setting a random background color to the entire page, you set a random color to any one of the 16 tiles when a user clicks on them. You add an event listener to the container `<div>`, pass the event object to the handler function and use the `Event.target` property. Then when any of the tiles are clicked the `Event.target` property serves as a reference to the clicked tile itself.
+
+- In this example we could add a `click` event handler for every tile. But a much simpler and more efficient option is to set the `click` event handler on the parent, and rely on event bubbling to ensure that the handler is executed when the user clicks on a tile.
+
+### Below notes from are book "Lesson 24"
+
+- CONTINUE FROM HERE. ADD LINKS THAT YOU USED BELOW. OTHER THAN ADDING LINKS, EVERYTHING IS DONE AND SHOULD MOVE ON TO THE BOOK.
 
 ---
 
@@ -1383,8 +1418,8 @@ MyElement.addEventListener(event, handler[, useCapture]);
 
 - MDN Event handlers (overview): https://developer.mozilla.org/en-US/docs/Web/Events/Event_handlers  
 - MDN Learn Events: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Building_blocks/Events  
-- MDN Events (listeners; e.g. click): https://developer.mozilla.org/en-US/docs/Web/Events 
-- MDN Event Interfaces (objects; e.g. MouseEvent) that contain properties and methods: https://developer.mozilla.org/en-US/docs/Web/API/Event   
+- MDN Events (event types): https://developer.mozilla.org/en-US/docs/Web/Events 
+- MDN Event Interfaces (event interfaces) that contain properties and methods: https://developer.mozilla.org/en-US/docs/Web/API/Event   
 
 **Useful links:**
 
@@ -1392,3 +1427,4 @@ MyElement.addEventListener(event, handler[, useCapture]);
 - MDN `querySelectorAll()` method (see NodeList definition as well): https://developer.mozilla.org/en-US/docs/Web/API/Document/querySelectorAll
 - MDN `addEventListener()`: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener  
 - MDN `AbortController` object (interface): https://developer.mozilla.org/en-US/docs/Web/API/AbortController  
+- Interface definition: https://stackoverflow.com/questions/67362268/what-is-an-interface-in-javascript  
