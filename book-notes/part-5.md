@@ -1414,7 +1414,11 @@ MyElement.addEventListener(event, handler[, useCapture]);
 
 ### Below notes from are book "Lesson 24"
 
-- CONTINUE FROM THE BOOK HERE. EVERYTHING ELSE DONE.
+- To use the event object, you can pass it on to your event handler function.
+
+- If your click event handler returns the false value, the link will not be followed.
+
+- CONTINUE FROM "Using the load and unload Events".
 
 ---
 
