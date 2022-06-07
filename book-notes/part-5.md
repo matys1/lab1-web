@@ -1418,7 +1418,13 @@ MyElement.addEventListener(event, handler[, useCapture]);
 
 - If your click event handler returns the false value, the link will not be followed.
 
-- CONTINUE FROM "Using the load and unload Events".
+- The load event is related to the window object
+
+- added the example -1.html
+
+- Controlling Windows with Objects
+
+- added 3rd example, doesnt work though (book code has error looks like)... continue from "Using Timeouts". just need to finish this chapter, revisit the parts i copied above, add notes and comments and move on to the next capter.
 
 ---
 
