@@ -1292,7 +1292,7 @@ myElement.addEventListener('click', functionB);
       btn.addEventListener('click', changeBackground) //instead of this
       ```  
       
-      One major drawback of using event handler properties instead of `addEventListener()` method is that you can only assign one handler to the property. Attempting to assign a second handler will just overwrite the first, for example:
+      One major drawback of using event handler properties instead of `addEventListener()` method is that you can only assign one handler per object event property. Attempting to assign a second handler will just overwrite the first. For example:
       
       ```js
       element.onclick = function1;
@@ -1414,6 +1414,36 @@ MyElement.addEventListener(event, handler[, useCapture]);
 
 ### Below notes from are book "Lesson 24"
 
+#### A recap of the `Event` object
+
+- I used MDN as the main source for learning about event handling. I found MDN to be far more complehensive and up-to-date than the book on this subject. Below are my notes from the book that either re-iterate what I already learned from MDN or introduce additional new concepts (like windows) that were not part of MDN Events articles.
+
+- When an event occurs, you might need to know more about the event in order for your script to perform different actions. For example, you might want to know which key was pressed for `keydown` event. The DOM includes the main `Event` interface upon which all other `Event` interface are built on that provide this type of information. All events belong to a specific `Event` interface. For example, `click` and `dblclick` events both belong to `MouseEvent` interface whereas `keydown` event belongs to `KeyboardEvent` interface. The `KeyboardEvent` interface contains a `key` property that displays the key pressed when one of it's events (e.g. `keydown` event) occcurs. 
+
+
+- Each `Event` interface has it's own unique set of associated methods and properties in addition to the default set of methods and properties defined by the main `Event` interface. To use these `Event` mothods and properties you need to access the `Event` object by passing it on to your event handler function. For example:
+
+```js
+function functionName(e) { //define a function and pass the associated event object as e
+     //e.currentTarget ... 
+     //e.clientX ...
+}
+```
+
+- This way, if you were listening for a `click` event, the `Event` object passed named as `e` will be `MouseEvent`. Then, you can access the methods and properties that belong to the `MouseEvent` interface (e.g. `clientX`) as well as the default set of methods and properties defined by the main `Event` interface (e.g. `currentTarget`).
+
+#### Using `MouseEvent` example
+
+- See l24-book-mouseevent.html for a basic example of handling mouse events. In the example you attached different event listeners (listening for different mouse event types) to the same object (a link `<a>`) using the same event handler function. The function then returns the type of the event and the button pressed. In the example you access `MouseEvent` interface properties like `button` as well as the main `Event` interface properties like `type`. 
+
+#### Using `KeyboardEvent` example
+
+- See l24-book-keyboardevent.html for a basic example of handling keyboard events. Note that the book was using depriciated `KeyboardEvent` interface properties. I re-wrote the script to use the more simple and reliable `key` property instead. The script also attaches an event listener to the `document` interface (this means the event will be triggered every time a key is pressed anywhere in the `document` and not tied to a specific input field) to return the key pressed. 
+
+Continue from "Using the load and unload Events". Probably would be good to create an example of this..
+
+----
+
 - To use the event object, you can pass it on to your event handler function.
 
 - If your click event handler returns the false value, the link will not be followed.
@@ -1424,7 +1454,7 @@ MyElement.addEventListener(event, handler[, useCapture]);
 
 - Controlling Windows with Objects
 
-- added 3rd example, doesnt work though (book code has error looks like)... continue from "Using Timeouts". just need to finish this chapter, revisit the parts i copied above, add notes and comments and move on to the next capter.
+- 
 
 ---
 
@@ -1446,3 +1476,5 @@ MyElement.addEventListener(event, handler[, useCapture]);
 - Check if event bubbles: https://developer.mozilla.org/en-US/docs/Web/API/Event/bubbles  
 - Stackoverflow about event bubbling/capturing: https://stackoverflow.com/questions/4616694/what-is-event-bubbling-and-capturing  
 - Event bubbling/capturing explained (very good): https://javascript.info/bubbling-and-capturing  
+
+JS should use single quote or double quote marks?
