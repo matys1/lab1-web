@@ -1440,7 +1440,14 @@ function functionName(e) { //define a function and pass the associated event obj
 
 - See l24-book-keyboardevent.html for a basic example of handling keyboard events. Note that the book was using depriciated `KeyboardEvent` interface properties. I re-wrote the script to use the more simple and reliable `key` property instead. The script also attaches an event listener to the `document` interface (this means the event will be triggered every time a key is pressed anywhere in the `document` and not tied to a specific input field) to return the key pressed. 
 
-Continue from "Using the load and unload Events". Probably would be good to create an example of this..
+#### Using `load` and `unload` example
+
+Continue from "Using the load and unload Events". Create following examples:
+- where a script works when placed in body, then doesn't work when placed in head, and then works when placed in head when using `load` event
+  - remember this error and Stackoveflow post about a script attempting to use an element that doesn't exist yet (that was due to placing script in head instead of body)
+- a website that displays images (e.g. from lorem picsum) and `console.log` a message or timestamp of `DOMContentLoaded` and `load` events and maybe also one without any events.
+- maybe an example of `unload` event? Like opening a new window, populating it with content/pictures and when done closing it (`unload`) and logging it all in a console?
+- In general read a bit about the `load` event. need to understand this a bit more since I remember it from when working on the Tableau extension.
 
 ----
 
