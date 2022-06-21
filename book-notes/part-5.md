@@ -1416,7 +1416,7 @@ MyElement.addEventListener(event, handler[, useCapture]);
 
 #### A recap of the `Event` object
 
-- I used MDN as the main source for learning about event handling. I found MDN to be far more complehensive and up-to-date than the book on this subject. Below are my notes from the book that either re-iterate what I already learned from MDN or introduce additional new concepts (like windows) that were not part of MDN Events articles.
+- I used MDN as the main source for learning about event handling. I found MDN to be far more complehensive and up-to-date than the book on this subject. Below are my notes from the book that either re-iterate what I already learned from MDN or introduces additional new concepts (like windows) that were not part of MDN Events articles.
 
 - When an event occurs, you might need to know more about the event in order for your script to perform different actions. For example, you might want to know which key was pressed for `keydown` event. The DOM includes the main `Event` interface upon which all other `Event` interface are built on that provide this type of information. All events belong to a specific `Event` interface. For example, `click` and `dblclick` events both belong to `MouseEvent` interface whereas `keydown` event belongs to `KeyboardEvent` interface. The `KeyboardEvent` interface contains a `key` property that displays the key pressed when one of it's events (e.g. `keydown` event) occcurs. 
 
@@ -1425,8 +1425,8 @@ MyElement.addEventListener(event, handler[, useCapture]);
 
 ```js
 function functionName(e) { //define a function and pass the associated event object as e
-     //e.currentTarget ... 
-     //e.clientX ...
+     e.currentTarget ... //a property of the main Event interface
+     e.clientX ... //a property of the MouseEvent interface
 }
 ```
 
@@ -1443,13 +1443,13 @@ function functionName(e) { //define a function and pass the associated event obj
 #### Using `load` and `unload` example
 
 Continue from "Using the load and unload Events". Create following examples:
-- where a script works when placed in body, then doesn't work when placed in head, and then works when placed in head when using `load` event
-  - remember this error and Stackoveflow post about a script attempting to use an element that doesn't exist yet (that was due to placing script in head instead of body)
-- a website that displays images (e.g. from lorem picsum) and `console.log` a message or timestamp of `DOMContentLoaded` and `load` events and maybe also one without any events.
-- maybe an example of `unload` event? Like opening a new window, populating it with content/pictures and when done closing it (`unload`) and logging it all in a console?
-- In general read a bit about the `load` event. need to understand this a bit more since I remember it from when working on the Tableau extension.
+- [x] where a script works when placed in body, then doesn't work when placed in head, and then works when placed in head when using `load` event (remember this error and Stackoveflow post about a script attempting to use an element that doesn't exist yet due to placing script in head instead of body).
+  - see l24-book-load.html for an example. Works in body, doesn't work in head unless you add `load` event listener and place the code to be part of event handler function.
+- [ ] a website that displays images (e.g. from lorem picsum) and `console.log` a message or timestamp of `DOMContentLoaded` and `load` events and maybe also one without any events.
+- [ ] maybe an example of `unload` event? Like opening a new window, populating it with content/pictures and when done closing it (`unload`) and logging it all in a console?
+- [ ] In general read a bit about the `load` event. need to understand this a bit more since I remember it from when working on the Tableau extension.
 
-----
+---
 
 - To use the event object, you can pass it on to your event handler function.
 
@@ -1460,8 +1460,6 @@ Continue from "Using the load and unload Events". Create following examples:
 - added the example -1.html
 
 - Controlling Windows with Objects
-
-- 
 
 ---
 
