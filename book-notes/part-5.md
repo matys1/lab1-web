@@ -1450,7 +1450,9 @@ function functionName(e) { //define a function and pass the associated event obj
 
 - Note that there's also an `unload` event which occurs when another page is loaded or when the browser window is closed, however, the use of the `unload` event is highly discouraged as it's not reliable under certain conditions. Instead, the `visibilitychange` event or `pagehide` event should be used.
 
-CONTINUE FROM "Using click to Change the Appearance of a `<div>`". All Above done!
+#### Using `click` to Change the Appearance of a `<div>`
+
+- Continue from here. Read the section and everything seemed clear and well explained. Need to add comments to the l24-book-events-1.html and add notes here. Everything else above done!
 
 ---
 
