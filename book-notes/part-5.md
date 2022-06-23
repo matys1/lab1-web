@@ -1442,24 +1442,23 @@ function functionName(e) { //define a function and pass the associated event obj
 
 #### Using `load` and `unload` example
 
-Continue from "Using the load and unload Events". Create following examples:
-- [x] where a script works when placed in body, then doesn't work when placed in head, and then works when placed in head when using `load` event (remember this error and Stackoveflow post about a script attempting to use an element that doesn't exist yet due to placing script in head instead of body).
-  - see l24-book-load.html for an example. Works in body, doesn't work in head unless you add `load` event listener and place the code to be part of event handler function.
-- [ ] a website that displays images (e.g. from lorem picsum) and `console.log` a message or timestamp of `DOMContentLoaded` and `load` events and maybe also one without any events.
-- [ ] maybe an example of `unload` event? Like opening a new window, populating it with content/pictures and when done closing it (`unload`) and logging it all in a console?
-- [ ] In general read a bit about the `load` event. need to understand this a bit more since I remember it from when working on the Tableau extension.
+- See l24-book-load.html for an example of `load` / `DOMContentLoaded`. The `load` event is fired when the whole page has loaded, including all dependent resources such as stylesheets and images. This is in contrast to `DOMContentLoaded`, which is fired as soon as the page DOM has been loaded, without waiting for resources to finish loading.
+
+- `load` event is related to the `window` object whereas `DOMContentLoaded` event is related to `document` object. However, the `load` even is not limited to just the `window` object. You can attach it to `XMLHttpRequest`, `<iframe>`, `<img>` etc., in which case the `load` event will fire as soon as the specific resource has finished loading.
+
+- In the above example, the JS code runs as long as the `<script>` tag is before the closing `</body>` tag. If you place the `<script>` tag in the `<head>` of the document, then you must enclose the JS code in an event handler of `load` or `DOMContentLoaded` events.
+
+- Note that there's also an `unload` event which occurs when another page is loaded or when the browser window is closed, however, the use of the `unload` event is highly discouraged as it's not reliable under certain conditions. Instead, the `visibilitychange` event or `pagehide` event should be used.
+
+CONTINUE FROM "Using click to Change the Appearance of a `<div>`". All Above done!
 
 ---
 
-- To use the event object, you can pass it on to your event handler function.
+**Ideas for projects/testing:**
 
-- If your click event handler returns the false value, the link will not be followed.
-
-- The load event is related to the window object
-
-- added the example -1.html
-
-- Controlling Windows with Objects
+- [ ] a website that displays images (e.g. from lorem picsum) and `console.log` a message or timestamp of `DOMContentLoaded` and `load` events and maybe also one without any events.
+- [ ] maybe an example of `unload` event? Like opening a new window, populating it with content/pictures and when done closing it (`unload`) and logging it all in a console?
+- [ ] In general read a bit about the `load` event. need to understand this a bit more since I remember it from when working on the Tableau extension.
 
 ---
 
