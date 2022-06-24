@@ -1,0 +1,46 @@
+/*style links (the <a> tags)*/
+a {
+  text-decoration: none;
+  font-weight: bold;
+}
+/*style all imgs*/
+img {
+  margin-right: 12px;
+  margin-bottom: 6px;
+  border: 1px solid #000;
+}
+/*stlye the main image specifically*/
+.mainimg {
+  float: left;
+  max-width: 35%;
+  height: auto;
+}
+/*hide the below 4 elements on page load*/
+#eHide, #pHide, #elevation, #photos  {
+  display: none;
+}
+/*display the below 2 elements on page load*/
+#eShow, #pShow {
+  display: block;
+}
+/*clear floats from both sides of the #photos <div>*/
+#photos {
+  clear: both;
+}
+/*style the small images specifically*/
+#photos img { /*notice no comma between #photos and img; meaning applies only to <img> elements contained inside the #photos <div>*/
+  max-width: 20%; 
+  height: auto; 
+  clear: left; 
+}
+/*change the appearance of the pointer when hovering over the buttons (pointer appears as if hovering over a link)*/
+.fakelink {
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  color: #E03A3E;
+}
+/*give <section> elements a bottom margin*/
+section {
+  margin-bottom: 6px;
+} 

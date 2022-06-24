@@ -3,48 +3,14 @@
   <head>
     <meta charset="utf-8">
     <title>Steptoe Butte</title>
-    <style>
-      a {
-        text-decoration: none;
-        font-weight: bold;
-      }
-      img {
-        margin-right: 12px;
-        margin-bottom: 6px;
-        border: 1px solid #000;
-      }
-      .mainimg {
-        float: left;
-        max-width: 35%;
-        height: auto;
-      }
-      #eHide, #pHide, #elevation, #photos  {
-        display: none;
-      }
-      #eShow, #pShow {
-        display: block;
-      }
-      #photos {
-        clear: both;
-      }
-      #photos img { max-width: 20%; height: auto; clear: left; }
-      .fakelink {
-        cursor: pointer;
-        text-decoration: none;
-        font-weight: bold;
-        color: #E03A3E;
-      }
-      section {
-        margin-bottom: 6px;
-      }    
-    </style>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/l24-book-events-1.css">
   </head>
   <body>
     <header>
       <h1>Steptoe Butte</h1>
     </header>
-    
+
     <section>
       <p>
         <img src="https://picsum.photos/400/250"class="mainimg"
@@ -72,7 +38,7 @@
         Colonel Edward Steptoe</a>.
       </p>
     </section>
-    
+
     <section>
       <button class="fakelink" id="eShow">&raquo; Show Elevation</button>
       <button class="fakelink" id="eHide">&laquo; Hide Elevation</button>
@@ -81,7 +47,7 @@
         above the surrounding countryside.
       </div>
     </section>
-      
+
     <section>
       <button class="fakelink" id="pShow">
         &raquo; Show Photos from the Top of Steptoe Butte
@@ -89,7 +55,6 @@
       <button class="fakelink" id="pHide">
         &laquo; Hide Photos from the Top of Steptoe Butte
       </button>
-      
       <div id="photos">
         <img src="https://picsum.photos/300/200" alt="View from Steptoe Butte">
         <img src="https://picsum.photos/300/200" alt="View from Steptoe Butte">
@@ -103,28 +68,6 @@
         <a href="http://en.wikipedia.org/wiki/Steptoe_Butte">Wikipedia</a>, photos by Julie C. Meloni.</em>
       </p>
     </footer>
-    
-    <script>
-      document.getElementById("eShow").addEventListener("click", function() {
-        this.style.display = 'none';
-        document.getElementById("eHide").style.display='block';
-        document.getElementById("elevation").style.display='block';
-      });
-      document.getElementById("eHide").addEventListener("click", function() {
-        this.style.display = 'none';
-        document.getElementById("eShow").style.display='block';
-        document.getElementById("elevation").style.display='none';
-      });
-      document.getElementById("pShow").addEventListener("click", function() {
-        this.style.display = 'none';
-        document.getElementById("pHide").style.display='block';
-        document.getElementById("photos").style.display='block';
-      });
-      document.getElementById("pHide").addEventListener("click", function() {
-        this.style.display = 'none';
-        document.getElementById("pShow").style.display='block';
-        document.getElementById("photos").style.display='none';
-      });
-    </script>
+    <script src="js/l24-book-events-1.js"></script>
   </body>
 </html>

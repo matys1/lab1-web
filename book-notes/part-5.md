@@ -1452,7 +1452,11 @@ function functionName(e) { //define a function and pass the associated event obj
 
 #### Using `click` to Change the Appearance of a `<div>`
 
-- Continue from here. Read the section and everything seemed clear and well explained. Need to add comments to the l24-book-events-1.html and add notes here. Everything else above done!
+- See l24-book-events-1.html for an example of showing and hiding elements based on `click` events. This is the big example from the book. The code is straight forward.
+
+#### Controlling Windows with Objects
+
+CONTINUE FROM HERE, EVERYTHING ABOVE IS DONE!
 
 ---
 
@@ -1482,5 +1486,8 @@ function functionName(e) { //define a function and pass the associated event obj
 - Check if event bubbles: https://developer.mozilla.org/en-US/docs/Web/API/Event/bubbles  
 - Stackoverflow about event bubbling/capturing: https://stackoverflow.com/questions/4616694/what-is-event-bubbling-and-capturing  
 - Event bubbling/capturing explained (very good): https://javascript.info/bubbling-and-capturing  
-
-JS should use single quote or double quote marks?
+- HTML character codes: https://www.rapidtables.com/web/html/html-codes.html
+- JS double vs single quotes:  
+  - https://www.w3docs.com/snippets/javascript/when-to-use-double-or-single-quotes-in-javascript.html  
+  - https://stackoverflow.com/questions/242813/when-should-i-use-double-or-single-quotes-in-javascript  
+- JS `style` property: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style
