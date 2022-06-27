@@ -1456,7 +1456,21 @@ function functionName(e) { //define a function and pass the associated event obj
 
 #### Controlling Windows with Objects
 
-CONTINUE FROM HERE, EVERYTHING ABOVE IS DONE!
+- The `window` object always refers to the current window (the one containing the script). The `self` keyword is also a synonym for the current window. You can have more than one window on the screen at the same time (pop-up windows or multiple tabs) and can refer to these windows by using different names.
+
+- Note, `document`, `history `, `location` and other objects are properties (children) of the `window` object, and each open `window` object has these properties available for scripting purposes.
+
+- See full list of `window` methods and properties in the below Window API MDN link.
+
+#### Creating a New Window
+
+- To open a new window (e.g. a pop-up window or a tab) use the `window.open` method. Basic syntax:
+
+```js
+myNewWindow = window.open("URL", "WindowName", "LIST_OF_FEATURES")
+```
+
+CONTINUE FROM HERE...
 
 ---
 
@@ -1491,3 +1505,4 @@ CONTINUE FROM HERE, EVERYTHING ABOVE IS DONE!
   - https://www.w3docs.com/snippets/javascript/when-to-use-double-or-single-quotes-in-javascript.html  
   - https://stackoverflow.com/questions/242813/when-should-i-use-double-or-single-quotes-in-javascript  
 - JS `style` property: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style
+- Window API (the `window` interface): https://developer.mozilla.org/en-US/docs/Web/API/Window
