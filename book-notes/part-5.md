@@ -864,7 +864,7 @@ let utcDate = new Date(Date.UTC(2018, 11, 1, 0, 0, 0));
 
 - This lesson looks at two flow control concepts in JavaScript: 
   - **Conditionals** 
-    - `if...esle` statement
+    - `if...else` statement
     - comparison operators
     - logical operators 
     - ternary operator 
@@ -1496,7 +1496,11 @@ newSmallWin = window.open("","small","width=300,height=220");
 
 #### Moving and Resizing Windows
 
-CONTINUE FROM HERE...
+- Mention the 4 methods
+
+- Mention the example (commented and understood)
+
+Move on to next section.
 
 ---
 
