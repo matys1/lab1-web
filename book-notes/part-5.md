@@ -1467,8 +1467,34 @@ function functionName(e) { //define a function and pass the associated event obj
 - To open a new window (e.g. a pop-up window or a tab) use the `window.open` method. Basic syntax:
 
 ```js
-myNewWindow = window.open("URL", "WindowName", "LIST_OF_FEATURES")
+let myNewWindow = window.open("URL", "WindowName", "LIST_OF_FEATURES")
 ```
+
+- The `myNewWindow` variable is used to store the new window object. You can access methods and properties of the new object by using this name.
+
+- The `URL` parameter contains the URL that is to be loaded in the window. If omitted (`""`) then a blank page will be loaded. In this case you can also use JavaScript to fill the window with content.
+
+- The `WindowName` parameter specifies a window name. This is assigned to the window object's `name` property and is used to refer to the window. The special target keywords, `_self`, `_blank`, `_parent`, and `_top`, can also be passed. To learn more about the special targt keywords see the MDN link below.
+
+- The `LIST_OF_FEATURES` parameter is a list of optional features, separated by commas. You can customize the new window by opening it as a pop-up window (minimal UI) or a new tab, among other things.
+
+- For an example, you can go to a blank page and paste the below link in console to open a new window:
+
+```js
+newSmallWin = window.open("","small","width=300,height=220");
+```
+
+- Two things to consider:
+  - When reading about the `window.open` method in the book and on MDN it seems like the `LIST_OF_FEATURES` parameter used to support more options for customizing the appearance of the new window. However, now you're limited to opening a new pop-up window (whose UI is defined by the browser) or a new tab.
+  - Opening new windows is considered bad practice for a number of reasons. Therefore, you should open links in new tabs instead.
+
+#### Opening and Closing Windows
+
+- Use the `window.close` method to close a window. However, you cannot close the main browser window as the script can only close a window that the script itself opened. 
+
+- See l24-book-windows-2.html for an example of opening and closing windows.
+
+#### Moving and Resizing Windows
 
 CONTINUE FROM HERE...
 
@@ -1506,3 +1532,4 @@ CONTINUE FROM HERE...
   - https://stackoverflow.com/questions/242813/when-should-i-use-double-or-single-quotes-in-javascript  
 - JS `style` property: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style
 - Window API (the `window` interface): https://developer.mozilla.org/en-US/docs/Web/API/Window
+- `<a> target` keywords MDN: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#attr-target
