@@ -3,42 +3,17 @@
   <head>
     <meta charset="utf-8">
     <title>Timeout Example</title>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
     <h1>Timeout Example</h1>
-    <p>The counter will update every two seconds.</p>
+    <p>The counter will update every 1 seconds.</p>
     <p>Press RESTART or STOP to restart or stop the count.</p>
     <p id="showText"></p>
     <section>
       <button type="button" id="restart">RESTART</button>
       <button type="button" id="stop">STOP</button>
     </section>
-    
-    <script>
-      var counter = 0;
-      
-      // call Update function 2 seconds after first load
-      timeoutID=window.setTimeout("Update();",2000);
-      
-      function Update() {
-        counter++;
-        var textField = document.getElementById("showText");
-        textField.innerHTML = "The counter is now at " + counter;
-        
-        // set another timeout for the next count
-        timeoutID=window.setTimeout("Update();",2000);
-      }
-      
-      // set event listeners for the buttons
-      document.getElementById("restart").addEventListener("click", function() {
-        counter = 0;
-        Update();
-      });
-      document.getElementById("stop").addEventListener("click", function() {
-        window.clearTimeout(timeoutID);
-      });
-    </script>
+    <script src="js/l24-book-timeout-4.js"></script>
   </body>
 </html>

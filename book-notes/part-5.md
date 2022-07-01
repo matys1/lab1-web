@@ -1496,11 +1496,21 @@ newSmallWin = window.open("","small","width=300,height=220");
 
 #### Moving and Resizing Windows
 
-- Mention the 4 methods
+- To move or resize the windows that your scripts have created use the following `window` methods below:
+  - `window.moveTo(x, y)` - Moves the window to a new position
+  - `window.moveBy(numX, numY)` - Moves the window relative to its current position
+  - `window.resizeTo(width, height)` - Resizes the window to the width and height specified
+  - `window.resizeBy(numX, numY)` - Resizes the window relative to its current size
 
-- Mention the example (commented and understood)
+- See l24-book-windows-3.html for an exmaple of moving and resizing windows.
 
-Move on to next section.
+#### Using Timeouts
+
+- To set the script to do nothing for a specific period of time and then execute code after the delay has passed use the `window.setTimeout()` method. Note that it doesn't make the browser stop other things that it's doing (like acting on other event handlers) or executing other code.
+
+- The `window.setTimeout(function, delay)` method has two parameters. The first parameter `function` references the function or code you want to run and the second parameter `delay` sets the delay in milliseconds until the code is run.
+
+CONT FROM HERE. EXAMPLE IS COMMENTED AND UNDERSTOOD.
 
 ---
 
