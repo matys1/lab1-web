@@ -19,5 +19,5 @@ document.getElementById("restart").addEventListener("click", function() {
 });
 
 document.getElementById("stop").addEventListener("click", function() {
-  window.clearTimeout(timeoutID);
+  window.clearTimeout(timeoutID); //clears one timeout at a time. if you have multiple loops with multiple timeouts running, you need to press the stop button once for each loop/timeout.
 });

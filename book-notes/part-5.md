@@ -1508,9 +1508,29 @@ newSmallWin = window.open("","small","width=300,height=220");
 
 - To set the script to do nothing for a specific period of time and then execute code after the delay has passed use the `window.setTimeout()` method. Note that it doesn't make the browser stop other things that it's doing (like acting on other event handlers) or executing other code.
 
-- The `window.setTimeout(function, delay)` method has two parameters. The first parameter `function` references the function or code you want to run and the second parameter `delay` sets the delay in milliseconds until the code is run.
+- The `window.setTimeout(code, time)` method has two parameters. The first parameter `code` references a function or code (statements) you want to run and the second parameter `time` sets the delay in milliseconds until the code is run. For example:
 
-CONT FROM HERE. EXAMPLE IS COMMENTED AND UNDERSTOOD.
+```js
+// create a timeout and store the identifier in a variable named timeoutID
+let timeoutID = window.setTimeout("alert('Time is up!')", 3000);
+
+// create a timeout that also generates an identifier but it doesn't get stored in a variable
+window.setTimeout("alert('Time is up!')", 3000);
+```
+
+- The `setTimeout` method allows you to set multiple timeouts each with its own identifier. This identifier is a unique positive integer value that identifies the timeout.  
+
+> Note, It is guaranteed that an identifier value will never be reused by a subsequent call to `setTimeout()` on the same object (a window or a worker). However, different objects use separate pools of IDs.
+
+- This identifier value can be passed to `clearTimeout()` method to cancel the timeout before it elapses. Alternatively you can pass a variable, like `timeoutID` that stores the identifier instead. However, the variable stores only the last generated identifier returned by the `setTimeout()` method. Thus if you have multiple timeouts running and you wish to cancel them all you need to provide the identifiers to `clearTimeout()` method directly each time or set up a loop.
+
+- The `code` you specify in the `setTimeout()` method is executed only once. However, you can make a timeout repeat by issuing the `setTimeout()` method call again in the function called by the timeout. See l24-book-timeout-4.html for an example that creates an infinite loop this way. However, if you need to repeatedly execute code with a fixed time delay between each call consider using `setInterval()` and `clearInterval()` methods instead.
+
+> Note that `setInterval()` and `setTimeout()` share the same pool of IDs, and that `clearInterval()` and `clearTimeout()` can technically be used interchangeably (though you shouldn't for clarity).
+
+### Displaying Dialog Boxes
+
+- CONTINUE FROM HERE. EVERYTHING ABOVE IS DONE.
 
 ---
 
@@ -1547,3 +1567,4 @@ CONT FROM HERE. EXAMPLE IS COMMENTED AND UNDERSTOOD.
 - JS `style` property: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/style
 - Window API (the `window` interface): https://developer.mozilla.org/en-US/docs/Web/API/Window
 - `<a> target` keywords MDN: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#attr-target
+- The `setTimeout()` method: https://developer.mozilla.org/en-US/docs/Web/API/setTimeout
