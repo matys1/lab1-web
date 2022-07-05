@@ -1530,15 +1530,20 @@ window.setTimeout("alert('Time is up!')", 3000);
 
 ### Displaying Dialog Boxes
 
-- CONTINUE FROM HERE. EVERYTHING ABOVE IS DONE.
+- The `window` object includes 3 methods that are useful for displaying messages and interacting with the user:
+  - `window.alert(message)` - simply displays an alert message.
+  - `window.confirm(message)` - displays a confirmation box with a message and buttons `Ok` (returns `true`) and `Cancel` (returns `false`).
+  - `window.prompt(message, default)` - displays a message and prompts the user for an input. It returns the text entered by the user. If the user does not enter anything, the default value is used.
 
----
+> When using the `confirm()` and `prompt()` methods, you should use a variable to capture, store and later access the user's response. For example:
 
-**Ideas for projects/testing:**
+```js
+let text = window.prompt("Enter some text","Default value");
+```
 
-- [ ] a website that displays images (e.g. from lorem picsum) and `console.log` a message or timestamp of `DOMContentLoaded` and `load` events and maybe also one without any events.
-- [ ] maybe an example of `unload` event? Like opening a new window, populating it with content/pictures and when done closing it (`unload`) and logging it all in a console?
-- [ ] In general read a bit about the `load` event. need to understand this a bit more since I remember it from when working on the Tableau extension.
+- You can also usually omit the explicit reference to the `window` object because it is the default context of a script. For example, `alert(message)` instead of `window.alert(message)`. 
+
+- See l24-book-alerts-5.html for a basic example of all 3 dialog boxes.
 
 ---
 
@@ -1568,3 +1573,7 @@ window.setTimeout("alert('Time is up!')", 3000);
 - Window API (the `window` interface): https://developer.mozilla.org/en-US/docs/Web/API/Window
 - `<a> target` keywords MDN: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#attr-target
 - The `setTimeout()` method: https://developer.mozilla.org/en-US/docs/Web/API/setTimeout
+
+## LESSON 25
+
+CONTINUE READING & NOTES FROM HERE.
