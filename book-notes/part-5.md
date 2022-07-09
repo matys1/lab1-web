@@ -1576,4 +1576,14 @@ let text = window.prompt("Enter some text","Default value");
 
 ## LESSON 25
 
-CONTINUE READING & NOTES FROM HERE.
+This lesson focuses on tips and is titled "JavaScript best practices". Below are the key points from this lesson.
+
+- Avoid overusing JavaScript. Use HTML, then CSS and only then JS as a last resort. A lot of things that used to be possible only with JS can now be done nattively using HTML or CSS - take advantage of this.
+
+- Always separate **content** (HTML) from **presentation** (CSS) and **behaviour** (JS). Create an exeternal CSS file and a JS file and link them to the HTML page.
+
+- Contain all your JS scripts in a single file (or as few as possible) and place it at the end of the documents closing `</body>` tag.
+
+- Use graceful degradation. Early web example: the earliest versions of browsers didn't support images and as the `<img>` and other tags were introduced in HTML it became important for text-only browsers to present something helpful to the user whenever an unsupported tag was encountered. The `<img>` tag provided the `alt` attribute and web designers could assign a string of text to `alt`, and text-only browsers would display that text to the user instead of showing the image.
+
+CONTINUE FROM "Progressive Enhancement".
