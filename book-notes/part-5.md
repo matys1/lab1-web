@@ -1586,4 +1586,36 @@ This lesson focuses on tips and is titled "JavaScript best practices". Below are
 
 - Use graceful degradation. Early web example: the earliest versions of browsers didn't support images and as the `<img>` and other tags were introduced in HTML it became important for text-only browsers to present something helpful to the user whenever an unsupported tag was encountered. The `<img>` tag provided the `alt` attribute and web designers could assign a string of text to `alt`, and text-only browsers would display that text to the user instead of showing the image.
 
-CONTINUE FROM "Progressive Enhancement".
+- Use progressive enhancement. Keep the HTML documents as simple as possible so they always work even in the most primitive browsers. Then add features to enhance the site in terms of presentatin or behaviour (CSS and JS). If you add those feaures unobtrusivey they won't prevent the site from working in its primitive HTML form.
+  - Don't use HTML tags meant for presentation only, like `<b>` or `<blockquote>`. Use CSS instead.
+  - Use event listeners instead of in-line event handlers.
+  - Use feature sensing.
+
+- Avoid being browser specific and stick to the standards.
+
+- Implement error handling by using `try...catch`. When the JS interpreter encounters and raises an error it is displayed in the console of the browser. Additionally the end user, depending on the type of error and browser settings, might be notified of the error as well. To deal with the errors and improve the user experience you can implement error handling. 
+
+> Words `exception` and `error` are used interchangeably in the context of error handling. An exception is thrown when the interpreter encounters an error. Alternatively, a user can throw a user-defined exception using the `throw` keyword. The thrown user-defined exceptions can contain a defined `Error` object or just a string, value or another object.
+
+- The `try` statement attempts to run a piece of code. If the code runs without throwing an exception, the `catch` block is skipped and never executed. However, if an exception is thrown, the control is immediately passed to the `catch` block and the statements after `throw` won't be executed.
+
+> Note there's an optional `finally {...}` statement that is always executed regardless if an exception was thrown or not. 
+
+Basic syntax of the `try...catch...finally` construct:  
+```js
+try {
+  // code to execute
+} catch(exception_var) { //must pass exception_var only if intend to use it
+  // code to execute if exception is thrown
+} finally {
+  // code to execute regardless if an exception is thrown in the `try` block
+}
+```
+
+- CONTINUE FROM HERE. PROVIDE AN ACTUAL EXAMPLE FROM THE CONSOLE. I THINK THIS MORE OR LESS IS IT. AND ADD THE MDN LINKS.
+
+---
+
+**Useful links:**
+
+- Find out what features are supported by which browsers: http://www.caniuse.com/
