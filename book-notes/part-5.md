@@ -1612,10 +1612,57 @@ try {
 }
 ```
 
-- CONTINUE FROM HERE. PROVIDE AN ACTUAL EXAMPLE FROM THE CONSOLE. I THINK THIS MORE OR LESS IS IT. AND ADD THE MDN LINKS.
+An example:
+```js
+try {
+  const x = new Error('This is a serious error!'); // construct new Error obj
+  throw x;
+  // throw new Error('This is a serious error!'); // or replace with this
+} catch (e) {
+  console.log(e.name + ': ' + e.message); // can also use console.error instead
+}
+```
+
+- Document your code by adding a multi-line comment (by using `/*...*/`) or a single-line comment (by using `//`).
+
+- Ensure usability. For example, use a link-based nav-bar instead of a drop-down.
+
+- Think about accessibility. If you follow progressive enhancement and make JavaScript an enhancement rather than a requirement for using your site you're already making it more accessible.
+
+- Benefit from design patterns. A design pattern is an optimal solution to a common problem. For example, if you have a site that displays multiple pages of data, you'll have Next Page and Previous Page links, and perhaps numeric links for each page. This is a common design pattern - a problem many web designers have had to solve, and one with a generally agreed-on solution.  
+  This is also related to components. Many frameworks offer ready-built components for solving the most common design problems.
+
+- Reuse code. You should always aim to modularize your code as much as possible. Collecting your code into modules such as functions and objects that you can use and reuse throughout your program is a process known as _abstraction_.
+
+  For example, the below function hard-codes the element ids for which to return the element area. This means you could not re-use the function to return area for other elements.
+  ```js
+  function getElementArea() {
+    let high = document.getElementById("id1").style.height;
+    let wide = document.getElementById("id1").style.width;
+    return high * wide;
+  }
+  ```
+
+  To make the function modular and more dynamic, you can instead pass the element id as a parameter to the function. Now, you can re-use the function to obtain the area for any element.
+
+  ```js
+  function getElementArea(elementId) {
+    let element = document.getElementById(elementId);
+    let high = element.style.height;
+    let wide = element.style.width;
+    return parseInt(high) * parseInt(wide);
+  }
+  ```
+
+CONTINUE FROM "Reading Browser Information".
 
 ---
 
 **Useful links:**
 
 - Find out what features are supported by which browsers: http://www.caniuse.com/
+- The `try...catch` construct: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/try...catch
+- The `throw` keyword: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw
+- The `Error` object: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
+- About accessibility: http://www.w3.org/WAI/
+- Link was mentioned in the section about design patterns, but generally has good web dev resources. I think the portal is created/maintained by Google: https://web.dev/learn/design/

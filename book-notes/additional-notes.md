@@ -62,3 +62,16 @@ In JS:
 let something = document.getElementsByName("testtext");
 something[0].innerHTML = "apples";
 ```
+
+## Using the `new` keyword
+
+- You should use the `new` keyword when you call object constructor methods. If you call a constructor and don't use the `new` keyword you've called it as a regular method / function and depending on the constructor it might work, might work but have adverse / undersirable side-effects or not work at all and return an error.
+
+- Thus in short, if you call a regular method or function you don't need to use `new` but when you call a constructor method you should use `new` keyword.
+
+- Below links, especially MDN explain it quite well.
+
+Useful links:
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new
+- https://stackoverflow.com/questions/383402/is-javascripts-new-keyword-considered-harmful
+- https://stackoverflow.com/questions/1646698/what-is-the-new-keyword-in-javascript
