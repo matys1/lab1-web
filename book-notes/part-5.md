@@ -1654,7 +1654,38 @@ try {
   }
   ```
 
-CONTINUE FROM "Reading Browser Information".
+- In addition to interfaces like `window` and `document` there's also a `navigator` interface that you can use to read information about the user's browser. This is called _Browser Sensing_.
+
+> Note, however, that reading browser information is often unreliable and counter-productive. It's much better to write standards-compliant code and use _Feature Sensing_ instead without referring to the `navigator` object at all.
+
+- See l25-book-browserinfo.html for an example of various `navigator` properties you can read. See more properties and methods listed on MDN linked below. Notice the "dishonest" values that a lot of these properties return.
+
+- In feature sensing, rather than checking for a specific browser using `navigator` object, you instead check if a specific feature is available in the browser. For example, if your script needs to use the `document.getElementById()` method, you can check if the browser has built-in support for this method first.
+
+```js
+if (document.getElementById) { //check if method is available in the browser
+  // code to execute //if available then condition will return true and execute code
+} // if not available then condition will return false and code is not executed
+```
+
+- Another common syntax for checking for a feature:
+
+```js
+function functionName() {
+  if (!document.getElementById) { // if feature doesn't exist then
+    return; // exit function
+  }
+  // code to execute // the rest of the function executes if the feature is supported
+}
+```
+
+- Obviously you don't need to check for every feature before using it. You can also assume if one type of feature is supported then other features of similar type are also supported. 
+
+- Feature sensing is a very reliable method of keeping your JavaScript unobtrusive: If a browser supports the feature, it works, and if the browser doesn't, your script stays out of the way. It's also much easier than trying to keep track of hundreds of different browser versions and what they support.
+
+- Feature sensing is also handy when you're working with third-party libraries. You can check for the existence of an object or a function belonging to a library to verify that the library file has been loaded before your script uses its features.
+
+CONTINUE FROM "Dealing with Browser Quirks". Everything above is done.
 
 ---
 
@@ -1666,3 +1697,4 @@ CONTINUE FROM "Reading Browser Information".
 - The `Error` object: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error
 - About accessibility: http://www.w3.org/WAI/
 - Link was mentioned in the section about design patterns, but generally has good web dev resources. I think the portal is created/maintained by Google: https://web.dev/learn/design/
+- The `navigator` interface on MDN: https://developer.mozilla.org/en-US/docs/Web/API/Navigator
