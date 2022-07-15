@@ -1685,7 +1685,19 @@ function functionName() {
 
 - Feature sensing is also handy when you're working with third-party libraries. You can check for the existence of an object or a function belonging to a library to verify that the library file has been loaded before your script uses its features.
 
-CONTINUE FROM "Dealing with Browser Quirks". Everything above is done.
+- The only situation where `navigator` object and browser sensing might become useful is when your code works perfectly in one browser but fails in another. In this situation (assuming you've already checked for bugs in your own code and used feature sensing to make sure the feature is supported) you've likely encountered a browser bug and might need to deploy a code that works for that specific browser.
+
+- For browsers that don't support JavaScript or when JavaScript has been disabled by the user you can use the `<noscript></noscript>` tag pairs. Text you enter between the opening and closing tags will be displayed when JavaScript is not supported or enabled. Otherwise, the text between the tags is ignored and not rendered.  
+You can also use a script to redirect browsers that support JavaScript to a different page but it's a drastic option and probably something you shouldn't do unless absolutely needed.
+
+> Although you can detect non-JavaScript browsers and display a message, the best choice is to simply make your scripts unobtrusive. Use JavaScript as an enhancement rather than a requirement. If you keep JavaScript in separate files and assign event listeners in the JavaScript file rather than in the HTML, browsers that don't support JavaScript will simply ignore your script.
+
+- See l25-book-unobtrusivecheck.html for an example where JavaScript is used as an enhacement (when JS is supported) without compromising the core functionality of the site (when JS is not supported). In the example the default checkbox is replaced by a graphical checkbox, however, if JavaScript is not enabled then the default checkbox is displayed instead.
+  - Unobtrusive. Functions the same with or without JS. Just looks different.
+  - Real checkbox is still on the page but hidden. Thus works correctly when the form is submitted since the state is toggled using event listener.
+  - You can scale this enhacement to all checkboxes.
+
+CONTINUE FROM "Summary". Everything above is done. If you want to can turn off JS in your browser and check the previous example. Just wrap this Lesson up by reading the summary and Q&A and move on to the next Lesson.
 
 ---
 
