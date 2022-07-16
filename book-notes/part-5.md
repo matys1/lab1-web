@@ -1697,8 +1697,6 @@ You can also use a script to redirect browsers that support JavaScript to a diff
   - Real checkbox is still on the page but hidden. Thus works correctly when the form is submitted since the state is toggled using event listener.
   - You can scale this enhacement to all checkboxes.
 
-CONTINUE FROM "Summary". Everything above is done. If you want to can turn off JS in your browser and check the previous example. Just wrap this Lesson up by reading the summary and Q&A and move on to the next Lesson.
-
 ---
 
 **Useful links:**
@@ -1710,3 +1708,7 @@ CONTINUE FROM "Summary". Everything above is done. If you want to can turn off J
 - About accessibility: http://www.w3.org/WAI/
 - Link was mentioned in the section about design patterns, but generally has good web dev resources. I think the portal is created/maintained by Google: https://web.dev/learn/design/
 - The `navigator` interface on MDN: https://developer.mozilla.org/en-US/docs/Web/API/Navigator
+
+## LESSON 26
+
+Finished reading. Need to write notes now. Will be very little notes to write. Almost all libraries mentioned are outdated and obscure. The exercise with buttons and 3rd party lib not worth doing. Just go over the lesson one more time for notes and that's it. One thing to check: it mentioned that librar files don't need to be in `<head>` and can all just be before closing `</body>` as long as those libraries are listed before any other script that references them.. see also point 8 in the quiz.
