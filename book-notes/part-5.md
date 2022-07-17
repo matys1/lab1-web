@@ -1711,4 +1711,32 @@ You can also use a script to redirect browsers that support JavaScript to a diff
 
 ## LESSON 26
 
-Finished reading. Need to write notes now. Will be very little notes to write. Almost all libraries mentioned are outdated and obscure. The exercise with buttons and 3rd party lib not worth doing. Just go over the lesson one more time for notes and that's it. One thing to check: it mentioned that librar files don't need to be in `<head>` and can all just be before closing `</body>` as long as those libraries are listed before any other script that references them.. see also point 8 in the quiz.
+This lesson describes some 3rd-party JavaScript libraries and frameworks. Most of the ones mentioned in the book are outdated and obscure. There was not a lot of useful information in this lesson but nonetheless below are some key points. 
+
+- Below are MDN definitions:
+  - **JavaScript libraries** - usually one or more JavaScript files containing custom functions that you can attach to your web page to speed up or enable writing common functionality. For example, jQuery and D3.
+
+  - **JavaScript frameworks** - The next step up from libraries, JavaScript frameworks (e.g. Angular and Ember) tend to be packages of HTML, CSS, JavaScript, and other technologies that you install and then use to write an entire web application from scratch. The key difference between a library and a framework is "Inversion of Control". When calling a method from a library, the developer is in control. With a framework, the control is inverted: the framework calls the developer's code.
+
+- The book defines libraries as: 
+  - Enabling you to do complicated things with only a small amount of code because that small amount of code refers to something bigger under the hood that someone else has already created.
+
+- The two main disadvantages of using 3rd-party libraries:
+  - Most of the time you won't really know how the code works because you're simply employing someone else's algorithms and functions.
+  - Overhead. JavaScript libraries can contain a lot of code you'll never use but that the browser has to download anyway.
+
+- However, well written libaries have many advantages that usually outweight the negtives mentioned above.
+
+- There are a few different ways of using third-party JavaScript libraries, but it can be as simple as copying one or more JavaScript files to your web server and including `<script src="path/to/library"></script>` tags in your document to load the library, thus making its code available to your own scripts. Alternatively, if you don't want to download and store the library on your own web server you can just use a CDN and link to it directly.
+
+- You can include the `<script></script>` tags in the `<head>` of your document but remember that when you place the scripts there, the browser won't load anything until those scripts are loaded - one at a time. As long as the link to the library is placed above any other scripts that use it, you can also place it below all your HTML and before the closing `</body>` tag, just as you would any other script.
+
+- Note, the book includes an example of using a third-party library, however, the library used is outdated and obscure and the example is very straight forward making the example not worth including here. 
+
+- The book includes a few snippets of jQuery and it looks like the selectors used to obtain elements are very similar to the ones used in D3.
+
+---
+
+**Useful links:**
+
+- MDN on APIs/libraries/frameworks: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Introduction
